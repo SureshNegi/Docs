@@ -11,6 +11,7 @@ One blue print(class) for Female Named Female(copy of blue print of HumanBeings 
 Now we have 3 blue prints(class) HumanBeings,Male and female
 But as a designer I know Male and female both belongs to HumanBeings(subset of human beings).This is the concept of inheritence
 "when A class is subset of oher class B It means A is inheriting B" 
+Now I can design more blue prints(class) which may have the copy of Humanbeings + other specific- reusability of design(class)
 
 *Objects:Now I(god) want to create phisical entity Of  male and  Female.These phisical entities are objects which takes the actual space
 On this earth(memory), perform actions etc(define in blueprint- class).
