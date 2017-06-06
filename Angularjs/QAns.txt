@@ -1,0 +1,106 @@
+https://docs.angularjs.org/misc/faq
+https://www.youtube.com/watch?v=1CpiB3Wk25U
+Q) How do I prevent angular-ui modal from closing?
+
+$modal.open({
+   // ... other options
+   backdrop  : 'static',
+   keyboard  : false
+});
+
+http://stackoverflow.com/questions/20286445/how-do-i-prevent-angular-ui-modal-from-closing
+
+Q)How angular provide built-in protection from basic security holes, including cross-site scripting and HTML injection attacks.(So it is framework)
+
+Q)AngularJs performance
+The runtime performance will vary depending on the number and complexity of bindings on the page as well as the speed of your backend (for apps that fetch data from the backend).
+
+Q)Does Angular use the jQuery library?
+yes, Angular can use jQuery if it's present in your app when the application is being bootstrapped. If jQuery is notpresent in your script path, Angular falls back to its own implementation of the subset of jQuery that we call jQLite.
+jQLite is a subset of jQuery that is built directly into AngularJS. jQLite provides you all the useful features of jQuery. In fact it provides you limited features or functions of jQuery. By default AngularJS use jQLite which is the subset of jQuery
+
+Q)What is scope?
+https://github.com/angular/angular.js/wiki/Understanding-Scopes
+https://www.thinkful.com/projects/understanding-the-digest-cycle-528/
+
+http://code.tutsplus.com/tutorials/3-reasons-to-choose-angularjs-for-your-next-project--net-28457
+
+https://developer.chrome.com/devtools/docs/network
+
+Q)Difference between ng-model and ng-bind?
+
+
+Q) Service Vs Factory?
+http://jsfiddle.net/99u4umdL/
+https://stackoverflow.com/questions/23074875/angularjs-factory-and-service
+Q)Difference between expression and ng-bind?
+
+Q)What is controller?
+A controller is a JavaScript object that contains attributes/properties, and functions.
+
+Q)What is modules?
+
+
+Q)What is ng-include?
+http://plnkr.co/edit/3UQiASPDpUaBY7tSvWyi?p=preview
+
+Q)ng-view vs ui-view
+http://stackoverflow.com/questions/36169259/which-is-better-ng-view-or-ui-view
+
+Q)Scope inheritence:scope is controller-specific. If we define nested controllers, then the child controller inherits the scope of its parent controller.
+
+Q)Service vs factory?Which one to use?
+ Services are singleton objects which are instantiated only once in app.
+http://blog.thoughtram.io/angular/2015/07/07/service-vs-factory-once-and-for-all.html
+https://www.sitepoint.com/premium/books/angularjs-novice-to-ninja/preview/angularjs-services-factories-and-providers-791b6d5
+
+
+Q)What is Provider?
+
+Q)What is digest cycle? -- process behind Angular data binding
+When $scope.digest() gets called, Angular goes through all of the watchers that have been registered in the current scope and any child scopes
+https://www.thinkful.com/projects/understanding-the-digest-cycle-528/
+
+Q) How to trigger digest cycle manually?
+
+Q)Angularjs styleguide
+https://github.com/johnpapa/angular-styleguide/blob/master/a1/README.md#modules
+
+Q) Migrating to angular 2
+https://angular.io/docs/ts/latest/guide/upgrade.html
+
+Q)Unit test angularjs
+https://github.com/angular/angular-seed
+
+Q)What is internationalization in angularjs?
+https://angular-translate.github.io/
+
+Q)How to use currency filter?
+Price = {{ price | currency }}
+
+Q)what is dirty checking in angularjs
+
+Q)$interpolate
+
+Q)How to use On/Off in jquery 
+$("#inlineDatepicker").off("mouseup", "div div.datepick-nav", subCalNev);
+$('#inlineDatepicker').on('mouseup', 'div div.datepick-nav', subCalNev);
+
+
+Q)call callback method from directive
+//add pluging
+$('#cepFavTblGrid').jsdragtable(myMethod);
+
+//in plugin
+..
+
+JsDragTable.prototype.dropColumn = function (header, event) {           
+            methodName.call();
+}
+
+jQuery.fn.extend({
+    jsdragtable: function (onDrop) {
+        methodName = onDrop;
+        return new Anterec.JsDragTable(this);
+    }
+});

@@ -1,0 +1,90 @@
+$q:
+A service that helps you run functions asynchronously, and use their return values (or exceptions) when they are done processing.
+
+A number of Angular services return promises: $http, $interval, $timeout, for example.All promise returns are single objects
+
+
+$q can be used in two fashions
+
+example:
+
+Without using $q(synchronous call)    
+Controller:
+loginService.login(usernameChanged, scope.password, scope.getClientType(), scope.applicationVersion, uAgent, function (data){...});
+
+Service:
+'login': function (userName, password, clientType, applicationVersion, userAgent, success) {
+            rootScope.apiUrl = constantService.DOMAINURL + constantService.LOGINPACKAGENAME;
+            http.post(..).success(function (data) {
+                rootScope.sessionInvalid(data.LOGIN_OUT_OBJ);
+                success(data);
+            });
+        }
+
+Using $q:
+'retrieveInitialData': function (sesKey, empId) {  
+    var def = $q.defer();
+    http.get(url).success(function (data) {      
+        def.resolve(data);
+    })
+    return def.promise;
+}
+
+ loginService.retrieveInitialData(data.LOGIN_OUT_OBJ.SESKEY, data.LOGIN_OUT_OBJ.EMPLID).then(function(re){});
+
+or
+
+ 'resetPassword': function (emplId, success) {          
+            var def = $q.defer();         
+          
+            http.get(url).success(function (data) {
+                success(data);
+            })
+            }
+
+ loginService.resetPassword(parseInt($rootScope.nonADDetails.EMPLID), function (data) {});
+
+
+
+........................................................................................................
+Promises and Services
+The semantics of Angular dictate that you use promises as a sort of 'callback handle' - do something asynchronous in a service, return a promise, and when the asynchronous work is done, the promise's then function is triggered.
+
+http://chariotsolutions.com/blog/post/angularjs-corner-using-promises-q-handle-asynchronous-calls/
+
+Example:
+angular.module('atTheMoviesApp', [])
+  .controller('GetMoviesCtrl',function ($log, $scope, movieService) {
+        $scope.getMovieListing = function (movie) {
+            var promise = movieService.getMovie('avengers');
+            promise.then(function (payload) {
+                   $scope.listingData = payload.data;
+               },
+               function (errorPayload) {
+                   $log.error('failure loading movie', errorPayload);
+               });
+        };
+    })
+ .factory('movieService', function ($http) {
+      return {
+          getMovie: function (id) {
+              return $http.get('/api/v1/movies/' + id);  //http service return promise object
+          }
+      }
+  });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,294 @@
+https://docs.angularjs.org/guide/directive
+Prerequists:
+ HTML compiler
+ Event(event listner)
+
+Angular lets you extend HTML with new attributes (called Directives.)When AngularJS bootstraps your application, 
+the HTML compiler traverses the DOM matching directives against the DOM elements.
+For AngularJS, "compilation" means attaching directives to the HTML to make it interactive. 
+The reason we use the term "compile" is that the recursive process of attaching directives mirrors the process of compiling source code 
+in compiled programming languages. 
+
+Directive types:E,A,C,M
+A directive can specify which of the 4 matching types it supports in the restrict property of the directive definition object.
+Best Practice: Prefer using directives via tag name and attributes over comment and class names. 
+Doing so generally makes it easier to determine what directives a given element matches. 
+Best Practice: Comment directives were commonly used in places where the DOM API limits the ability to create directives that spanned 
+multiple elements (e.g. inside <table> elements). AngularJS 1.2 introduces ng-repeat-start and ng-repeat-end as a better solution to this problem. Developers are encouraged to use this over custom comment directives when possible. 
+
+Much like controllers, directives are registered on modules. 
+angular.module('MyTimeApp').directive('name',['dep1',....,Factoryfunction(dep1,...){}]);
+module.directive takes the normalized directive name followed by a factory function. 
+This factory function should return an object with the different options to tell $compile how the directive should behave when matched
+
+template:
+app.directive('myCustomer', function() {
+  return {
+    template: 'Name: {{customer.name}} Address: {{customer.address}}'
+  };
+});
+
+Best Practice: Unless your template is very small, it's typically better to break it apart into its own HTML file and load it with the templateUrl 
+option.
+
+The restrict option is typically set to:
+
+    'A' - only matches attribute name
+    'E' - only matches element name
+    'C' - only matches class name
+    'M' - only matches comment
+Can be combined:	
+'AEC' - matches either attribute or element or class name
+
+Isolating the Scope of a Directive:
+
+.......................................................
+<div ng-controller="NaomiController">
+  <my-customer></my-customer>
+</div>
+<hr>
+<div ng-controller="IgorController">
+  <my-customer></my-customer>
+</div>
+...........................................................
+
+This is clearly not a great solution.
+What we want to be able to do is separate the scope inside a directive from the scope outside, and then map the outer scope to a directive's
+inner scope.We can do this by creating what we call an isolate scope (using directive's scope option)
+
+................................................................................................................
+<div ng-controller="Controller">
+  <my-customer info="naomi"></my-customer>
+  <hr>
+  <my-customer info="igor"></my-customer>
+</div>
+
+
+angular.module('docsIsolateScopeDirective', [])
+.controller('Controller', ['$scope', function($scope) {
+  $scope.naomi = { name: 'Naomi', address: '1600 Amphitheatre' };
+  $scope.igor = { name: 'Igor', address: '123 Somewhere' };
+}])
+.directive('myCustomer', function() {
+  return {
+    restrict: 'E',
+    scope: {
+      customerInfo: '=info'
+    },
+    templateUrl: 'my-customer-iso.html'
+  };
+});
+
+Note : value (=info) tells $compile to bind to the info attribute.
+For cases where the attribute name is the same as the value you want to bind to inside the directive's scope, you can use this shorthand syntax:
+scope: {
+  // same as '=customer'
+  customer: '='
+},
+<div bind-to-this="thing">
+
+Template Html:
+Name: {{customerInfo.name}} Address: {{customerInfo.address}}
+
+
+Example From MyTime:
+angular.module('MyTimeApp')
+.directive('angTable', ['$compile',
+function($compile) {
+    return {
+        restrict: 'E',
+        templateUrl: 'Desktop/NewEntry/templates/tableGrid.html',
+        replace: true,
+        scope: {
+            conf: "="
+        },
+        controller: function($scope) {            
+            $scope.$watch('conf.myData',function(newVal){
+                if (newVal) {
+                    setTimeout(function () {
+                        //$("#cepFavTblGrid").destroy();
+                        $("#cepFavTblGrid").colResizable();// $('#cepFavTblGrid').jsdragtable();
+                    },100);                  
+   
+                }
+            });            
+        },
+        compile: function(elem) {
+            return function (ielem, $scope) {
+                //$("#cepFavTblGrid").colResizable(); $('#cepFavTblGrid').jsdragtable();
+                $compile(ielem)($scope);
+            };
+        }
+    };
+}
+])
+
+ <ang-table conf="config"></ang-table>   
+ 
+ Note:
+As the name suggests, the isolate scope of the directive isolates everything except models that you've explicitly added to the scope: {} hash
+object. This is helpful when building reusable components because it prevents a component from changing your model state except for the models 
+that you explicitly pass in. 
+ 
+....................................................................................................................
+
+
+##Directives that want to modify the DOM typically use the link option to register DOM listeners as well as update the DOM. 
+...............................................................................................................................
+.directive('checkKeyPress', function () {
+    return {
+        replace: false,
+        restrict: 'A',
+        link: function (scope, element, attrs) {
+            scope.ctrlID = attrs.ctrlId;
+            scope.dvID = attrs.dvId;
+            var e = angular.element(document.getElementById(scope.dvID));
+            e.on('keypress', function (key) {
+                var keycode = (key.which) ? key.which : key.keyCode;
+                if (keycode == 13) {
+                    if (!$('#' + scope.ctrlID).attr('disabled')) {
+                        var isCEP = localStorage.getItem('cepFocus');
+                        if (isCEP == null || isCEP == "0") {
+                            localStorage.setItem('enterPress', "1");
+                            $('#' + scope.ctrlID).trigger('click');
+                        }
+                        return false;
+                    }
+                }
+            });
+        }
+    }
+})
+
+.directive('myDraggable', ['$document', function($document) {
+  return {
+    link: function(scope, element, attr) {
+      var startX = 0, startY = 0, x = 0, y = 0;
+
+      element.css({
+       position: 'relative',
+       border: '1px solid red',
+       backgroundColor: 'lightgrey',
+       cursor: 'pointer'
+      });
+
+      element.on('mousedown', function(event) {
+        // Prevent default dragging of selected content
+        event.preventDefault();
+        startX = event.pageX - x;
+        startY = event.pageY - y;
+        $document.on('mousemove', mousemove);
+        $document.on('mouseup', mouseup);
+      });
+
+      function mousemove(event) {
+        y = event.pageY - startY;
+        x = event.pageX - startX;
+        element.css({
+          top: y + 'px',
+          left:  x + 'px'
+        });
+      }
+
+      function mouseup() {
+        $document.off('mousemove', mousemove);
+        $document.off('mouseup', mouseup);
+      }
+    }
+  };
+}]);
+
+
+Note:
+There are a few special events that AngularJS emits. When a DOM node that has been compiled with AngularJS's compiler is destroyed, 
+it emits a $destroy event. Similarly, when an AngularJS scope is destroyed, it broadcasts a $destroy event to listening scopes.
+By listening to this event, you can remove event listeners that might cause memory leaks.If you registered a listener on a service, or
+registered a listener on a DOM node that isn't being deleted, you'll have to clean it up yourself or you risk introducing a memory leak. 
+Directives should clean up after themselves. You can use element.on('$destroy', ...) or scope.$on('$destroy', ...) to run a clean-up function when the directive is removed. 
+
+.directive('myCurrentTime', ['$interval', 'dateFilter', function($interval, dateFilter) {
+
+  function link(scope, element, attrs) {
+    var format,timeoutId;  
+    element.on('$destroy', function() {
+      $interval.cancel(timeoutId);
+    });
+
+    // start the UI update process; save the timeoutId for canceling
+    timeoutId = $interval(function() {
+      updateTime(); // update DOM
+    }, 1000);
+  }
+  ...
+
+  return {
+    link: link
+  };
+}]);
+
+only use transclude: true when you want to create a directive that wraps arbitrary content. 
+............................................................................................................................................
+
+
+
+Best Practice: use controller when you want to expose an API to other directives. Otherwise use link. 
+
+
+Creating a directive that communicates:
+
+<my-tabs>
+  <my-pane title="Hello">
+    <p>Lorem ipsum dolor sit amet</p>
+  </my-pane>
+  <my-pane title="World">
+    <em>Mauris elementum elementum enim at suscipit.</em>
+    <p><a href ng-click="i = i + 1">counter: {{i || 0}}</a></p>
+  </my-pane>
+</my-tabs>
+
+
+
+angular.module('docsTabsExample', [])
+.directive('myTabs', function() {
+  return {
+    restrict: 'E',
+    transclude: true,
+    scope: {},
+    controller: ['$scope', function MyTabsController($scope) {
+      var panes = $scope.panes = [];
+
+      $scope.select = function(pane) {
+        angular.forEach(panes, function(pane) {
+          pane.selected = false;
+        });
+        pane.selected = true;
+      };
+
+      this.addPane = function(pane) {
+        if (panes.length === 0) {
+          $scope.select(pane);
+        }
+        panes.push(pane);
+      };
+    }],
+    templateUrl: 'my-tabs.html'
+  };
+})
+.directive('myPane', function() {
+  return {
+    require: '^^myTabs',
+    restrict: 'E',
+    transclude: true,
+    scope: {
+      title: '@'
+    },
+    link: function(scope, element, attrs, tabsCtrl) {
+      tabsCtrl.addPane(scope);
+    },
+    templateUrl: 'my-pane.html'
+  };
+});
+
+
+
+

@@ -1,0 +1,25 @@
+Q) novalidate?
+* novalidate is used to disable browser's native form validation(default validation for the control)
+*<form novalidate class="simple-form"> .... <input type="email" ng-model="user.email" />
+
+Q) ng-valid and ng-dirty?
+* When we use the <form> tag in angularjs then when we if we use ng-model for a control then angularjs bydefault add these classed to the control
+* other class also added/removed at run time according to the state of the form control
+
+Q) Explain form css classed?
+   ng-valid: the model is valid
+   ng-invalid: the model is invalid
+   ng-valid-[key]: for each valid key added by $setValidity
+   ng-invalid-[key]: for each invalid key added by $setValidity
+   ng-pristine: the control hasn't been interacted with yet
+   ng-dirty: the control has been interacted with
+   ng-touched: the control has been blurred
+   ng-untouched: the control hasn't been blurred
+   ng-pending: any $asyncValidators are unfulfilled
+   
+Q) FormController?  
+
+Q) ngModelOptions directive?
+* By default, any change to the content will trigger a model update and form validation. You can override this behavior using the ngModelOptions 
+  directive to bind only to specified list of events. I.e. ng-model-options="{ updateOn: 'blur' }" will update and validate only after the control loses focus. You can set several events using a space delimited list. I.e. ng-model-options="{ updateOn: 'mousedown blur' }"
+* Non-immediate (debounced) model updates: ng-model-options="{ debounce: 500 }"

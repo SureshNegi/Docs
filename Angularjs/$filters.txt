@@ -1,0 +1,16 @@
+Filter from list by object property
+........................................................
+
+Example from activity module
+.............................................................
+
+ <input  class="seachAct" ng-model="searchText" ng-enter="refreshData()"/>
+$scope.refreshData = function () {
+        console.log('refreshData');
+        if ($scope.isFilterByCode == $scope.isFilterByDesc)
+            $scope.gridOptions.data = $filter('filter')($scope.favActivityObj, { $: $scope.searchText }, undefined);
+        else if($scope.isFilterByCode)
+         $scope.gridOptions.data = $filter('filter')($scope.favActivityObj, { ACTICD: $scope.searchText }, undefined);
+        else if ($scope.isFilterByCode)
+            $scope.gridOptions.data = $filter('filter')($scope.favActivityObj, { DES: $scope.searchText }, undefined);
+    }

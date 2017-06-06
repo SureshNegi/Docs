@@ -1,0 +1,19 @@
+PhoneCat Tutorial App
+For this app you need to know about:
+Git: Git is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency.
+Day 1:
+Part 1:
+*	Install Git : download and install from http://git-scm.com/download.
+*	Open git cmd tool.
+*	Rune the command :
+git clone --depth=16 https://github.com/angular/angular-phonecat.git
+This command will load the source code of the demo project to your local machine(create angular-phonecat directory having the code)
+*	Change your directory: cd angular-phonecat
+Part 2:
+*	Download a Node.js installer for your operating system from https://nodejs.org/en/download/.
+*	Check the version of Node.js that you have installed by running the following command:
+*	node –version
+*	Once you have Node.js installed on your machine, you can download the tool dependencies by running command: npm install 
+
+
+

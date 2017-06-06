@@ -1,0 +1,54 @@
+Directive Example:
+......................................
+var app=angular.module('MyTimeApp')
+
+//submit form on enter key press
+ <input  class="seachAct" ng-model="searchText" ng-enter="refreshData()" or ng-enter="scopeVal"/>
+app.directive('ngEnter', function () {
+    return function (scope, element, attrs) {
+        element.bind("keydown keypress", function (event) {           
+            if(event.which === 13) {
+                scope.$apply(function (){                   
+                    scope.$eval(attrs.ngEnter); //call function
+                    alert(scope.$eval(attrs.ngEnter));//scopeValue
+                }); 
+                event.preventDefault();
+            }
+        });
+    };
+})
+
+
+Access controller function from directive isolated scope
+.directive('angTable', ['$compile','$filter',
+function ($compile, $filter) {
+ 
+return {
+        
+restrict: 'E',
+    
+templateUrl: 'Desktop/NewEntry/templates/tableGrid.html',
+replace: true,
+
+scope: 
+{
+         
+   conf: "=",
+          
+   onRemoveFav:"="//this is method
+       
+ },          
+               
+ $compile(ielem)($scope);
+            };
+        }
+    };
+}
+])
+
+Htmll: <ang-table conf="config" on-remove-fav="removeFrmFavCEP"></ang-table> 
+
+
+## Directive exapme showing use of require:
+https://toddmotto.com/directive-to-directive-communication-with-require/
+

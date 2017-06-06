@@ -1,0 +1,13 @@
+Anugular performance:
+https://www.alexkras.com/11-tips-to-improve-angularjs-performance/
+www.codelord.net/2014/06/17/angular-performance-101-slides/
+https://jsperf.com/
+
+
+Requirejs:
+https://www.startersquad.com/blog/angularjs-requirejs/
+
+
+http://stackoverflow.com/questions/11453944/how-to-get-the-length-of-japanese-characters-in-javascript
+
+http://www.javascripter.net/faq/escape.htm

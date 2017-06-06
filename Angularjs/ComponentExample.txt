@@ -1,0 +1,71 @@
+Example : tree-control.js
+
+Step 1:
+Declare/Creating Module:
+var app=angular.module('treeControl', []);
+ 
+Step 2:
+Register contants, directives into module:
+app.constant('treeConfig', {
+            templateUrl: null
+        });
+/*on html page used like this:   <treecontrol class="tree-classic"
+                                                 tree-model="dataForTheTree"
+                                                 options="treeOptions"
+                                                 on-selection="showSelected(node)"
+                                                 expanded-nodes="expandedNodes"
+                                                 ng-dblClick="comTaskDblClick($event,node)"
+                                                 selected-node="selectedNode">
+                                        {{node.name}}
+                                    </treecontrol>*/
+									
+app.directive('treecontrol', ['$compile', function ($compile) {
+    /**
+     * @param cssClass - the css class
+     * @param addClassProperty - should we wrap the class name with class=""
+     */
+    function classIfDefined(cssClass, addClassProperty) {
+        if (cssClass) {
+            if (addClassProperty)
+                return 'class="' + cssClass + '"';
+            else
+                return cssClass;
+        }
+        else
+            return "";
+    }
+
+    return {
+        restrict: 'EA',
+        require: "treecontrol",
+        transclude: true,
+		//get vairiable assign in html page with directive
+        scope: {
+            treeModel: "=",
+            selectedNode: "=?",
+            selectedNodes: "=?",
+            expandedNodes: "=?",
+            onSelection: "&",
+            onNodeToggle: "&",
+            options: "=?",
+            orderBy: "=?",
+            reverseOrder: "@",
+            filterExpression: "=?",
+            filterComparator: "=?"
+        },
+        controller: ['$scope', '$templateCache', '$interpolate', 'treeConfig', '$rootScope', function ($scope, $templateCache, $interpolate, treeConfig, $rootScope) {
+          //controller code here 
+          //get the options here 
+		  $scope.options = $scope.options || {};		  
+        }],
+        compile: function (element, attrs, childTranscludeFn) {
+            return function (scope, element, attrs, treemodelCntr) {
+               //code here
+            };
+        }
+    };
+	
+	//other directives here
+	
+}])		
+ 
