@@ -1,1 +1,13 @@
 http://www.studytonight.com/cpp/cpp-and-oops-concepts.php
+
+Imagin you are god and creating universe blue print(class) before creating the actual entity(object):
+*BluePrint/Class(Base class): You design Bluprint for human beings(class for human beings) named this HumanBeings
+Defines properties and its functions. Like  having body parts, and performing various actions.
+
+*Inheritence:As a god I want to create 2 types of human beings male and femal
+Therefore I design 2 more blue print:
+One blue print(class) for Male Named Male
+One blue print(class) for Female Named Female
+Now we have 3 blue prints(class) HumanBeings,Male and female
+But as a designer I know Male and female both belongs to HumanBeings(subset of human beings).This is the concept of inheritence
+"when A class is subset of oher class B It means A is inheriting B" 
