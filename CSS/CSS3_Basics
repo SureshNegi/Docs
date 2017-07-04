@@ -1,0 +1,119 @@
+Q)What is CSS3?
+* CSS3 is the latest standard for CSS and  is completely backwards-compatible with earlier versions of CSS.
+
+Q) Give some CSS3 properties name?
+* border-radius(shorthand for border-top-left-radius etc)
+* border-image
+
+Q) Gradients
+* background: linear-gradient(direction, color-stop1, color-stop2, ...);
+*  background: -moz-linear-gradient(red, yellow); /* For Firefox 3.6 to 15 */
+
+Q) CSS3 Shadow Effects?
+* With CSS3 you can add shadow to text and to elements.
+* text-shadow: 2px 2px 4px #000000; multiple shadow: text-shadow: 0 0 3px #FF0000, 0 0 5px #0000FF;
+* box shadow div {    box-shadow: 10px 10px 5px grey;}
+
+Q) ::before and ::after?
+
+Q) text-overflow: ellipsis;
+
+Q)CSS3 Transitions?
+* to change property values smoothly (from one value to another), over a given duration.Say on mouse hover want to change the size of div smoothly and within fix time.
+* To create a transition effect, you must specify two things:the CSS property which is to be updated(say width) and  the duration of the effect
+*  transition: width 2s;
+*  transition: width 2s, height 4s;
+*   transition-delay: 1s;(delay in transition like settimeout in javascript)
+Q) CSS transitions example?
+	div {
+		width: 100px;
+		height: 100px;
+		background: red;
+		-webkit-transition: width 2s; /* For Safari 3.1 to 6.0 */
+		transition: width 2s;
+	}
+
+	div:hover {
+		width: 300px;
+	}
+
+Q) What is Speed Curve of the Transition?
+
+Q) CSS3 Animations?
+* An animation lets an element gradually change from one style to another.
+* To use CSS3 animation, you must first specify some keyframes for the animation.
+* Keyframes hold what styles the element will have at certain times.
+
+Q) Animation example(div change color red to yellow without doing hover)
+div {
+    width: 100px;
+    height: 100px;
+    background-color: red;
+    -webkit-animation-name: example; /* Safari 4.0 - 8.0 */
+    -webkit-animation-duration: 4s; /* Safari 4.0 - 8.0 */
+    animation-name: example;
+    animation-duration: 60s;
+}
+/* Standard syntax */
+@keyframes example {
+    from {background-color: red;}
+    to {background-color: yellow;}
+}
+
+Q) CSS3 Multi-column?
+* CSS3 provides the following multi-column properties:
+    column-count
+    column-gap
+    column-rule-style
+    column-rule-width
+    column-rule-color
+    column-rule
+    column-span
+    column-width
+	
+* column-count:no of columns an element should be divided into(div {column-count: 3;} divide text in the <div> element into 3 columns)
+
+Q) CSS3 User Interface?
+* CSS3 has new user interface features such as resizing elements(div can be resized), outlines, and box sizing.
+
+Q) CSS3 Box sizing?
+* Before CSS3 we have to take care of padding while giving width/hight.The overall height/widh will be with +padding+border etc
+* The CSS3 box-sizing property allows us to include the padding and border in an element's total width and height.
+	.div1 {
+		width: 300px; //when div rendered width will be overall width 300
+		height: 100px;
+		border: 1px solid blue;
+		box-sizing: border-box;
+	}
+	
+Q) CSS3 Media Queries?
+* CSS2 Introduced Media Types
+* The @media rule, introduced in CSS2(to define different style rules for different media types.)
+* Examples: You could have one set of style rules for computer screens, one for printers, one for handheld devices, one for television-type devices, 
+  and so on	
+* Unfortunately these media types never got a lot of support by devices, other than the print media type.
+* CSS3 Introduces Media Queries:Media queries extend the CSS2 media types idea: Instead of looking for a type of device, they look at the capability of the device.
+
+Q) Media queries can be used to check?	
+*  width and height of the viewport
+*  width and height of the device
+*  orientation (is the tablet/phone in landscape or portrait mode?)
+*  resolution
+
+Q) Media query example if device is screen and  viewport(availabe widh) is 480 or greater than background color grenn else pink 
+* Example 1:
+	body {
+		background-color: pink;
+	}
+
+	@media screen and (min-width: 480px) {
+		body {
+			background-color: lightgreen;
+		}
+	}
+
+* More Examples:
+	@media screen and (min-width: 480px) {
+		#leftsidebar {width: 200px; float: left;}
+		#main {margin-left: 216px;}
+	}
