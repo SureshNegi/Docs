@@ -91,16 +91,5 @@ Q)call callback method from directive
 //add pluging
 $('#cepFavTblGrid').jsdragtable(myMethod);
 
-//in plugin
-..
-
-JsDragTable.prototype.dropColumn = function (header, event) {           
-            methodName.call();
-}
-
-jQuery.fn.extend({
-    jsdragtable: function (onDrop) {
-        methodName = onDrop;
-        return new Anterec.JsDragTable(this);
-    }
-});
+Q) Unbinding $watch in angularjs after called
+https://stackoverflow.com/questions/19394204/unbinding-watch-in-angularjs-after-called
