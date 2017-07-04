@@ -1,0 +1,22 @@
+Q) Responsive Web Design?
+* Makes your web page look good on all devices-page manage its design according to device
+* Responsive web design uses only HTML and CSS.
+* https://www.w3schools.com/css/css_rwd_intro.asp 
+
+Q) What is the ViewPort?
+* user's visible area of a web page.
+* The viewport varies with the device, and will be smaller on a mobile phone than on a computer screen
+
+Q) Setting The Viewport?<meta>?
+* HTML5 introduced a method to let web designers take control over the viewport, through the <meta> tags:
+* We should include the following <meta> viewport element in all our web pages, if we are using HTML5
+* <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  The width=device-width part sets the width of the page to follow the screen-width of the device (which will vary depending on the device).
+  The initial-scale=1.0 part sets the initial zoom level when the page is first loaded by the browser.
+  
+Q) Responsive grid example:
+* https://www.w3schools.com/css/tryresponsive_grid.htm
+
+Q) RWD frameworks?
+* W3.CSS#
+* BootStrap
