@@ -10,6 +10,14 @@ $modal.open({
 
 http://stackoverflow.com/questions/20286445/how-do-i-prevent-angular-ui-modal-from-closing
 
+Q)what is the use of the link in directive?
+Q)what is the use of the controller in directive?
+Q)Can we  use both link & controller in directive?How? Y
+Q)Can we  use both link & controller in directive? Y
+Q)How many time compile execut for directive? only once
+
+
+
 Q) Creat scope manuaaly for a view
  var childScope = scope.$new(true);
  childScope.onselectItem = function(item){}
