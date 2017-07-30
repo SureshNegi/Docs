@@ -10,6 +10,13 @@ $modal.open({
 
 http://stackoverflow.com/questions/20286445/how-do-i-prevent-angular-ui-modal-from-closing
 
+Q) Creat scope manuaaly for a view
+ var childScope = scope.$new(true);
+ childScope.onselectItem = function(item){}
+ //Compile template against child scope
+$compile(dropdownElement)(childScope);
+elem.append(dropdownElement);
+
 Q)How angular provide built-in protection from basic security holes, including cross-site scripting and HTML injection attacks.(So it is framework)
 
 Q)AngularJs performance
