@@ -1,0 +1,26 @@
+Why use interface
+http://www.dotnetspider.com/forum/13184-OOPS-Why-we-need-an-Interface.aspx
+
+Example:
+Here is another example,(the Strategy pattern) lets you swap new algorithms and processes into your program 
+without altering the objects that use them. 
+
+A media player might know how to play CDs, MP3s, and wav files. Of course, you don't want to hardcode those playback algorithms 
+into the player; that will make it difficult to add a new format like AVI. Furthermore, your code will be littered with useless 
+case statements. And to add insult to injury, you will need to update those case statements each time you add a new algorithm.
+All in all, this is not a very object-oriented way to program.If you use interface 
+you need not worry about the tested formates(methods already implemented)
+
+
+
+
+With the Strategy pattern, you can simply encapsulate the algorithm behind an object. If you do that, you can provide new media plug-ins at any time. Let's call the plug-in class MediaStrategy. That object would have one method: playStream(Stream s). So to add a new algorithm, we simply extend our algorithm class. Now, when the program encounters the new media type, it simply delegates the playing of the stream to our media strategy. Of course, you'll need some plumbing to properly instantiate the algorithm strategies you will need.
+
+This is an excellent place to use an interface. Thus, you should define the strategy as an interface. You should generally favor interfaces over inheritance when you want an object to have a certain type; in this case, MediaStrategy. Relying on inheritance for type identity is dangerous; it locks you into a particular inheritance hierarchy. C# doesn't allow multiple inheritance, so you can't extend something that gives you a useful implementation or more type identity
+So we use interfaces
+
+Strategy:
+tommorow I will leave for Goa, I will catch the train at this time, book the hotel etc etc..
+this is declaring interface
+
+when executing in real means implementing the interface
