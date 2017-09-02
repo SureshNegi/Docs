@@ -1,0 +1,14 @@
+http://www.codelord.net/2014/04/15/improving-ng-repeat-performance-with-track-by/
+*Behind the scenes ngRepeat adds a $$hashKey property to each task to keep track of it. If you replace the original tasks 
+with new tasks objects from the server, even if those are in fact totally identical to your original tasks,
+they won’t have the $$hashKey property and so ngRepeat won’t know they represent the same elements.
+
+*The first solution that comes to mind to most developers is to not replace the whole $scope.tasks list,
+but update in place all the existing tasks objects with the data you received from the server. That would work because it means $$hashKey property would be left intact in the original objects.
+But that’s not fun, is it? I hate surgically tinkering with objects, as it is error prone, less readable and a pain to maintain.
+
+*track by to the rescue
+In Angular 1.2 a new addition was made to the syntax of ngRepeat: the amazingly awesome track by clause. It allows you to specify your own key for ngRepeat to identify objects by, instead of just generating unique IDs.
+This means that you can change the above to be ng-repeat="task in tasks track by task.id" and since the ID would be the same in both your original tasks and the updated ones from the server – ngRepeat will know not to recreate the DOM elements and reuse them. Boom.
+
+http://jsfiddle.net/SeKk7/
