@@ -62,3 +62,8 @@ Q)Other API?
 use numerous APIs in addition to the DOM and selector APIs: multimedia, drawing, animating, geolocation, webcam, etc.
 You will have APIs for manipulating multimedia (audio and video), geolocation (getting the longitude and latitude), orientation (on mobile devices), accessing the webcam or the microphone, etc.
 E.g google map API
+
+Q)type="text/javascript"?
+Old JavaScript examples may use a type attribute:
+<script type="text/javascript">.
+The type attribute is now obsolete and should be ignored.
