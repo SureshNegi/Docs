@@ -106,3 +106,69 @@ function f() {
             // and can be used anywhere in the function
             // so here, the local a masks the global a!
 }
+
+Q) Objects?
+Objects (everything that is not a  "primitive data type" is an object):
+var michel = {firstName:'Michel', lastName:'Buffa'};
+
+Q)predefined objects?
+There is a set of "predefined objects" in JavaScript (arrays, functions, etc).
+
+Q)primitive data types in javascript?
+avaScript has a small set of primitive data types
+
+        number: 1,2,105,3.14 ...
+        string: 'a', "one", 'two' , 'World Wide Web' ...
+        boolean: true / false
+        undefined: absent or unknown value
+        null: special keyword, meaning no value or empty. The difference from undefined is that when a variable is null, it is still defined.
+
+Anything that is not listed above is an object
+
+Q)Knowing the type of a JavaScript variable: ?
+typeof  operator
+
+Q)Special values?
+    +Infinity
+    -Infinity
+    NaN (Not a Number)
+    
+ Q)Octal?
+ Be careful with this, don't start an integer with 0 (zero), JavaScript will understand it as an octal value.
+ 
+ Q)How number is represented?
+ In JavaScript, numbers are represented with a double-precision 64-bit format (IEEE 754). These 64 bits are used with this table:
+ Total bits Sign    Exponent    Significand
+    64        1         11      52
+    
+  Q)Strings are arrays of characters! .is string object?
+  yes- var s = 'one';s[0];s.length;
+  
+  Q)what is argument in Functions ?
+  An array named "argument" is created automatically in each function, it contains all the call parameters of the function:
+  function f() {
+   return arguments;
+} 
+f( 1, 2, 3, 4, true, 'Michel Buffa');
+// returns [1, 2, 3, 4, true, "Michel Buffa"]
+  
+Q)What is HTML Table JavaScript API?
+HTML Table JavaScript API, and is useful for building tables on the fly
+// Add a line to the HTML table
+function addLineToHTMLTable(firstName, lastName) {
+    // Get the body of the table using the selector API
+    var tableBody = document.querySelector("#tableContactBody");
+  
+    // Add a new row at the end of the table
+    var newRow   = tableBody.insertRow();
+
+   // add  new cells to the row
+   var firstNameCell  = newRow.insertCell();
+   firstNameCell.innerHTML = firstName;
+  
+   var lastNameCell   = newRow.insertCell();
+   lastNameCell.innerHTML = lastName;
+}
+
+Q)HTML5 canvas?
+The HTML5 canvas is useful for drawing and animating at 60 frames/second.
