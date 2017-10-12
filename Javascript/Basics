@@ -25,4 +25,11 @@ example 2: This indicates that the page is in French.
     <head>
     
 What is Internationalization Checker.?
+
+
+
 https://validator.w3.org/i18n-checker/
+
+
+Q)void elements?
+These elements, without a "/" at the end, are called "void elements". They are : area, base, br, col, embed, hr, img, input, link, menuitem, meta, param, source, track, wbr.
