@@ -2,3 +2,7 @@ Q) What source code editors / online IDEs can we use?
 - For testing simple examples, I mainly use the JsBin.com online code editor.
 - For embedding online examples in this course, I use the CodePen.io online code editor.
 - For choosing a CSS color, shadow, text-shadow, gradients, etc. I use the LiveWeave online code editor."
+
+Q)What is paperJS?
+ paperJS library that can be used to make fancy animations in the HTML canvas element
+ http://paperjs.org/about/
