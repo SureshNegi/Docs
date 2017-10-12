@@ -1,0 +1,28 @@
+https://courses.edx.org/courses/course-v1:W3Cx+JS.0x+3T2017/courseware/7192368f1af84c349fe527e3e7c49512/6724369df5b2437ea561889297f925bb/?child=first
+What is i18n?
+'Internationalization' is sometimes abbreviated to 'i18n' in English, because there are 18 characters between the 'i' and the 'n'.
+Access to the Web for all has been a fundamental concern and goal of the W3C since the beginning. It is easy to overlook the needs of people from cultures different to your own, or who use different languages or writing systems, but you have to ensure that any content or application that you design or develop is ready to support the international features that they will need.
+
+Why?
+If you don't use those features you will create barriers for people from different cultures who are trying to access your content. This is important even if you think you are only designing for a specific community – communities are made up of diverse individuals, and the Web stretches worldwide.
+
+Which Encoding?
+https://www.w3.org/International/questions/qa-choosing-encodings
+As a content author or developer, you should nowadays always choose the UTF-8 character encoding for your content or data. This Unicode encoding is a good choice because you can use a single encoding to handle any character you are likely to meet. This greatly simplifies things.
+
+Essential steps in Web internationalization?
+1)Example of char encoding:
+Check #1: There is a character encoding declaration near the start of your source code, and  its value is UTF-8.
+    <head>
+    <meta charset="utf-8"/>
+    ...
+    </head>
+
+Check #2: The HTML tag has a lang attribute which correctly indicates the language of your content.
+example 2: This indicates that the page is in French.
+    <!doctype html>
+    <html lang="fr">
+    <head>
+    
+What is Internationalization Checker.?
+https://validator.w3.org/i18n-checker/
