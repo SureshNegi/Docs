@@ -25,13 +25,7 @@ example 2: This indicates that the page is in French.
     <head>
     
 What is Internationalization Checker.?
-
-
-
-
-
 https://validator.w3.org/i18n-checker/
-
 
 Q)void elements?
 These elements, without a "/" at the end, are called "void elements". They are : area, base, br, col, embed, hr, img, input, link, menuitem, meta, param, source, track, wbr.
@@ -49,3 +43,12 @@ the server side (on the Netscape HTTP Web server back in 1995).
 In recent years this trend has returned, thanks to the appearance of the Node.js server/JavaScript interpreter. 
 It's common to see JavaScript applications running on a remote Web server. This particular use of JavaScript will be 
 covered by another course that will be proposed by W3Cx, but mastering JavaScript basics is highly recommended before trying to learn JavaScript server side programming.
+
+Q)JavaScript is an interpreted language?
+JavaScript is an interpreted (or just-in-time compiled) language, which means that the code is converted into a machine language at, or just before, runtime. The most popular JavaScript engines are:
+
+        SpiderMonkey (included in Mozilla Firefox)
+        JavaScriptCore (included in Apple Safari)
+        Chrome V8 (included in Google Chrome, in the Node.js server)
+        Chakra (included in Microsoft Internet Explorer and now in the Microsoft Edge browser)
+
