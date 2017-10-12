@@ -1,0 +1,2 @@
+1) GOOD PRACTICE: in JavaScript 5 / ES5, always use the keyword var when declaring a global or a local variable. 
+2)Better: use the keyword let if you target browsers that support JavaScript 6 or above.
