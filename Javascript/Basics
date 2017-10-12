@@ -51,4 +51,14 @@ JavaScript is an interpreted (or just-in-time compiled) language, which means th
         JavaScriptCore (included in Apple Safari)
         Chrome V8 (included in Google Chrome, in the Node.js server)
         Chakra (included in Microsoft Internet Explorer and now in the Microsoft Edge browser)
+        
+ Q)What is DOM API?
+ In the case of JavaScript, the DOM API is implemented natively by the browser, and you can call several functions/methods or access properties of the DOM:  an object that represents the document (the Web page). 
 
+Q)selector API ?
+It uses the selector API to target a particular part of the DOM (in our case, the main title of the page), the HTML element with an id attribute equal to "mainTitle". The selector API uses the same syntax as CSS to select elements in the document. In our case, "#mainTitle" is a selector value that means "the element whose id is equal to mainTitle".
+
+Q)Other API?
+use numerous APIs in addition to the DOM and selector APIs: multimedia, drawing, animating, geolocation, webcam, etc.
+You will have APIs for manipulating multimedia (audio and video), geolocation (getting the longitude and latitude), orientation (on mobile devices), accessing the webcam or the microphone, etc.
+E.g google map API
