@@ -1,0 +1,27 @@
+Q) JavaScript 6 / ES6 scopes, with the let keyword?
+JavaScript 6 / ES6 has the let keyword for declaring variables, and the const keyword for declaring constants.
+
+Q)Scope?
+JavaScript 6 / ES6 has two scopes: 1) a global scope for declaring global variables, and 2) a block scope for declaring variables between { and }. 
+This is similar to what we find in many other programming languages such as Java, C# etc.
+
+var a = 1; // global variable
+
+function f() {
+  if (true) {
+    // this is a block, defined by { and }
+    let a = 4; // this "a" IS LOCAL TO THE BLOCK
+  }
+
+  alert(a); // alerts '1', a is the global variable // 4 if var
+            // a variable declared with "let" in a 
+            // block is local to the block!
+            // and is not defined anywhere else
+            // The a defined in the if block is not
+            // visible here, so the a we have here
+            // is the "global" a!
+}
+
+Q)let or var?
+Well, all modern browsers support the let and const keywords, however, if you target old browsers such as IE 10 etc
+ it's better to use the var keyword, or you can use some advanced tools called "transpilers" that will translate your JavaScript 6 / ES6 code into pure JavaScript 5 code (like Traceur or Babel). 
