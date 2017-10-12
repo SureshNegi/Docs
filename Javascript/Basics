@@ -28,8 +28,24 @@ What is Internationalization Checker.?
 
 
 
+
+
 https://validator.w3.org/i18n-checker/
 
 
 Q)void elements?
 These elements, without a "/" at the end, are called "void elements". They are : area, base, br, col, embed, hr, img, input, link, menuitem, meta, param, source, track, wbr.
+
+Q)what is EcmaScript?
+Towards the end of 1996, JavaScript was standardized by ECMA as the EcmaScript standard. So no matter whether you see it called JavaScript or EcmaScript, don't worry, it's the same thing.
+
+Q)ES2015 or ES6?
+the latest official version is version 6, also called ES2015 or ES6. A 7th version is on its way (called ES2016, ES2016+, ES7, JavaScript 7...).
+
+Q)Why Javascript?
+In the beginning, JavaScript was invented to work not only on the client side (in Web browsers) but also on 
+the server side (on the Netscape HTTP Web server back in 1995).
+
+In recent years this trend has returned, thanks to the appearance of the Node.js server/JavaScript interpreter. 
+It's common to see JavaScript applications running on a remote Web server. This particular use of JavaScript will be 
+covered by another course that will be proposed by W3Cx, but mastering JavaScript basics is highly recommended before trying to learn JavaScript server side programming.
