@@ -67,3 +67,42 @@ Q)type="text/javascript"?
 Old JavaScript examples may use a type attribute:
 <script type="text/javascript">.
 The type attribute is now obsolete and should be ignored.
+
+Q)JavaScript is weakly typed.?
+JavaScript is weakly typed. Each variable is declared with the keyword var or let. So you are not required to specify the type of variable you are creating. 
+
+Q) keyword let ?
+With JavaScript versions < 5 (prior to 2015), there was a single way to create (we say "declare") a variable: using the var keyword, but with the subsequent versions (called ES2015/ES2016 or JavaScript 6/7) we can also use the keyword let (this has some subtle differences").
+
+Q)naming convention?
+The JavaScript community has some conventions about naming variables:
+The camelCase notation is preferred: mySpaceShip, sumOfAllGrades, etc.
+Constants?
+The naming convention is to use uppercase letters with underscores. 
+
+Example: var TIME_LIMIT = 50;
+
+Q)const ?
+With JavaScript 5, constants were declared as normal variables, using the var keyword, and there were no verifications by the JavaScript interpreter forbidding you to modify them after you assigned a value to them.
+
+With ES2015/2016 it is recommended that you use the keyword const instead of var to declare them. This means that an error will be raised if you try to change their value in the future.
+
+Q) Var Scope?
+When a variable is declared in a function, we also call it simply "a local variable", as opposed to "a global variable". In JavaScript 5 (and this is not common in programming languages), local variables are local to the function. They can be used anywhere inside the function.
+Most programming languages have local variables that are limited to the block of instructions between '{' and '}' 
+that contains the variable declaration. We call these variables "block variables". This is the case with variables declared 
+with the let keyword  introduced by JavaScript 6 / ES6. See examples at the end of this section.
+
+var a = 1; // global variable
+
+function f() {
+  if (true) {
+    // this is a block, defined by "{" and "}"
+    var a = 4; // this "a" is NOT local to the block
+  }
+  alert(a); // alerts '4', not the global value of '1'
+            // a variable declared with "var" in a 
+            // function is local to the function!
+            // and can be used anywhere in the function
+            // so here, the local a masks the global a!
+}
