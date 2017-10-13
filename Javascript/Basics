@@ -172,3 +172,66 @@ function addLineToHTMLTable(firstName, lastName) {
 
 Q)HTML5 canvas?
 The HTML5 canvas is useful for drawing and animating at 60 frames/second.
+
+Q)What is function expression?
+A JavaScript function can also be defined using an expression that can be stored in a variable. Then, the variable can be used as a function:
+The "function expression" is an "anonymous function", a function without a name, that represents a value that can be assigned to a variable. Then, the variable can be used to execute the function.
+
+Q)Callbacks?
+Indeed, as functions are first-class objects, we can pass a function as an argument, as a parameter to another function and later execute that passed-in function or even return it to be executed later. When we do this, we talk about callback functions in JavaScript: a function passed to another function, and executed inside the function we called.
+window.addEventListener('click', processClick);
+
+function processClick(event) {
+  document.body.innerHTML += "Button clicked<br>";
+}
+Callback functions are derived from a programming paradigm known as functional programming. They are very, very common in JavaScript. 
+
+Q)We say that "event processing" is asynchronous.?
+With JavaScript, a button click, a move of the mouse, a resized window, and many other interactions create what are called "events".  The timing and order of events cannot be predicted in advance. We say that "event processing" is asynchronous. Web browsers detect events as they occur, and may pass them to JavaScript code. They do this by allowing you to register functions as event listeners, also called handlers or callbacks for specific events.
+
+Each time an event occurs, the browser puts it in a "queue of events".
+Then the browser looks at a list of "Event Listeners" and calls the ones that correspond to the type of event "they listen to".
+
+Q)The event object?
+The event object is the only parameter passed to event listeners
+
+    function processClick(evt) {
+        alert("Button clicked!");
+    }
+Each event listener has a single parameter that is  a "DOM event object". It has various properties and methods that can be very useful.
+For example, with a 'keyup', 'keydown' or 'keypress' event, the event object contains the code of the key that has been pressed/released,
+with a 'mousemove' listener we can get the relative position of the mouse in the DOM element that has generated the event, etc.
+evt.type: the name of the event
+evt.target: for example, is the HTML element that has fired the event. In our previous examples with the click listeners on a button, evt.target in the event listener is the button itself.
+evt.stopPropagation(): will not propagate the event to all other elements that listen to it. If several elements are registered for a click event - for example, you have a click listener on a button and on the window (the whole page). If you click on the button, and if in its click event listener you call evt.stopPropagation(); then the click event listener on the window object will never be called.
+evt.preventDefault(): the default browser behavior will not be executed. For example, in a 'contextmenu' event listener attached to an object, if you call evt.preventDefault(), instead of having the right click default context menu of your browser displayed, you'll be able to display your own context menu, like in this example.
+It also contains properties that are associated with the type of the event, for example:
+evt.button: the mouse button that has been used in the case of a mouse event listener
+evt.keyCode: the code of the key that has been used
+evt.pageX: coordinate of the mouse relative to the page
+        etc.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
