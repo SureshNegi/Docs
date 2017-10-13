@@ -6,3 +6,18 @@ Q) What source code editors / online IDEs can we use?
 Q)What is paperJS?
  paperJS library that can be used to make fancy animations in the HTML canvas element
  http://paperjs.org/about/
+
+Q)WebAudio API?
+
+Q)https://webcamtoy.com/?
+
+Q)function plot JavaScript library?
+There are numerous libraries for plotting math functions e.g:
+https://mauriciopoppe.github.io/function-plot/
+or 
+d3.js JavaScript library
+
+Q)d3.js JavaScript library?
+
+Q)HowlerJS ?
+load and decode remote sounds for use in a video game
