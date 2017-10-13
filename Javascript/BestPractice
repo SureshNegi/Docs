@@ -1,2 +1,4 @@
 1) GOOD PRACTICE: in JavaScript 5 / ES5, always use the keyword var when declaring a global or a local variable. 
 2)Better: use the keyword let if you target browsers that support JavaScript 6 or above.
+3) always use curly braces! with if event single statement
+4) Semicolons are used to separate executable JavaScript statements, and a function declaration is not an executable statement.
