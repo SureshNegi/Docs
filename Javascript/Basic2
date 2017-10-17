@@ -16,3 +16,67 @@ There are different types of nodes, but don't worry - the most useful ones are h
 •Document, DocumentFragment, DocumentType (example: <!doctype html> for html5), Comment (example: <!-- left column -->), ProcessingInstruction (example: <?php echo $name ?>)
 
 A warning about the DOM API?
+
+ "objects literals" or "singleton objects".?
+ object defined like the one shown below
+ var myBoss = {
+    positon: 'The Boss!',
+    givenName: 'John, John the Boss!',
+    office: 31
+};
+
+It is possible to access the object's properties with "." or with brackets?
+ It's also possible to use the bracket notation, and manipulate the object as an array whose indexes,
+ instead of being 0, 1, 2 etc., are the property names!
+  var book = {
+title: 'Le Petit Prince',
+author: 'Saint-Exupery'
+};
+ var title = book['title'];
+ 
+ In JavaScript, objects are arrays whose indexes are property names: please remember this!
+ 
+ In some cases we have to put quotes around the property name:?
+ 
+        When it is a reserved word from JavaScript,
+        Or it contains spaces or special characters,
+        Or it begins with a number.
+        
+Is it possible for an object's property to be a function!?        
+Yes a property can also be a function, in which case it is called a method        
+
+    var medor = {
+        name: 'Benji',
+        bark: function(){
+            alert('Ouarf, Ouarf!');
+        }
+    };
+
+In this example, the bark property's value is a function, so we call bark "a method".
+A method is a special property that corresponds to the object's behavior
+
+
+Properties correspond to an object's DNA (its characteristics),
+and are nouns (age, name, etc.)
+
+Methods correspond to an object's behavior
+and are verbs (bark, move, changeSpeed, etc.)
+
+this keyword?
+When one wants to access an object property or wants to call another method from an object method, we must use the this keyword.
+var player = {
+  x:10,
+  y:10,
+  width:20,
+  height:20,
+  color:'red',
+  
+  move: function(x, y) {
+    this.x = x;
+    this.y = y;
+  },
+  ...
+  
+  Deleting a property or a method?
+  You can use the JavaScript keyword "delete" to delete an object's property (it will become undefined).
+  delete darkVador.race;
