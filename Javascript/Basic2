@@ -1,0 +1,18 @@
+DOM?
+When a user clicks on a link or enters a URL in the address of your Web browser, it downloads the page’s HTML text and builds up a model of the document’s structure called the DOM (Document Object Model). This model is used to render the HTML page on the screen
+The DOM is a standard  that describes how a document must be manipulated. It defines a “language- and platform neutral interface”. So, every browser offers the same JavaScript DOM API.
+
+The DOM API is a programming interface the JavaScript programmer can use to modify the HTML content or the CSS style of HTML elements on the fly.
+
+Accessing DOM?
+In JavaScript, the DOM is accessible through the property document of the global object window. We rarely manipulate the window object directly as it is implicit: window.document is the same as document. 
+
+So by using this object, we can access and manipulate our page from JavaScript as a structured document.
+
+Types of nodes in the DOM?
+There are different types of nodes, but don't worry - the most useful ones are highlighted in bold.
+•Element (example: <ul></ul>)
+•Text (example: <p>the text within the element p is a node of type text</p>)
+•Document, DocumentFragment, DocumentType (example: <!doctype html> for html5), Comment (example: <!-- left column -->), ProcessingInstruction (example: <?php echo $name ?>)
+
+A warning about the DOM API?
