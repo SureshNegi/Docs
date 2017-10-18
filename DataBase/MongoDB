@@ -1,0 +1,31 @@
+https://www.youtube.com/watch?v=yByqOxL4pbU&list=PLgPJX9sVy92xUxpTFgAOSBHdBwIdxav39
+What is MongoDB?
+It is a DBMS of type NoSQL
+It is a DBMS of type NoSQL->Document oriented
+
+Document oriented NoSQL DBMS follow what concept?
+Document oriented DBMS(MongoDB) works on the concept of collection and document like table and rows in RDBMS
+
+What is collection?
+collection is equivalent to RDBMS table.
+collection is a group of documents
+documents within a collection(like row in table) can have different fields.
+Normally all documents in a collection are of similar or related purpose
+
+What is document?
+It is a set of key-value pair(like json object) like row in RDBMS
+
+RDMBS Vs MongoDB?
+Table --> Collection
+Row --> Document
+Column --> Fields
+Joins --> No Joins(Embedded document)
+PrimaryKey --> No need to make primary key(By default default key_id(unique) provided by mongoDb
+
+How to run mongodb by command prompt?
+go to drectory Bin(of mongodb) and run exe
+
+
+
+
+
