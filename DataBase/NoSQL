@@ -1,5 +1,3 @@
-
-
 What is NoSQL?
 It is Database management system like other DBMS RDBMS(SQL Server),OLAP(datawarehouses)
 
@@ -27,6 +25,25 @@ NoSQL database may be of following type(type:example):
 Key Value Store:Redis
 Tabular:BigTable,Hbase
 Document Oriented:Example MongoDB
+
+NoSQL what is missing(to provide performance and scalability)?
+NoJoins-(sacalability and performance)
+NoComplex transaction(insert,update and rollback)
+No Constraint support
+
+NoSQL how to query database?
+In NoSQL there is no SQL language to query the database but there are some other type of languge to query.
+
+When to use?
+High quantity of data
+storing Relationship or constraints is not important
+Structure changing with time
+Fast application
+
+When not to use?
+Transaction is important in database side(bank application)
+Joins or validations must be handled by database
+
 
 
 
