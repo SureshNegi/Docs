@@ -1,0 +1,36 @@
+
+
+What is NoSQL?
+It is Database management system like other DBMS RDBMS(SQL Server),OLAP(datawarehouses)
+
+Why NoSQL?
+History->
+FlatFile System(No standared protocol)->RDBMS(Coddes rules, standardize)----->NoSQL(RDBMS slow performance due to-Joins,Constraints etc when data is huge(bigdata) like for 
+facebook type application)
+
+NoSQL Advantages?
+Scalability
+High Availability
+Performance
+
+NoSQL less functionality more performance means?
+Because NoSQL does not support joins, constraints(these should be taken care of by the application layer) and other functionality as in RDBMS.
+NoSQL performance is better then RDBMS. 
+
+Why NoSQL is unstructured?
+Like in RDBMS we have fix structured , we define table structured, column constrains etc.Therefore in RDBMS data is structured.
+But in NoSQL data is not structured means we do'not define any structure.One entity structure may differ from other entity data structure
+(like in facbook user data may very according to user choice).We can say NoSQL data is both structure and unstructure
+
+Types of Database under NoSQL?
+NoSQL database may be of following type(type:example):
+Key Value Store:Redis
+Tabular:BigTable,Hbase
+Document Oriented:Example MongoDB
+
+
+
+
+
+
+
