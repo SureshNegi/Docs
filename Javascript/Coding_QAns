@@ -1,0 +1,37 @@
+Q)How do we call the below function?
+function f(name, side) {
+    return { 
+        name: name.toUpperCase(),
+        side: side.toLowerCase()
+    }
+}
+let luke = f("Luke Skywalker", "Rebels");
+
+Objects can also be created by functions that return objects, we call them "factories".
+
+Q)obj.x;?
+var obj = { x: 2 };
+function addAndSet(a, b) {
+    var addition = a.x + b;
+    a = { x: addition };
+};
+obj.x; /* 2 <- The referenced object is not modified
+because at the end of the function the variable "obj"
+and the variable "a" are not referencing the same object.*/
+
+Q)Comparing two objects?
+> var originalObject = {name:'Michel'};
+> var copy = originalObject;
+
+a) copy === originalObject ?
+
+> var anotherObject = {name:'Michel'};
+
+ 
+b) copy === anotherObject ?
+
+a)true
+b)false
+
+Comparing two objects will only return true if they point to the same object (i.e., if they have the same reference).
+Two objects of the same type, with the same property value, that look identical, will not be equal one to another if they don’t have the same reference (if they point to different places in memory).
