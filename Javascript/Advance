@@ -119,3 +119,12 @@ class Person {
         return (this.givenName + ' ' + this._familyName + ' is walking.');
     }
 }
+
+Q)is below code works?
+var p = new Person();  
+class Person {...}
+Unlike functions, classes must be declared BEFORE using them.
+
+An important difference between function declarations and class declarations is that function declarations are "hoisted" and class declarations are not. It means that you can call a function BEFORE it has been declared in your source code. This is not the case with ES6 classes!
+
+You first need to declare your class and then access it, otherwise a line of code, such as the one shown in the example, will give a ReferenceError.
