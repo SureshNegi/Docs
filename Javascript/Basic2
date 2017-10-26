@@ -80,3 +80,49 @@ var player = {
   Deleting a property or a method?
   You can use the JavaScript keyword "delete" to delete an object's property (it will become undefined).
   delete darkVador.race;
+  
+  Q)window "global" object?
+   window object   
+    > var a = 1;       
+    > a;//    1     
+    > window.a;//    1     
+    > window['a'];//    1
+    > let z = 1; // LET DOES NOT DEFINE properties of the window object    
+    > window.z //    undefined
+    
+Q)The father of all objects?
+All objects will inherit the properties and methods from the special class named Object.
+    > var o = {}; // creation of an empty object
+    > var o = new Object(); // same thing as in line 1
+The toString method inherited from Object by all objects
+> o.toString();
+"[object Object]"
+
+toString() in JavaScript is rather similar to the Object.toString() method we find in the Java programming language: when we try to "display" an object, it is transformed into a string by calling toString() implicitly.
+> alert(t); 
+> alert(t.toString()); // same as previous line of code
+
+Q)Arrays are objects, but they are “special” objects?
+Their property names are numerical indexes that start from 0 //{"0":valu1,"1":value2}
+They have a special length property that represents their length/number of elements
+They have other built-in properties in addition to the ones inherited from Object (toString, valueOf)
+With arrays, only properties with a numerical index are taken into account by the length property!
+
+Q)Built-in JavaScript class: Number?
+The Number class can be used to transform strings into numbers, but it is recommended that you use parseInt or parseFloat instead.
+Number has useful non-modifiable properties (constants): MAX_VALUE and MIN_VALUE
+
+Q)Built-in JavaScript class: String?
+The String class can be used to build new strings, but it’s preferable to use the standard syntax
+var name = 'Michel';
+name[0] = 'Z';
+name;?
+
+> name; // we cannot modify a string using s[index] = value;
+"Michel"
+a string is not modifiable at all.
+When we do var s = s + "hello", in fact, we are building a new string somewhere in memory, and we assign this new value to the variable s.
+We never "modify" the characters of the string s, we just give to s another address in memory to point to. 
+
+Q)Built-in JS class: Date?
+
