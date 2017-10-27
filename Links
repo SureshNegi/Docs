@@ -1,3 +1,6 @@
 Server side & Client side rendering:Very good article
 ......................................................
 https://medium.freecodecamp.org/what-exactly-is-client-side-rendering-and-hows-it-different-from-server-side-rendering-bd5c786b340d
+
+SONPlaceholder is a free online REST service that you can use whenever you need some fake data in JSON. Faking a server is great for tutorials, and this is exactly what the next example does. It will consume data from this URL.
+https://jsonplaceholder.typicode.com/users
