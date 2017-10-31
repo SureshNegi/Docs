@@ -1,4 +1,6 @@
 https://www.youtube.com/watch?v=yByqOxL4pbU&list=PLgPJX9sVy92xUxpTFgAOSBHdBwIdxav39
+https://www.tutorialspoint.com/mongodb/index.htm
+
 What is MongoDB?
 It is a DBMS of type NoSQL
 It is a DBMS of type NoSQL->Document oriented
@@ -22,8 +24,40 @@ Column --> Fields
 Joins --> No Joins(Embedded document)
 PrimaryKey --> No need to make primary key(By default default key_id(unique) provided by mongoDb
 
+
 How to run mongodb by command prompt?
 go to drectory Bin(of mongodb) and run exe
+
+Q)Advantages ?
+    Schema less − MongoDB is a document database in which one collection holds different documents. Number of fields, 
+    content and size of the document can differ from one document to another.
+    Improved performance(No complex joins.)
+    Deep query-ability. MongoDB supports dynamic queries on documents using a document-based query language
+    that's nearly as powerful as SQL.   
+    Ease of scale-out − MongoDB is easy to scale.
+    Document Oriented Storage − Data is stored in the form of JSON style documents.
+
+Where to Use MongoDB?
+    Big Data
+    Content Management and Delivery
+    Mobile and Social Infrastructure
+    User Data Management
+    Data Hub
+    
+Steps to Configration:
+Create a folder MongoDb in location C://Users/Suresh-Negi
+Double click on the MongoDB exe and start installation->select custom
+Select the location to install C://Users/Suresh-Negi/MongoDB
+Creare a folder in Data/Db in above location
+Open first command prompt(server) and cnage directory to C://Users/Suresh-Negi/MongoDB/bin
+run command mongod.exe --dbpath "C:\Users\suresh-negi\MongoDB\data'
+
+Open other command prompt(client)
+cnage directory to C://Users/Suresh-Negi/MongoDB/bin
+run command mongod.exe(client strted)
+again run command db.stats() it will give information about db.
+If successfull means mongodb server is running and client can query to database
+
 
 
 
