@@ -1,0 +1,19 @@
+Q)To query data from MongoDB collection(table)
+db.COLLECTION_NAME.find() 
+or
+db.mycol.find().pretty()//formatted
+
+Q)AND in MongoDB?
+In the find() method, if you pass multiple keys by separating them by ',' then MongoDB treats it as AND condition. 
+Following is the basic syntax of AND −
+db.mycol.find(
+   {
+      $and: [
+         {key1: value1}, {key2:value2}
+      ]
+   }
+).pretty()
+
+db.mycol.find({$and:[{"by":"tutorials point"},{"title": "MongoDB Overview"}]}).pretty()
+
+//similailiy Or works
