@@ -49,3 +49,16 @@ db.post.insert([
 
 To insert the document you can use db.post.save(document) also. If you don't specify _id in the document then save() method will work same as insert() method. If you specify _id then it will replace whole 
 data of document containing _id as specified in save() method.
+
+Q)Update in mongoDb?
+>db.COLLECTION_NAME.update(SELECTION_CRITERIA, UPDATED_DATA)
+>db.mycol.update({'title':'MongoDB Overview'},{$set:{'title':'New MongoDB Tutorial'}})
+
+or MongoDB Save() 
+db.mycol.save(
+   {
+      "_id" : ObjectId(5983548781331adf45ec7), "title":"Tutorials Point New Topic",
+         "by":"Tutorials Point"
+   }
+)
+
