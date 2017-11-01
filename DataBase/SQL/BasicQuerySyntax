@@ -1,0 +1,50 @@
+SQL AND/OR Clause?
+SELECT column1, column2....columnN
+FROM   table_name
+WHERE  CONDITION-1 {AND|OR} CONDITION-2;
+
+SQL IN Clause?
+SELECT column1, column2....columnN
+FROM   table_name
+WHERE  column_name IN (val-1, val-2,...val-N);
+
+SQL LIKE Clause?
+SELECT column1, column2....columnN
+FROM   table_name
+WHERE  column_name LIKE { PATTERN };
+
+SQL GROUP BY Clause
+SELECT SUM(column_name)
+FROM   table_name
+WHERE  CONDITION
+GROUP BY column_name;
+
+SQL COUNT Clause?
+SELECT COUNT(column_name)
+FROM   table_name
+WHERE  CONDITION;
+
+SQL HAVING Clause?
+SELECT SUM(column_name)
+FROM   table_name
+WHERE  CONDITION
+GROUP BY column_name
+HAVING (arithematic function condition);
+
+SQL CREATE TABLE Statement?
+CREATE TABLE table_name(
+column1 datatype,
+column2 datatype,
+column3 datatype,
+.....
+columnN datatype,
+PRIMARY KEY( one or more columns )
+);
+
+SQL CREATE INDEX Statement ?
+CREATE UNIQUE INDEX index_name
+ON table_name ( column1, column2,...columnN);
+
+Insert Statement?
+INSERT INTO TABLE_NAME (column1, column2, column3,...columnN)  
+VALUES (value1, value2, value3,...valueN);
