@@ -1,0 +1,41 @@
+where the salary is greater than 2000?
+SELECT ID, NAME, SALARY 
+FROM CUSTOMERS
+WHERE SALARY > 2000;
+
+ customer with the name Hardik?
+ SQL> SELECT ID, NAME, SALARY 
+FROM CUSTOMERS
+WHERE NAME = 'Hardik';
+
+salary is greater than 2000 and the age is less than 25 years ?
+SQL> SELECT ID, NAME, SALARY 
+FROM CUSTOMERS
+WHERE SALARY > 2000 AND age < 25;
+
+Like keyword?
+WHERE SALARY LIKE '200%'//Finds any values that start with 200.
+WHERE SALARY LIKE '%200%'//Finds any values that have 200 in any position.
+WHERE SALARY LIKE '_00%'//Finds any values that have 00 in the second and third positions
+WHERE SALARY LIKE '_2%3'//Finds any values that have a 2 in the second position and end with a 3.
+
+fetch the top 3 records from the CUSTOMERS table?
+SELECT TOP 3 * FROM CUSTOMERS;
+
+sort the result in an ascending order by the NAME and the SALARY?
+SELECT * FROM CUSTOMERS
+ORDER BY NAME, SALARY;
+
+Group By?
+The SQL GROUP BY clause is used in collaboration with the SELECT statement to arrange identical data into groups. 
+This GROUP BY clause follows the WHERE clause in a SELECT statement and precedes the ORDER BY clause.
+
+total amount of the salary on each customer?
+SELECT NAME, SUM(SALARY) FROM CUSTOMERS
+   GROUP BY NAME;
+
+SQL DISTINCT?
+used in conjunction with the SELECT statement to eliminate all the duplicate records and fetching only unique records.
+ SELECT DISTINCT SALARY FROM CUSTOMERS
+  ORDER BY SALARY;
+   
