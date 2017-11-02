@@ -1,3 +1,4 @@
+https://www.w3schools.com/sql/sql_join.asp
 Join?
 A JOIN is a means for combining fields from two tables by using values common to each.
 
@@ -18,3 +19,44 @@ FULL JOIN − returns rows when there is a match in one of the tables.
 SELF JOIN − is used to join a table to itself as if the table were two tables, temporarily renaming at least one table in the SQL statement.
 
 CARTESIAN JOIN − returns the Cartesian product of the sets of records from the two or more joined tables.
+
+Inner Join?
+SELECT column_name(s)
+FROM table1
+INNER JOIN table2 ON table1.column_name = table2.column_name;
+
+Example:
+SELECT Orders.OrderID, Customers.CustomerName
+FROM Orders
+INNER JOIN Customers ON Orders.CustomerID = Customers.CustomerID; 
+
+SELECT Orders.OrderID, Customers.CustomerName, Shippers.ShipperName
+FROM ((Orders
+INNER JOIN Customers ON Orders.CustomerID = Customers.CustomerID)
+INNER JOIN Shippers ON Orders.ShipperID = Shippers.ShipperID); 
+
+LEFT JOIN Example?
+select all customers, and any orders they might have
+
+SELECT Customers.CustomerName, Orders.OrderID
+FROM Customers
+
+RIGHT JOIN Example?
+The RIGHT JOIN keyword returns all records from the right table (table2), and the matched records from the left table (table1). 
+The result is NULL from the left side, when there is no match.
+LEFT JOIN Orders ON Customers.CustomerID = Orders.CustomerID
+ORDER BY Customers.CustomerName;
+
+FULL OUTER JOIN?
+The FULL OUTER JOIN keyword return all records when there is a match in either left (table1) or 
+right (table2) table records.(both left and right join)
+
+SQL Self JOIN?
+A self JOIN is a regular join, but the table is joined with itself.
+customers that are from the same city:
+
+SELECT A.CustomerName AS CustomerName1, B.CustomerName AS CustomerName2, A.City
+FROM Customers A, Customers B
+WHERE A.CustomerID <> B.CustomerID
+AND A.City = B.City
+ORDER BY A.City;
