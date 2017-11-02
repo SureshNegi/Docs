@@ -39,3 +39,7 @@ used in conjunction with the SELECT statement to eliminate all the duplicate rec
  SELECT DISTINCT SALARY FROM CUSTOMERS
   ORDER BY SALARY;
    
+ Get whose salary is not null?  
+ SELECT  ID, NAME, AGE, ADDRESS, SALARY
+   FROM CUSTOMERS
+   WHERE SALARY IS NOT NULL;   
