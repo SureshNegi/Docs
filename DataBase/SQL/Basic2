@@ -1,0 +1,54 @@
+HAVING Clause?
+The HAVING Clause enables you to specify conditions that filter which group results appear in the results.
+The WHERE clause places conditions on the selected columns, whereas the HAVING clause places conditions on groups created by the GROUP BY clause.
+SELECT
+FROM
+WHERE
+GROUP BY
+HAVING
+ORDER BY
+
+Q)Lists the number of customers in each country, Only include countries with more than 5 customers:
+SELECT COUNT(CustomerID), Country
+FROM Customers
+GROUP BY Country
+HAVING COUNT(CustomerID) > 5;
+
+SELECT COUNT(CustomerID), Country
+FROM Customers
+GROUP BY Country
+HAVING COUNT(CustomerID) > 5
+ORDER BY COUNT(CustomerID) DESC;
+
+Q) find the sale orders whose total sale is greater than $12000?
+SELECT 
+    orderid, SUM(unitPrice * quantity) Total
+FROM
+    orderdetails
+GROUP BY orderid
+HAVING total > 12000;
+First, for each order line item, SQL calculates the total amount using the SUM function. (The Total column alias is used for formatting  the output).
+Second, the GROUP BY clause groups the selected rows by OrderID. For each order that we have only one group that contains OrderID and Total
+Third, the HAVING clause gets groups that have Total greater than 12000.
+
+Sub Queries?
+A Subquery or Inner query or a Nested query is a query within another SQL query and embedded within the WHERE clause.
+A subquery is used to return data that will be used in the main query as a condition to further restrict the data to be retrieved.
+Subqueries can be used with the SELECT, INSERT, UPDATE, and DELETE statements 
+
+Select the customers having salary >4500?
+SELECT *                                                      
+   FROM CUSTOMERS 
+   WHERE ID IN (SELECT ID                     or      
+         FROM CUSTOMERS 
+         WHERE SALARY > 4500) ;
+         
+   SELECT *                                                      
+   FROM CUSTOMERS 
+   WHERE  SALARY > 4500;
+         
+  Update query with subquery?
+  UPDATE CUSTOMERS
+   SET SALARY = SALARY * 0.25
+   WHERE AGE IN (SELECT AGE FROM CUSTOMERS_BKP
+      WHERE AGE >= 27 );
