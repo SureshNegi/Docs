@@ -1,0 +1,11 @@
+SQL Server Functions?
+SQL Server has many built-in functions.We can also create our new function
+E.g:
+SELECT AVG(Price) AS AveragePrice FROM Products; 
+SELECT MAX(Price) AS LargestPrice FROM Products;
+
+Return a specified part of a given date, as a string value:
+SELECT DATENAME(yy, '2017/08/25') AS DatePartString; 
+SELECT DATEPART(year, '2017/08/25') AS DatePartInt; 
+SELECT GETDATE();
+
