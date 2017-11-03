@@ -1,0 +1,26 @@
+ACID:
+Atomicity − ensures that all operations within the work unit are completed successfully. Otherwise, the transaction is aborted at the point of failure and all the previous operations are rolled back to their former state.
+Consistency − ensures that the database properly changes states upon a successfully committed transaction.
+Isolation − enables transactions to operate independently of and transparent to each other.
+Durability − ensures that the result or effect of a committed transaction persists in case of a system failure.
+
+COMMIT Command:
+SQL> DELETE FROM CUSTOMERS
+   WHERE AGE = 25;
+SQL> COMMIT;
+
+ROLLBACK ?
+SQL> DELETE FROM CUSTOMERS
+   WHERE AGE = 25;
+SQL> ROLLBACK;
+
+SAVEPOINT Command?
+A SAVEPOINT is a point in a transaction when you can roll the transaction back to a certain point without rolling back the entire transaction.
+
+SAVEPOINT SAVEPOINT_NAME;
+...
+ROLLBACK TO SAVEPOINT_NAME;
+
+The RELEASE SAVEPOINT command is used to remove a SAVEPOINT that you have created?
+RELEASE SAVEPOINT SAVEPOINT_NAME;
+
