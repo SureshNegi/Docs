@@ -1,0 +1,10 @@
+Best form?
+Best Practice: It's recommended to use the "directive definition object" form. 
+var myModule = angular.module(...);
+myModule.directive('directiveName', function factory(injectables) {
+  var directiveDefinitionObject = {
+    link: function postLink(scope, iElement, iAttrs) { ... }
+  };
+  return directiveDefinitionObject;
+  
+});
