@@ -1,4 +1,19 @@
 link option?
+the link function has the duty of linking the model to the templates.
+example1:
+var app = angular.module('app', []);
+app.directive('dad', function () {
+    return {
+        restrict: 'EA',
+        template: '<div>{{greeting}}{{name}}</div>',
+        link: function(scope,elem,attr){
+            scope.name = 'Paul';
+            scope.greeting = 'Hey, I am ';
+        }
+    };
+});
+
+Example2:
 <div ng-controller="Controller">
   Date format: <input ng-model="format"> <hr/>
   Current time is: <span my-current-time="format"></span>
@@ -40,7 +55,22 @@ function link(scope, element, attrs, controller, transcludeFn) { ... }
     attrs is a hash object with key-value pairs of normalized attribute names and their corresponding attribute values.
     controller is the directive's required controller instance(s) or its own controller (if any). The exact value depends on the directive's require property.
     transcludeFn is a transclude linking function pre-bound to the correct transclusion scope.
-  
+    
+ PostLink?
+ https://www.undefinednull.com/2014/07/07/practical-guide-to-prelink-postlink-and-controller-methods-of-angular-directives/
+  For AngularJs, the link function is we created is a post-link function. 
+  So in general we can write the post-link function in two ways:
+  1)as in above example
+  2) link property points to a object literal, which has a post method
+  link: {
+            post: function(scope,elem,attr){
+                scope.name = 'Paul';
+                scope.greeting = 'Hey, I am ';
+            }
+        }
+ PreLink?
+ The only difference between the pre-link and a post-link is the order they gets executed.
+ A pre-link function of a directive will get executed before all of its child directives’ link functions
   
     
 
