@@ -1,0 +1,57 @@
+Examples of builtin methods that use Callback Functions?
+var array = [1,2,3,4,5];
+var newArray = array.map(function(x){ //uses an anonymous callback function to square each element
+    return x * x;
+});
+
+var array = [1,2,3,4,5];
+function isEven(x){ //checks if a value is even
+   return x % 2 == 0; 
+}
+var newArray = array.filter(isEven); //uses a callback to check if an element is even
+
+event queue?
+data structure used by javascript engine to put event for processing.
+
+event stack?
+event is pop from event queue and put in event stack for processing.Once event stack is empty, another event is put on stack from queue and so on.
+
+Asynchronous Code?
+Synchronous code is run line by line in the order in which the code occurred.
+console.log("first");
+console.log("second");
+console.log("third");
+/*  Console Output:
+    > first
+    > second
+    > third
+*/
+
+Asynchronous code may be executed in a different order than how it originally occurred. Asynchronous code is non-blocking and will only run 
+when the call stack is empty.
+
+Asynchronous code example?
+Asynchronous code can be shown by using a setTimeout() method call with a timeout value of 0. 
+This will immediately put a task on the event queue.
+function asyncLog(val){ //logs values asynchronously
+    setTimeout(function(){  //setTimeout with a time of 0 will execute asynchronously
+        console.log(val);      
+    },0)
+}
+
+console.log("first");
+asyncLog("second");
+console.log("third");
+/*  Console Output
+    > first
+    > third   <---notice this is out of order!!
+    > second  <---this occurs only after the call stack is empty, which is why it appears last
+
+*/
+
+DOM Events?
+DOM Event Listeners happen in parallel with the JavaScript run time. When an event occurs, the event listener detects the event and 
+executes an event handler to put a task on the event queue. 
+The task will eventually make its way to the call stack to be executed.
+
+If multiple events are detected, multiple tasks will be put on the event queue in the order in which they occurred. When the call stack is empty, the first task on the event queue is pushed onto the call stack. When this task finishes, the cycle continues and the next task on the event queue is pushed onto the call stack. Thus, if a certain task takes a long time to finish, the tasks behind it on the event queue will have to wait.
