@@ -55,3 +55,68 @@ executes an event handler to put a task on the event queue.
 The task will eventually make its way to the call stack to be executed.
 
 If multiple events are detected, multiple tasks will be put on the event queue in the order in which they occurred. When the call stack is empty, the first task on the event queue is pushed onto the call stack. When this task finishes, the cycle continues and the next task on the event queue is pushed onto the call stack. Thus, if a certain task takes a long time to finish, the tasks behind it on the event queue will have to wait.
+
+Waht is  is a promise?
+A promise is a container that holds the eventual result of an asynchronous operation.
+Promises are becoming the standard way of handling asynchronous results.
+Before promises,callbacks were commonly used to handle asynchronous results.
+The problem with callbacks is that if there are too many of them
+chained together, the code becomes a pyramid of callbacks that is hard to
+read and hard to manage, especially when handling errors.
+On the other hand, promises are much easier to chain together and
+have a great way of handling errors.
+
+Chaining Asynchronous Operations using Promises Easy and clean.Example?
+//getRandomNumber() returns a promise containing a random number
+getRandomNumber().then(function(result) {  
+    console.log(result) // 42
+    return getNameFromNumber(result); //returns a promise containing a string representing a name
+
+}).then(function(result2){
+    console.log(result2) //"Bob"
+    return getAgeFromName(result2);  //returns a promise containing a number representing an age
+
+}).then(function(result3){
+    console.log(result3) //21
+
+}.catch(function(error){
+    console.log(error)
+});
+
+Promise.all()?
+he Promise.all() method is used to process multiple Promises at the same time. 
+var promise1 = Promise.resolve('hello'); 
+var promise2 = Promise.resolve({age:2,height:188}) 
+var promise3 = 42; //normal values work with Promise.all() too
+Promise.all([promise1,promise2,promise3]).then(function(result) { 
+ console.log(result) //logs the array ["hello",{age:2,height:188},42]
+}).catch(function(error){
+    console.log(error) 
+});
+Promise.Race()?
+The Promise.race() method takes in an array of promises and takes the result of the promise that rejects or resolves the fastest. Like normal promises, the then() and catch() methods are used to retrieve the results of the fastest promise.
+var promise1 = new Promise(function(resolve,reject){
+    setTimeout(function(){
+        resolve("finished in two seconds");
+    },2000) //returns a resolved promise after 2 seconds
+});
+
+var promise2 = new Promise(function(resolve,reject){
+    setTimeout(function(){
+        resolve("finished in five seconds");
+    },5000) //returns a resolved promise after 5 seconds
+});
+Promise.race([promise1,promise2]).then(function(result) { 
+    console.log(result) // logs "finished in two seconds" because promise1 resolved first
+}).catch(function(error){
+    console.log(error)  
+});
+
+What is the Fetch API?
+The Fetch API is an interface that is used to make network requests.
+
+Mode attribute ?
+The mode attribute is a string that is used to determine whether or not the Fetch request can fetch resources from different servers.
+Eg:
+same-origin - the Fetch request can only fetch resources from the same server
+cors (cross origin HTTP request) - the Fetch request can fetch resources from different servers
