@@ -1,0 +1,31 @@
+http://plnkr.co/edit/HCFzn8fR5ohgTwp2YWhv?p=preview
+sequece?
+compile ->controller->pre->post
+ app.directive("simple", function(){
+        return {
+            restrict: "EA",
+            transclude:true,
+            template:"<div>{{label}}<div ng-transclude></div></div>",
+            compile: function(element, attributes){
+              alert('compile')
+                console.log("simple compile", arguments);
+                return {
+                    pre: function(scope, element, attributes, controller, transcludeFn){
+                         alert('pre')
+                        console.log("simple pre", arguments);
+                    },
+                    post: function(scope, element, attributes, controller, transcludeFn){
+                        alert('post')
+                        console.log("simple post", arguments);
+                    }
+                }
+            },
+            controller: function($scope, $element){
+               alert('contr')
+                console.log("simple controller", arguments)
+            }
+        };
+    });
+   
+Must see this example:
+https://www.undefinednull.com/2014/07/07/practical-guide-to-prelink-postlink-and-controller-methods-of-angular-directives/
