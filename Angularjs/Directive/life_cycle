@@ -1,0 +1,25 @@
+http://ngninja.com/posts/angularjs-directive-life-cycle
+Compile:
+Simply put, this is the phase when AngularJS compiles your directive, recognizes the template of the directive and returns a link function.
+The compile function is executed before the directive is linked to the DOM. Thus, it can be used to manipulate the directive.
+You can do things like changing the structure of the DOM, adding CSS classes to the elements, and other similar actions.
+
+Well, consider you are using “ng-repeat” on your directive, life below:
+
+<div ng-repeat="items in [1,2,3,4]" my-directive>
+In the above code snippet, compile function gets executed only once- unlike the link function, which is executed 4 times. 
+So, the compile phase is where it makes more sense to manipulate the DOM tree in such cases because it helps to optimize the performance.
+Moreover, we all know that manipulating the DOM directly is not a good practice in the first place. But, if you at all have to do it, you
+might as well do it when the element is not even hooked up to the DOM tree to avoid unwanted surprises.
+
+Controller:single responsibility example
+Controller is the place where you initialize your scope and scope variables. You can also declare methods, 
+which can be used to communicate with other controllers.
+Although I have seen many developers doing this, you should avoid referencing DOM elements directly in the controller.
+Controller function is not the place to manipulate DOM, attach event handlers or watch scope variables.
+This is what link function is used for. 
+Controllers should only be used to talk to other controllers, and to write presentation logic for the view.
+
+Pre-link
+
+Post-link
