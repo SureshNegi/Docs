@@ -1,0 +1,32 @@
+1)install nodejs along with node package manager
+2)open command prompt type : node -v
+it will show you the versionn nodejs istalled
+
+3)angular CLI(angular command line interface)
+More information: https://cli.angular.io/
+CLI is reguired to setup the project
+
+4)install cli9globally so that not required to install every time for other project)
+npm install -g @angular/cli
+
+5)go to the directory within which you want to setup the project say code
+cd code
+
+6)Setup project(folder with required files)
+ng new name_of_project
+e.g ng new angular4Demo
+
+7)go to the above dir
+cd angular4Demo
+
+8)check versio of angular
+ng -v
+
+9)if it is version 2(cli yet not upgraded for angular4)
+
+10)upgrade to angular4
+go to https://github.com/angular/angular/blob/master/CHANGELOG.md
+got to Installing RC.1 and copy command for window and run it
+
+11)run server 
+ng-serve 
