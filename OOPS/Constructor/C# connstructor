@@ -1,0 +1,65 @@
+ Q)Below code is giving error:Error	CS7036 There is no argument given that corresponds to the required formal parameter 'a' of 'P1.P1(int)'	
+Why?
+ class P1 {        
+        public P1(int a)
+        {
+            Console.WriteLine("P1");
+        }
+    }
+    class C1:P1
+    {    
+        public C1()  //error in this line
+        {
+            Console.WriteLine("C2");
+        }
+    }
+    
+When we create a class with custom costructor say:
+class P1 {        
+        public P1(int a)
+        {
+            Console.WriteLine("P1");
+        }
+    }
+
+Then when we want to create object, we can create in the way:
+P1 obj=new P1(1);
+P obj=new P1() will give error it means object costruction is allow only by using the declared constructor
+
+So when  writin public C1(), compiler check that user can create the object using C1 obj=new C1();
+but then compiler has to call that same constructor of base class and which will(P1()) will give error at run time.
+therefore compiler is giving error while compiling
+
+Q)Error	CS1729
+'P1' does not contain a constructor that takes 0 arguments	ConsoleApp1	C:\Users\suresh-negi\source\repos\ConsoleApp1\ConsoleApp1\Program.cs	26	Active
+
+class P1 {
+        public P1(int am, int b)
+        {
+            Console.WriteLine("P2");
+        }
+        public P1(int am)
+        {
+            Console.WriteLine("P2");
+        }
+    }
+    class C1:P1
+    { 
+        public C1(int q)
+        {
+            Console.WriteLine("C2");
+        }
+    }
+    
+  Above code is giving errro since compiler is asking that when C1 object will be created compilere needs to call P1 parameterless constructor 
+  but it is not defined
+  
+  Solution for this:
+  public C1(int q):base(1)
+  or 
+  public C1(int q):base(1,1)
+  We are telling to compiler that don't search for parameter less const of P1 but call this
+  
+  Q)What is clear from the above code?
+  We can say that when we create the object of child class(using any constructor), compiler knows that it will call parameterless constructor of 
+  parent class(and if it is notdefined(in case parameterized are defined) it will give error if parent constructor is not called manually
