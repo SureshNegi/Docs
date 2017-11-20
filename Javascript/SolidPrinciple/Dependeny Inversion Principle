@@ -1,0 +1,8 @@
+The real intent behind dependency Inversion is to decouple objects to the extent that no client code has to be changed 
+simply because an object it depends on needs to be changed to a different one. 
+That achieves loosely coupling as each of its components has, or makes use of, little or 
+no knowledge of the definitions of other separate components. It achieves testability and 
+replaceability because components in a loosely 
+coupled system can be replaced with alternative implementations that provide the same services.
+
+"Testability:"efforts required to test a product to ensure that it performs its intended functionality"
