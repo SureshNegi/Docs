@@ -6,3 +6,6 @@ replaceability because components in a loosely
 coupled system can be replaced with alternative implementations that provide the same services.
 
 "Testability:"efforts required to test a product to ensure that it performs its intended functionality"
+
+Example:
+https://www.codeproject.com/Articles/615139/An-Absolute-Beginners-Tutorial-on-Dependency-Inver
