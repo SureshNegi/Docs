@@ -1,0 +1,6 @@
+SOLID principles enable us in writing:
+non rigid code(not easy to change due to impact)
+non fragile code(due to change in one place affect other place very hard to debug)
+loosely couple code.
+
+Good practice is anything that reduces coupling, which improves testability, maintainability, and replace-ability.
