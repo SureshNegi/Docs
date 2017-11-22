@@ -6,5 +6,6 @@ Write error to server example:
 https://www.bennadel.com/blog/2542-logging-client-side-errors-with-angularjs-and-stacktrace-js.htm
 http://bennadel.github.io/JavaScript-Demos/demos/error-logging-angularjs/
 
+Open for extention and closed for modification principle example:
 $exceptionHandler:
 https://docs.angularjs.org/api/ng/service/$exceptionHandler
