@@ -1,0 +1,10 @@
+Angular needs to know how the pieces of your application fit together and what other files 
+and libraries the app requires. This information is called metadata
+
+Like;
+Here we are providing the metadata to angular about our component and we not need to take care about the internal mechanim
+@Component({
+  selector: 'app-heroes',
+  templateUrl: './heroes.component.html',
+  styleUrls: ['./heroes.component.css']
+})
