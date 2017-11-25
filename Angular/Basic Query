@@ -50,3 +50,12 @@ package.json?
 }
 
 It is configuration file.Angular install different components by reading this file.
+
+Update default port?
+angular cli provide default port 4200.for change the port number add serve json data into "angular-cli.json" file
+"serve": {
+  "port": 8080
+}
+
+setup project steps and about the different file;
+https://angular.io/guide/quickstart
