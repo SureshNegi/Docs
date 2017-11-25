@@ -1,6 +1,5 @@
 Components are the fundamental building blocks of Angular applications. 
 They display data on the screen, listen for user input, and take action based on that input.
-
 Creating component:
 e.g componentDemo.ts
 import { Component } from '@angular/core'; //injecting/including Component
@@ -13,3 +12,6 @@ import { Component } from '@angular/core'; //injecting/including Component
 export class AppComponent {
   title = 'Tour of Heroes';
 }
+Break Components(single reponibility principle):
+Keeping all features in one component as the application grows will not be maintainable.
+You'll want to split up large components into smaller sub-components, each focused on a specific task or workflow.
