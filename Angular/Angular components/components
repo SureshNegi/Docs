@@ -1,0 +1,15 @@
+Components are the fundamental building blocks of Angular applications. 
+They display data on the screen, listen for user input, and take action based on that input.
+
+Creating component:
+e.g componentDemo.ts
+import { Component } from '@angular/core'; //injecting/including Component
+@Component({
+  selector: 'app-root',   //tag for html
+  templateUrl: './app.component.html',  
+  styleUrls: ['./app.component.css'] 
+})
+//model(like scope)  having data for page
+export class AppComponent {
+  title = 'Tour of Heroes';
+}
