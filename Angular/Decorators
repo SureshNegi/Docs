@@ -1,0 +1,26 @@
+Decorators are functions that modify JavaScript classes. Angular has many decorators
+that attach metadata to classes so that it knows what those classes mean and how they should work. 
+E.g NgModule is a decorator function that takes a single metadata object whose properties describe the module
+The most important properties are:
+declarations - the view classes that belong to this module. Angular has three kinds of view classes: components, directives, and pipes.
+exports - the subset of declarations that should be visible and usable in the component templates of other modules.
+imports - other modules whose exported classes are needed by component templates declared in this module.
+providers - creators of services that this module contributes to the global collection of services; 
+they become accessible in all parts of the app.
+bootstrap - the main application view, called the root component, that hosts all other app views. 
+Only the root module should set this bootstrap property.
+E.g:
+Here's a simple root module with NgModule decorator:
+import { NgModule }      from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+@NgModule({
+  imports:      [ BrowserModule ],
+  providers:    [ Logger ],
+  declarations: [ AppComponent ],
+  exports:      [ AppComponent ],
+  bootstrap:    [ AppComponent ]
+})
+export class AppModule { }
+
+The export of AppComponent is just to show how to use the exports array to export a component; it isn't actually necessary in this example. 
+A root module has no reason to export anything because other components don't need to import the root module.
