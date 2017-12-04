@@ -1,0 +1,35 @@
+Every Angular app has at least one NgModule class, the root module, conventionally named AppModule.
+While the root module may be the only module in a small application, most apps have many more feature modules, each a cohesive block of code dedicated to an application domain, 
+a workflow, or a closely related set of capabilities.
+An NgModule, whether a root or feature, is a class with an @NgModule decorator.
+
+import { BrowserModule }       from '@angular/platform-browser';
+import { FormsModule }         from '@angular/forms';
+import { NgModule }     from '@angular/core';
+import { AppComponent } from './app.component';
+import { HeroDetailComponent } from './hero-detail.component';
+import { HeroListComponent }   from './hero-list.component';
+import { SalesTaxComponent }   from './sales-tax.component';
+import { HeroService }         from './hero.service';
+import { BackendService }      from './backend.service';
+import { Logger }              from './logger.service';
+
+@NgModule({
+  imports: [
+    BrowserModule,
+    FormsModule
+  ],
+  declarations: [
+    AppComponent,
+    HeroDetailComponent,
+    HeroListComponent,
+    SalesTaxComponent
+  ],
+  providers: [
+    BackendService,
+    HeroService,
+    Logger
+  ],
+  bootstrap: [ AppComponent ]
+})
+export class AppModule { }
