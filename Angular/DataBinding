@@ -1,0 +1,21 @@
+Before Angular:
+Without a framework, you would be responsible for pushing data values into the HTML controls and turning user responses into actions and value updates. Writing such push/pull logic by hand is tedious, 
+error-prone, and a nightmare to read as any experienced jQuery programmer can attest.
+
+After angular:
+Angular supports data binding, a mechanism for coordinating parts of a template with parts of a component. 
+Add binding markup to the template HTML to tell Angular how to connect both sides.
+Example:
+<li>{{hero.name}}</li>
+<app-hero-detail [hero]="selectedHero"></app-hero-detail>
+<li (click)="selectHero(hero)"></li>
+
+The {{hero.name}} interpolation displays the component's hero.name property value within the <li> element.
+The [hero] property binding passes the value of selectedHero from the parent HeroListComponent to the hero property of the child HeroDetailComponent.
+The (click) event binding calls the component's selectHero method when the user clicks a hero's name.
+
+Two-way data binding :
+<input [(ngModel)]="hero.name">
+
+Data binding is also important for communication between parent and child components.
+ partent template-->child component event--->parent component method
