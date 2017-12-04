@@ -1,0 +1,13 @@
+Templates:
+https://angular.io/guide/architecture
+You define a component's view with its companion template. A template is a form of HTML that tells Angular how to render the component.
+A template looks like regular HTML, except for a few differences. Here is a template for our HeroListComponent:
+
+<h2>Hero List</h2>
+<p><i>Pick a hero from the list</i></p>
+<ul>
+  <li *ngFor="let hero of heroes" (click)="selectHero(hero)">
+    {{hero.name}}
+  </li>
+</ul>
+<app-hero-detail *ngIf="selectedHero" [hero]="selectedHero"></app-hero-detail>
