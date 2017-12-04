@@ -1,0 +1,15 @@
+After installing node and npm install CLI:
+npm install -g @angular/cli
+npm ERR! code E403 npm ERR! 403 Forbidden: @angular/cli@latest
+
+Solution
+https://github.com/angular/angular-cli/issues/8612
+
+Update .npmrc file(under user/suresh-negi
+
+cafile=C:\Users\suresh-negi\pvcs_cert
+registry=http://registry.npmjs.org/
+proxy=http://suresh-negi:&win82017@inggn1-07pr01-int-1-0.ip.mrshmc.com:8888
+strict-ssl=false
+
+//suresh-negi:&win82017  username:pass
