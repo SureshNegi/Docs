@@ -1,0 +1,15 @@
+Launch an application by bootstrapping its root module.
+During development you're likely to bootstrap the AppModule in a main.ts file like this one.
+
+src/main.ts:
+import { enableProdMode } from '@angular/core';
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+
+import { AppModule } from './app/app.module';   //root module
+import { environment } from './environments/environment';
+
+if (environment.production) {
+  enableProdMode();
+}
+
+platformBrowserDynamic().bootstrapModule(AppModule);
