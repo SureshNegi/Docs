@@ -1,0 +1,17 @@
+birthday = new Date(1988, 3, 15);
+<p>The hero's birthday is {{ birthday | date }}</p>
+
+Built-in pipes
+Angular comes with a stock of pipes such as DatePipe, UpperCasePipe, LowerCasePipe, CurrencyPipe, and PercentPipe. 
+They are all available for use in any template.
+
+Parameterizing a pipe:
+To add parameters to a pipe, follow the pipe name with a colon ( : ) and then the parameter value (such as currency:'EUR'). 
+<p>The hero's birthday is {{ birthday | date:"MM/dd/yy" }} </p>
+ <span class="spanWeekOf">
+ {{dayDate | date:"EEEE dd<br/>MMM, yyyy"}}
+ </span>
+ 
+ Chaining pipes
+ The chained hero's birthday is
+{{  birthday | date:'fullDate' | uppercase}}
