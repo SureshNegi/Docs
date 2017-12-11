@@ -1,1 +1,23 @@
 https://angular.io/guide/template-syntax
+template: `
+  <h1>{{title}}</h1>
+  <h2>My favorite hero is: {{myHero}}</h2>
+  `The template is a multi-line string within ECMAScript 2015 backticks (`). The backtick (`)—which is not the same character as a single quote (')—
+  allows you to compose a string over several lines, which makes the HTML more readable.
+  
+  In Angular, the component plays the part of the controller/viewmodel, and the template represents the view.
+  Some legal HTML doesn't make much sense in a template. The <html>, <body>, and <base> elements have no useful role. 
+  You can extend the HTML vocabulary of your templates with components and directives that appear as new elements and attributes. 
+  Almost all HTML syntax is valid template syntax. The <script> element is a notable exception; it is forbidden, eliminating the risk of script injection attacks. In practice, <script> 
+  is ignored and a warning appears in the browser console. See the Security page for details.
+  
+  Interpolation ( {{...}} )
+  <p>The sum of 1 + 1 is not {{1 + 1 + getVal()}}</p>
+  The expression can invoke methods of the host component such as getVal(), seen here:
+  
+  Types of bindings:
+  https://angular.io/guide/template-syntax#binding-syntax-an-overview
+  
+  HTML attribute vs. DOM property
+  https://angular.io/guide/template-syntax#html-attribute-vs-dom-property
+  
