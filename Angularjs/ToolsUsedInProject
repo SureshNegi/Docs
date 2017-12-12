@@ -1,0 +1,15 @@
+For Popup:UI bootstrapmodal
+ scope.open = function (template, controller, sendData) {
+        $rootScope.errorLogMethod("importCalLoginCtrl.$scope.open");
+        var modalInstance = $modal.open({
+            animation: scope.animationsEnabled,
+            templateUrl: template,//'templates/calendar.html',
+            controller: controller,//'calController',
+            resolve: {
+                selectedData: function () {
+                    return sendData;
+                }
+
+            }
+        });
+    }
