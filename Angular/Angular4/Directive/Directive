@@ -1,0 +1,8 @@
+//https://christianliebel.com/2016/05/angular-2-a-simple-click-outside-directive/
+//https://www.mbejda.com/angular-4-propagating-events-from-directives-to-parent-components/
+//https://www.codementor.io/christiannwamba/build-custom-directives-in-angular-2-jlqrk7dpw
+//http://jsdiaries.com/2017/04/12/angular-4-directives-overview/
+//https://angular-2-training-book.rangle.io/handout/advanced-angular/directives/creating_an_attribute_directive.html
+//https://plnkr.co/edit/S8pkKyrdF4jB7HlVQ76n?p=preview
+//import { trigger,state,style,transition,animate,keyframes } from '@angular/animations';
+//https://www.concretepage.com/angular-2/angular-4-renderer2-example
