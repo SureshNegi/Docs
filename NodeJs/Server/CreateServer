@@ -1,0 +1,15 @@
+var global = require("./global/globalexports");
+var route = require("./routes/routes");
+var cors = require('cors');
+var express = require('express');
+const bodyParser = require('body-parser');
+var app = express();    
+app.use(cors())
+.use(bodyParser.json())
+.use("/",route)
+.use("/api",route);
+// application port
+const port = 2303;
+app.listen(port, function () {
+  console.log('Node server listening on port ' + port + '!')
+})
