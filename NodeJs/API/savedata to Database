@@ -1,0 +1,347 @@
+//https://code.msdn.microsoft.com/How-to-connect-to-SQL-c4b78961
+//https://github.com/tediousjs/tedious-connection-pool/issues/22
+const express = require('express')
+var router = express.Router();
+var Tedious = require('tedious');
+var HttpStatus = require('http-status-codes');
+var ConnectionPool = require('tedious-connection-pool');
+module.exports = router;
+
+// var config = {
+//   userName: 'sa',
+//   password: 'pass@admin123',
+//   server: '10.197.134.119',
+//   options: {
+//     instanceName: 'MSSQLSERVER',
+//     database: 'SRA',
+//     rowCollectionOnDone: true
+//   }
+// };
+var  config  =  {
+  userName:  'SRAAdmin',
+  password:  'SRAAdmin123',
+  server:  'USDFW13DB16',
+  options:  {
+    instanceName:  'DEVSQL12_04',
+    database:  'SRA',
+    rowCollectionOnDone:  true
+  }
+}
+
+router.get('/', function (req, res, next) {
+  res.send('Node Server Running...')
+})
+
+router.get('/getSchema/:teamId', function (req, res) {
+  var result = [];
+  var resMain = [];
+  var resultAppWise = [];
+  var resultTeamWise = [];
+  var teamId = req.params.teamId;
+
+  var connection = new Tedious.Connection(config);
+
+  connection.on('connect', function (err) {
+    // If no error, then good to go...
+    if (err) {
+      console.log(err);
+      res.json(err);
+      return;
+    }
+
+    //// TODO - Move SP names to global file.
+    var request = new Tedious.Request("SP_GET_SCHEMA", function (err) {
+      if (err) {
+        console.log(err);
+        res.json(err);
+        connection.close();
+        return;
+      }
+    })
+    request.addParameter("teamid", Tedious.TYPES.VarChar, teamId);
+    connection.callProcedure(request);
+
+    request.on('row', function (columns) {
+      var row = {};
+      columns.forEach(function (column) {
+        row[column.metadata.colName] = column.value;
+      });
+      if (row["CalculationType"] == "A")
+        resultAppWise.push(row);
+      else
+        resultTeamWise.push(row);
+    });
+
+    request.on('doneProc', function (rowCount, more, returnStatus, rows) {
+
+      // Combine data sets returned from SP
+      result = resultAppWise.concat(resultTeamWise);
+      finalArray = [];
+      result.forEach(item => {
+
+        finalArray.push({
+          "Teams": {
+            "TeamId": item.TeamId,
+            "TeamText": item.TeamText,
+            "Assessment": {
+              "AssessmentId": item.AssessmentId,
+              "AssessmentText": item.AssessmentText,
+              "Measures": {
+                "MeasureId": item.MeasureId,
+                "MeasureText": item.MeasureText,
+                "SubMeasures": {
+                  "SubMeasureId": item.SubMeasureId,
+                  "SubMeasureText": item.SubMeasureText,
+                  "SubMeasureDescText": item.SubMeasureDescText,
+                  "CalculationType": item.CalculationType,
+                  "Apps": {
+                    "AppId": item.AppId,
+                    "Name": item.Name,
+                    "PRating": 0,
+                    "CRating": 0,
+                    "Comment": ""
+                  }
+                }
+              }
+            }
+          }
+        })
+      });
+
+      var hash = Object.create(null);
+
+      var arrSubMeasures_Apps = [],
+        arrMeasures = [],
+        arrAssessments = [],
+        arrTeams = [];
+
+
+      // Get all SubMeasures and Apps
+      finalArray.forEach(function (o) {
+        var key = [
+          o.Teams.Assessment.AssessmentId,
+          o.Teams.Assessment.Measures.MeasureId,
+          o.Teams.Assessment.Measures.SubMeasures.SubMeasureId
+        ].join('|'),
+          temp;
+
+        if (hash[key]) {
+          hash[key].push(o.Teams.Assessment.Measures.SubMeasures.Apps);
+          return;
+        }
+
+        hash[key] = [o.Teams.Assessment.Measures.SubMeasures.Apps];
+        temp = JSON.parse(JSON.stringify(o));
+        temp.Teams.Assessment.Measures.SubMeasures.Apps = hash[key];
+        arrSubMeasures_Apps.push(temp);
+      });
+
+      // Get all Measures
+      arrSubMeasures_Apps.forEach(function (o) {
+
+        var key = [
+          o.Teams.Assessment.AssessmentId,
+          o.Teams.Assessment.Measures.MeasureId
+        ].join('|'),
+          temp;
+
+        if (hash[key]) {
+          hash[key].push(o.Teams.Assessment.Measures.SubMeasures);
+          return;
+        }
+
+        hash[key] = [o.Teams.Assessment.Measures.SubMeasures];
+        temp = JSON.parse(JSON.stringify(o));
+        temp.Teams.Assessment.Measures.SubMeasures = hash[key];
+        arrMeasures.push(temp);
+      });
+
+      // Get all Assessments
+      arrMeasures.forEach(function (o) {
+
+        var key = o.Teams.Assessment.AssessmentId,
+          temp;
+        if (hash[key]) {
+          hash[key].push(o.Teams.Assessment.Measures);
+          return;
+        }
+
+        hash[key] = [o.Teams.Assessment.Measures];
+        temp = JSON.parse(JSON.stringify(o));
+        temp.Teams.Assessment.Measures = hash[key];
+        arrAssessments.push(temp);
+      });
+
+      // Get all Teams
+      arrAssessments.forEach(function (o) {
+
+        var key = o.Teams.TeamId,
+          temp;
+        if (hash[key]) {
+          hash[key].push(o.Teams.Assessment);
+          return;
+        }
+
+        hash[key] = [o.Teams.Assessment];
+        temp = JSON.parse(JSON.stringify(o));
+        temp.Teams.Assessment = hash[key];
+        arrTeams.push(temp);
+      });
+      
+      res.json(arrTeams);
+    })
+  });
+})
+
+
+router.post('/updateAppRating', function (req, response) {  
+  var sm = req.body;
+  var poolConfig = {
+    max: 5,
+    min: 1,
+    log: true
+  };
+
+  var pool = new ConnectionPool(poolConfig, config);
+   console.log("sm.SubMeasureId=="+sm.SubMeasureId);
+   console.log("sm.Apps.length=="+sm.Apps.length);
+   for (var i = 0; i <sm.Apps.length; i++) {
+    //console.log(sm.Apps[i]);
+    if (sm.Apps[i] != undefined) {     
+      getconnectionFromPool(sm,i,pool,response);
+      pool.on('error', function (err) {
+        console.error(err);
+      });
+
+    }
+  }
+});
+
+function getconnectionFromPool(sm,i,pool,response){
+  pool.acquire(function (err, connection) {
+    console.log("i=="+i);
+    // If no error, then good to go...
+    if (err) {
+      console.log(err);
+      response.json(err);
+      return;
+    }
+    //connection.on('connect', function(err) {  
+      console.log("i=="+i);        
+      executeUpdateRating1(connection, sm, i,response);
+     // });
+  });
+
+}
+router.post('/updateAppRating2', function (req, response) {
+  //var res = 0;
+  var sm = req.body;
+  var poolConfig = {
+    max: 3,
+    min: 1,
+    log: true
+  };
+
+  var connection = new Tedious.Connection(config);
+  connection.on('connect', function (err) {
+    executeUpdateRating(connection, sm, 0,response);
+  });
+  
+
+});
+function executeUpdateRating1(connection, sm, index,response) {
+  var request = new Tedious.Request("SP_UPDATE_APP_RATING", function (err, rowCount) {
+    if (err) {
+      console.log(err);
+      response.json(err);
+      connection.release();
+      return;
+    }
+    else {
+    connection.release(); 
+     if (index >= sm.Apps.length - 1) {        
+        
+        console.log('response');
+        console.log(HttpStatus.OK);
+        response.status(HttpStatus.OK);
+        response.end("Assessment saved !!");
+        //console.log('response');
+        //console.log(res);
+       // return;
+      }
+      //else { executeUpdateRating(connection, sm, index + 1,response); }
+    }
+  })
+  request.addParameter("subMeasureId", Tedious.TYPES.Int, sm.SubMeasureId);
+  request.addParameter("appId ", Tedious.TYPES.VarChar, sm.Apps[index].AppId);
+  request.addParameter("rating", Tedious.TYPES.Int, sm.Apps[index].CRating);
+  request.addParameter("comment", Tedious.TYPES.VarChar, sm.Apps[index].Comment);
+  request.addParameter("calcType", Tedious.TYPES.VarChar, sm.CalculationType);
+  request.addParameter("updatedBy", Tedious.TYPES.VarChar, "S Negi");
+  request.addParameter("month", Tedious.TYPES.Int, 9);
+
+  request.on('doneProc', function (rowCount, more, returnStatus, rows) {
+    //console.log(rowCount + ' row(s) inserted');
+   
+    
+  });
+
+  request.on('doneInProc', function (rowCount, more, returnStatus, rows) {
+    //console.log(rowCount + ' DP row(s) inserted');
+  });
+
+  connection.callProcedure(request);
+
+}
+
+function executeUpdateRating(connection, sm, index,response) {
+  var request = new Tedious.Request("SP_UPDATE_APP_RATING", function (err, rowCount) {
+    if (err) {
+      console.log(err);
+      res.json(err);
+      connection.close();
+      return;
+    }
+    else {
+      if (index >= sm.Apps.length - 1) {        
+        connection.close(); 
+        console.log('response');
+        console.log(HttpStatus.OK);
+        response.status(HttpStatus.OK);
+        response.end("Assessment saved !!");
+        //console.log('response');
+        //console.log(res);
+        return;
+      }
+      else { executeUpdateRating(connection, sm, index + 1,response); }
+    }
+  })
+  request.addParameter("subMeasureId", Tedious.TYPES.Int, sm.SubMeasureId);
+  request.addParameter("appId ", Tedious.TYPES.VarChar, sm.Apps[index].AppId);
+  request.addParameter("rating", Tedious.TYPES.Int, sm.Apps[index].CRating);
+  request.addParameter("comment", Tedious.TYPES.VarChar, sm.Apps[index].Comment);
+  request.addParameter("calcType", Tedious.TYPES.VarChar, sm.CalculationType);
+  request.addParameter("updatedBy", Tedious.TYPES.VarChar, "S Negi");
+  request.addParameter("month", Tedious.TYPES.Int, 9);
+
+  request.on('doneProc', function (rowCount, more, returnStatus, rows) {
+    //console.log(rowCount + ' row(s) inserted');
+   
+    
+  });
+
+  request.on('doneInProc', function (rowCount, more, returnStatus, rows) {
+    //console.log(rowCount + ' DP row(s) inserted');
+  });
+
+  connection.callProcedure(request);
+
+}
+function elemExists(array, property, val) {
+  for (var i = 0; i < array.length; i++) {
+    if (array[i][property] && array[i][property] === val) {
+      return i;
+    }
+  }
+  return -1;
+}
