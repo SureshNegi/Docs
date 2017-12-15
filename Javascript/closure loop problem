@@ -1,0 +1,15 @@
+It suffers from the closure loop problem. I strongly recommend that you spend some time on this. Understanding scope is vital to successful JavaScript programming. Consider this example:
+for (var i = 0; i < 3; i++) {
+    console.log('in for: ' + i);
+    setTimeout(function() {
+        console.log('in func: ' + i);
+    }, 0);
+}
+console.log('for complete');
+in for: 0
+in for: 1
+in for: 2
+for complete
+in func: 3
+in func: 3
+in func: 3
