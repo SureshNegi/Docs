@@ -1,0 +1,39 @@
+https://angular.io/guide/component-interaction
+
+Pass data from parent to child with input binding:
+............................................................................
+(example time-entry object for displaying timeentry
+In parent template:
+<app-hero-child *ngFor="let hero of heroes"
+      [hero]="hero"
+      [master]="master">
+    </app-hero-child>
+    
+Child Component:
+@Component({
+  selector: 'app-hero-child',
+  template: `
+    <h3>{{hero.name}} says:</h3>
+    <p>I, {{hero.name}}, am at your service, {{masterName}}.</p>
+  `
+})
+export class HeroChildComponent {
+  @Input() hero: Hero;
+  @Input('master') masterName: string;
+}
+
+Parent listens for child event:
+.........................................................
+
+Parent interacts with child via local variable:
+...................................................................
+<h3>Countdown to Liftoff (via local variable)</h3>
+  <button (click)="timer.start()">Start</button>
+  <button (click)="timer.stop()">Stop</button>
+  <div class="seconds">{{timer.seconds}}</div>
+  <app-countdown-timer #timer></app-countdown-timer>
+You can place a local variable, #timer, on the tag <countdown-timer> representing the child component.
+That gives you a reference to the child component and the ability to access any of its properties or methods from within the parent template.
+
+Parent calls an @ViewChild():
+........................................................
