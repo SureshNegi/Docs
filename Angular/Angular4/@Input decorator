@@ -1,0 +1,10 @@
+@Input() highlightColor: string;
+You've bound template HTML to component properties before and never used @Input. What's different?
+A component or directive shouldn't blindly trust other components and directives. 
+The properties of a component or directive are hidden from binding by default. 
+They are private from an Angular binding perspective. When adorned with the @Input decorator, the property becomes public
+from an Angular binding perspective. Only then can it be bound by some other component or directive.
+
+When it(component property) appears in square brackets ([ ]) to the left of the equals (=),
+the property belongs to some other component or directive; that property must be adorned with the @Input decorator.
+<p [appHighlight]="color">Highlight me!</p>
