@@ -1,0 +1,19 @@
+https://www.primefaces.org/primeng/#/setup
+
+primeng datatable:
+Steps:
+npm install primeng --save
+Add font awesome and PrimeNG as dependencies in package.json, e.g.
+"devDependencies": {
+ "primeng": "^4.1.0",
+    "font-awesome": "^4.7.0"
+    }
+    
+    update angular-cli.json:
+    "styles": [
+        "styles.css",        
+        "../node_modules/primeng/resources/themes/omega/theme.css",
+        "../node_modules/primeng/resources/primeng.min.css"
+      ],
+
+https://yakovfain.com/2016/10/28/adding-primeng-ui-components-to-angular-cli-project/
