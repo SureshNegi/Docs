@@ -1,0 +1,33 @@
+ https://angular.io/guide/bootstrapping
+ Every application has at least one Angular Module, the root module that you bootstrap to launch the application. You can call the class anything you want. 
+ The conventional name is AppModule.
+ 
+  @NgModule decorator.
+  @NgModule takes a metadata object that tells Angular how to compile and launch the application.
+  @NgModule({
+  declarations: [
+    AppComponent
+  ],
+  imports: [
+    BrowserModule
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+
+The declarations array:
+You tell Angular which components belong to the AppModule by listing it in the module's declarations array. 
+other kinds of classes — directives and pipes — that you must also add to the declarations array.
+Only declarables — components, directives and pipes — belong in the declarations array. Do not put any other kind of class in declarations. 
+Do not declare NgModule classes. Do not declare service classes. Do not declare model classes.
+
+The imports array:
+Angular Modules are a way to consolidate features that belong together into discrete units.
+Many features of Angular itself are organized as Angular Modules. 
+HTTP services are in the HttpClientModule. The router is in the RouterModule.
+Eventually you may create your own modules.
+Add a module to the imports array when the application requires its features.
+ Every application that executes in a browser needs the BrowserModule from @angular/platform-browser. 
+ So every such application includes the BrowserModule in its root AppModule's imports array. 
+ @NgModule metadata object mports array- It tells Angular about
+ specific other Angular Modules—all of them classes decorated with @NgModule—that the application needs to function properly.
