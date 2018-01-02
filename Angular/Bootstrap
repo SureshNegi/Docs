@@ -31,3 +31,11 @@ Add a module to the imports array when the application requires its features.
  So every such application includes the BrowserModule in its root AppModule's imports array. 
  @NgModule metadata object mports array- It tells Angular about
  specific other Angular Modules—all of them classes decorated with @NgModule—that the application needs to function properly.
+
+Bootstrap in main.ts:
+boot strap code is in this file
+The bootstrapping process sets up the execution environment, digs the root AppComponent out of the module's bootstrap array, creates an instance of the component and
+inserts it within the element tag identified by the component's selector.
+
+The main.ts file is very stable. Once you've set it up, you may never change it again.
+
