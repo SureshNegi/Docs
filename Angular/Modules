@@ -33,3 +33,12 @@ import { Logger }              from './logger.service';
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }
+
+ providers array:
+ Angular apps rely on dependency injection (DI) to deliver services to various parts of the application.
+ Before DI can inject a service, it must create that service with the help of a provider. You can tell DI about a service's provider in a number of ways. Among the most 
+ popular ways is to register the service in the root ngModule.providers array, which will make that service available everywhere.
+ 
+ bootstrap array:
+ the component with which application starts usially this array is single component
+ 
