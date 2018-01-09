@@ -1,0 +1,67 @@
+<div class="backdrop" [ngStyle]="{'display':showAddActionItemPopUp}"></div>
+<div class="modal bootstrap-modal" tabindex="-1" role="dialog" [ngStyle]="{'display':showAddActionItemPopUp}">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" aria-label="Close" (click)="onCloseHandled()"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">{{formObj.formTitle}}</h4>
+      </div>
+      <div class="modal-body">
+        <div class="ui-grid-row">
+          <div class="ui-grid-col-4"><label for="team">Team</label></div>
+          <div class="ui-grid-col-8"><input [readonly]="true" pInputText id="team" [(ngModel)]="appActionPlan.team" /></div>
+        </div>
+        <div class="ui-grid-row">
+          <div class="ui-grid-col-4"><label for="measure">Measure</label></div>
+          <div class="ui-grid-col-8"><input [readonly]="true" pInputText id="measure" [(ngModel)]="appActionPlan.measure" /></div>
+        </div>
+        <div class="ui-grid-row">
+          <div class="ui-grid-col-4"><label for="subMeasure">Sub-Measure</label></div>
+          <div class="ui-grid-col-8"><input [readonly]="true" pInputText id="subMeasure" [(ngModel)]="appActionPlan.subMeasure" /></div>
+        </div>
+        <div class="ui-grid-row">
+          <div class="ui-grid-col-4"><label for="subMeasure">Application</label></div>
+          <div class="ui-grid-col-8"><input [readonly]="true" pInputText id="subMeasure" [(ngModel)]="appActionPlan.app" /></div>
+        </div>
+        <div class="ui-grid-row">
+          <div class="ui-grid-col-4"><label for="actionItem">ActionItem</label></div>
+          <div class="ui-grid-col-8"><input pInputText id="actionItem" [(ngModel)]="appActionPlan.actionItem" /></div>
+        </div>
+        <div class="ui-grid-row">
+          <div class="ui-grid-col-4"><label for="cri">CurrentRiskIndex</label></div>
+          <div class="ui-grid-col-8"><input pInputText id="cri" [(ngModel)]="appActionPlan.currentRiskIndex" /></div>
+        </div>
+        <div class="ui-grid-row">
+          <div class="ui-grid-col-4"><label for="pri">ProposedRiskIndex</label></div>
+          <div class="ui-grid-col-8"><input pInputText id="pri" [(ngModel)]="appActionPlan.proPosedRiskIndex" /></div>
+        </div>
+        <div class="ui-grid-row">
+          <div class="ui-grid-col-4"><label for="plan">Plan</label></div>
+          <div class="ui-grid-col-8"><input pInputText id="plan" [(ngModel)]="appActionPlan.plan" /></div>
+        </div>
+        <div class="ui-grid-row">
+          <div class="ui-grid-col-4"><label for="sDate">Start Date</label></div>
+          <div class="ui-grid-col-8"><input pInputText id="sDate" [(ngModel)]="appActionPlan.startDate" /></div>
+        </div>
+        <div class="ui-grid-row">
+          <div class="ui-grid-col-4"><label for="dueDate">Due Date</label></div>
+          <div class="ui-grid-col-8"><input pInputText id="dueDate" [(ngModel)]="appActionPlan.dueDate" /></div>
+        </div>
+        <div class="ui-grid-row">
+          <div class="ui-grid-col-4"><label for="comments">Comments</label></div>
+          <div class="ui-grid-col-8"><input pInputText id="comments" [(ngModel)]="appActionPlan.comments" /></div>
+        </div>
+
+      </div>
+      <div class="modal-footer">
+        <!-- <button type="button" class="btn btn-default" (click)="onCloseHandled()">Close</button> -->
+        <button type="button" pButton icon="fa-close" (click)="delete()" label="Save"></button>
+        <button type="button" pButton icon="fa-check" (click)="onCloseHandled()" label="Cancel"></button>
+  
+      </div>
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+</div>
+<!-- /.modal !-->
