@@ -1,0 +1,58 @@
+<p-dialog id="dialog1" widgetVar="ex" styleClass="customDialog" resizable="false" appendToBody="true" header="Create Action Item"
+[width]="500" [(visible)]="showAddActionItemPopUp1" [responsive]="true" showEffect="fade" [modal]="true">
+<div class="ui-grid ui-grid-responsive ui-fluid" *ngIf="appActionPlan">
+  <fieldset>
+    <legend></legend>
+    <div class="ui-grid-row">
+      <div class="ui-grid-col-4"><label for="team">Team</label></div>
+      <div class="ui-grid-col-8"><input [readonly]="true" pInputText id="team" [(ngModel)]="appActionPlan.team" /></div>
+    </div>
+    <div class="ui-grid-row">
+      <div class="ui-grid-col-4"><label for="measure">Measure</label></div>
+      <div class="ui-grid-col-8"><input [readonly]="true" pInputText id="measure" [(ngModel)]="appActionPlan.measure" /></div>
+    </div>
+    <div class="ui-grid-row">
+      <div class="ui-grid-col-4"><label for="subMeasure">Sub-Measure</label></div>
+      <div class="ui-grid-col-8"><input [readonly]="true" pInputText id="subMeasure" [(ngModel)]="appActionPlan.subMeasure" /></div>
+    </div>
+    <div class="ui-grid-row">
+      <div class="ui-grid-col-4"><label for="subMeasure">Application</label></div>
+      <div class="ui-grid-col-8"><input [readonly]="true" pInputText id="subMeasure" [(ngModel)]="appActionPlan.app" /></div>
+    </div>
+    <div class="ui-grid-row">
+      <div class="ui-grid-col-4"><label for="actionItem">ActionItem</label></div>
+      <div class="ui-grid-col-8"><input pInputText id="actionItem" [(ngModel)]="appActionPlan.actionItem" /></div>
+    </div>
+    <div class="ui-grid-row">
+      <div class="ui-grid-col-4"><label for="cri">CurrentRiskIndex</label></div>
+      <div class="ui-grid-col-8"><input pInputText id="cri" [(ngModel)]="appActionPlan.currentRiskIndex" /></div>
+    </div>
+    <div class="ui-grid-row">
+      <div class="ui-grid-col-4"><label for="pri">ProposedRiskIndex</label></div>
+      <div class="ui-grid-col-8"><input pInputText id="pri" [(ngModel)]="appActionPlan.proPosedRiskIndex" /></div>
+    </div>
+    <div class="ui-grid-row">
+      <div class="ui-grid-col-4"><label for="plan">Plan</label></div>
+      <div class="ui-grid-col-8"><input pInputText id="plan" [(ngModel)]="appActionPlan.plan" /></div>
+    </div>
+    <div class="ui-grid-row">
+      <div class="ui-grid-col-4"><label for="sDate">Start Date</label></div>
+      <div class="ui-grid-col-8"><input pInputText id="sDate" [(ngModel)]="appActionPlan.startDate" /></div>
+    </div>
+    <div class="ui-grid-row">
+      <div class="ui-grid-col-4"><label for="dueDate">Due Date</label></div>
+      <div class="ui-grid-col-8"><input pInputText id="dueDate" [(ngModel)]="appActionPlan.dueDate" /></div>
+    </div>
+    <div class="ui-grid-row">
+      <div class="ui-grid-col-4"><label for="comments">Comments</label></div>
+      <div class="ui-grid-col-8"><input pInputText id="comments" [(ngModel)]="appActionPlan.comments" /></div>
+    </div>
+  </fieldset>
+</div>
+<p-footer>
+  <div class="ui-dialog-buttonpane ui-helper-clearfix">
+    <button type="button" pButton icon="fa-close" (click)="delete()" label="Save"></button>
+    <button type="button" pButton icon="fa-check" (click)="showAddActionItemPopUp=!showAddActionItemPopUp" label="Cancel"></button>
+  </div>
+</p-footer>
+</p-dialog>
