@@ -12,6 +12,10 @@
           <div class="ui-grid-col-8"><input [readonly]="true" pInputText id="team" [(ngModel)]="appActionPlan.team" /></div>
         </div>
         <div class="ui-grid-row">
+          <div class="ui-grid-col-4"><label for="measure">Assessment</label></div>
+          <div class="ui-grid-col-8"><input [readonly]="true" pInputText id="assessment" [(ngModel)]="appActionPlan.assessment" /></div>
+        </div>
+        <div class="ui-grid-row">
           <div class="ui-grid-col-4"><label for="measure">Measure</label></div>
           <div class="ui-grid-col-8"><input [readonly]="true" pInputText id="measure" [(ngModel)]="appActionPlan.measure" /></div>
         </div>
@@ -41,11 +45,22 @@
         </div>
         <div class="ui-grid-row">
           <div class="ui-grid-col-4"><label for="sDate">Start Date</label></div>
-          <div class="ui-grid-col-8"><input pInputText id="sDate" [(ngModel)]="appActionPlan.startDate" /></div>
+          <div class="ui-grid-col-8">
+              <input pInputText id="plan" [(ngModel)]="appActionPlan.startDate" />
+            <!-- <p-calendar readonlyInput="true" dateFormat="dd-MM-yy" [ngStyle]="{'width':'19em'}" [inputStyleClass]="cal-input" [styleClass]="calCls"
+              [(ngModel)]="appActionPlan.startDate" [showIcon]="true">
+            </p-calendar> -->
+          </div>
         </div>
+
         <div class="ui-grid-row">
           <div class="ui-grid-col-4"><label for="dueDate">Due Date</label></div>
-          <div class="ui-grid-col-8"><input pInputText id="dueDate" [(ngModel)]="appActionPlan.dueDate" /></div>
+          <div class="ui-grid-col-8">  
+              <input pInputText id="plan" [(ngModel)]="appActionPlan.startDate" />          
+            <!-- <p-calendar id="dueDate" readonlyInput="true" dateFormat="dd-MM-yy" [inputStyleClass]="cal-input" [styleClass]="calCls" [(ngModel)]="appActionPlan.dueDate"
+              [showIcon]="true">
+            </p-calendar> -->
+          </div>
         </div>
         <div class="ui-grid-row">
           <div class="ui-grid-col-4"><label for="comments">Comments</label></div>
@@ -55,9 +70,9 @@
       </div>
       <div class="modal-footer">
         <!-- <button type="button" class="btn btn-default" (click)="onCloseHandled()">Close</button> -->
-        <button type="button" pButton icon="fa-close" (click)="delete()" label="Save"></button>
+        <button type="button" class="button" pButton icon="fa-close" (click)="delete()" label="Save"></button>
         <button type="button" pButton icon="fa-check" (click)="onCloseHandled()" label="Cancel"></button>
-  
+
       </div>
     </div>
     <!-- /.modal-content -->
