@@ -1,0 +1,8 @@
+http://www.typescriptlang.org/docs/handbook/advanced-types.html
+Any:
+It accepts any datatype value.
+
+Union:
+Means can accept more than one type value(subset of ANY)
+
+Intersection Type:
