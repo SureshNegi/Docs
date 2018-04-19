@@ -1,0 +1,3 @@
+TFS-equivalent of 'Undo pending changes':
+https://stackoverflow.com/questions/7999259/how-to-perform-the-tfs-equivalent-of-undo-pending-changes
+it stash -u
