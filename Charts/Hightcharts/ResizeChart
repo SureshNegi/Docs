@@ -1,0 +1,13 @@
+on click hambruger resize chart:
+chart: {
+        type: 'line', backgroundColor: ChartStyle.ChartBGColor,
+        events: {
+          load: function () {
+              var self = this;
+             
+              setTimeout (function () {
+                  self.reflow ();
+              }, 100)
+          }
+      }
+      }.....
