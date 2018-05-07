@@ -1,0 +1,7 @@
+http://net-informations.com/faq/general/dictionary.htm
+...........................................................................................
+Hashtable and Dictionary are collection of data structures to hold data as key-value pairs. 
+The Dictionary class is a strongly types < T Key, T Value > and you must specify the data types for both the key and value.
+he Hashtable is a weakly typed data structure, so you can add keys and values of any Object Type to the Hashtable.
+
+Can not strore duplicate values with same key in both case
