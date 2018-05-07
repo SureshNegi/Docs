@@ -1,0 +1,5 @@
+https://www.codeproject.com/Articles/193537/C-Tuples
+Basically, a tuple (Tuple in C#) is an ordered sequence, immutable, fixed-size and of heterogeneous objects, i.e., each object being of a specific type.
+
+Tuple<int, string, DateTime> _cliente =  Tuple.Create(1, "Frederico", new DateTime(1975, 3,24)); 
+--Tuples have a limit of 8 items.
