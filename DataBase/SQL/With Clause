@@ -1,0 +1,35 @@
+getperdayestimate:
+
+declare @StartDate datetime='2018-05-18'
+declare @EndDate datetime='2018-05-22'
+declare @OriginalEstimate int=24
+Declare @ReturnOriginalEstimate decimal(10,4)  
+  
+Declare @WorkingDaysCount decimal(10,4)  
+Declare @tblWorkingDays table(DayDate DateTime)  
+-- Creating Query to Prepare Year Data  
+;WITH cte AS (  
+SELECT @StartDate AS FromDate  
+UNION ALL  
+SELECT DATEADD(d, 1 ,cte.FromDate)  
+FROM cte  
+WHERE DATEADD(d,1,cte.FromDate) <= @EndDate  
+)  
+insert into @tblWorkingDays  
+
+SELECT FromDate AS Date  
+FROM CTE  
+OPTION (MaxRecursion 370)  
+  
+select * from @tblWorkingDays;
+select @WorkingDaysCount=COUNT(1) from @tblWorkingDays  
+WHERE CAST(DayDate as date) not in (SELECT [Date] FROM [tblHolidays])  
+  
+if(@WorkingDaysCount>0)  
+ set @ReturnOriginalEstimate=@OriginalEstimate/@WorkingDaysCount  
+ELSE  
+ set @ReturnOriginalEstimate=@OriginalEstimate  
+  
+select  @ReturnOriginalEstimate  
+
+  
