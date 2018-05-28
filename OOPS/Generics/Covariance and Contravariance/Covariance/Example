@@ -1,0 +1,47 @@
+https://stackoverflow.com/questions/2662369/covariance-and-contravariance-real-world-example
+public abstract class LifeForm  { }
+public abstract class Animal : LifeForm { }
+public class Giraffe : Animal { }
+public class Zebra : Animal { }
+
+public static void PrintLifeForms(IList<LifeForm> lifeForms)
+{
+    foreach (var lifeForm in lifeForms)
+    {
+        Console.WriteLine(lifeForm.GetType().ToString());
+    }
+}
+
+var myAnimals = new List<LifeForm>
+{
+    new Giraffe(),
+    new Zebra()
+};
+PrintLifeForms(myAnimals); // Giraffe, Zebra
+
+var myGiraffes = new List<Giraffe>
+{
+    new Giraffe(), // "Jerry"
+    new Giraffe() // "Melman"
+};
+PrintLifeForms(myGiraffes); // Compile Error! cannot convert from 'System.Collections.Generic.List<Giraffe>' to 'System.Collections.Generic.IList<LifeForm>'
+
+Why? Because the generic parameter IList<LifeForm> is not covariant -  IList<LifeForm> is invariant, and only accepts collections (which implement IList) where the parameterized type 
+T must be LifeForm.
+
+Since IList permits adding or removal of elements, any subclass of LifeForm could thus be added to the parameter lifeForms, and would violate the type of any collection of derived types passed to the method. 
+(Here, the malicious method would attempt to add a Zebra to var myGiraffes). Fortunately, the compiler protects us from this danger.
+
+The solution is to ensure that a covariant generic type is used, e.g. IEnumerable (defined as IEnumerable<out T>).
+This prevents change to the collection, and as a result, any collection with subtype of LifeForm may now be passed to the method:
+
+public static void PrintLifeForms(IEnumerable<LifeForm> lifeForms)
+{
+    foreach (var lifeForm in lifeForms)
+    {
+        Console.WriteLine(lifeForm.GetType().ToString());
+    }
+}
+
+PrintLifeForms() can now be called with Zebras, Giraffes and any IEnumerable<> of any subclass of LifeForm
+
