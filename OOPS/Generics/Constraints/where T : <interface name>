@@ -1,0 +1,2 @@
+The type argument must be or implement the specified interface. Multiple interface constraints can be specified.
+The constraining interface can also be generic.
