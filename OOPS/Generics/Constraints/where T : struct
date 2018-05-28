@@ -1,0 +1,1 @@
+The type argument must be a value type. Any value type except Nullable can be specified. For more information, see Using Nullable Types.
