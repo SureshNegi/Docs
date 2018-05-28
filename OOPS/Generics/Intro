@@ -1,2 +1,6 @@
 https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/generics/introduction-to-generics
 use the new generic collection classes instead of the older non-generic counterparts such as ArrayList(ArrayList.Add(Object o)...)
+Generic classes and methods provides:
+reusability,
+type safety 
+efficiency in a way that their non-generic counterparts cannot.
