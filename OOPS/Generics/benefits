@@ -1,0 +1,13 @@
+https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/generics/benefits-of-generics
+
+Generics provide the solution to a limitation in earlier versions of the common language runtime and the C# language 
+in which generalization is accomplished by casting types to and from the universal base type Object.
+
+By creating a generic class, you can create a collection that is type-safe at compile-time.
+Example:
+User Case you want to create a integer type list:
+ List<int> a = new List<int>();
+            a.Add(1); //error on compile time if add other type of value
+
+ArrayList b = new ArrayList();
+b.Add("1"); // no error on compile time //you have to take care of casting if required
