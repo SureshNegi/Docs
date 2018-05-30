@@ -37,3 +37,12 @@ static void Main()
     Action<string> del2 = SetObject;
     .....
 }
+
+Implicit conversion between generic delegates is supported now in .NET 4.0. 
+Previously the compiler would report an error for the following statement.
+static void Main()
+{
+    Func<string> del3 = GetString;
+    Func<object> del4 = del3; // Compiler error here until C# 4.0.
+}
+
