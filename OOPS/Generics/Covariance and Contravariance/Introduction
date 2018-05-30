@@ -1,2 +1,21 @@
 https://www.c-sharpcorner.com/UploadFile/hasansheik/covariance-and-contravariance-in-C-Sharp/
 http://tomasp.net/blog/variance-explained.aspx/
+
+Covariance and Contravariance are polymorphism extension to the arrays, delegates and generics. It provides implicit reference conversion for Arrays, Delegates and Generic parameter types. 
+Covariance preserves the assignment compatibility and Contravariance opposite the covariance functionality.
+
+Assignment Compatibility :
+  String stringObject = "A String Object";
+  Object anObject = stringObject;
+
+An Object of a derived class (stringObject) is being assigned to a variable of a base class (anObject).
+
+Array Covariance:
+object[] objArray = new String[10];
+
+Array Covariance is not safe. 
+objArray[0] = 5;
+That statement will not report any compile time errors. But at runtime, it causes an ArrayTypeMismatchException exception. 
+It is due to the fact that the objArray variable actually holds a reference of a string Array.
+
+Delegate Covariance:
