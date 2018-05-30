@@ -46,3 +46,6 @@ static void Main()
     Func<object> del4 = del3; // Compiler error here until C# 4.0.
 }
 
+Variance for generic type Parameters
+
+In .NET 4.0 Microsoft introduced implicit type conversion between interface instances that have different type arguments. This means, an interface instance that has method with more derived return types than originally specified ( Covariance) or that has methods with less derived parameter types (Contravariance).
