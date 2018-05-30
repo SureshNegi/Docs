@@ -19,3 +19,21 @@ That statement will not report any compile time errors. But at runtime, it cause
 It is due to the fact that the objArray variable actually holds a reference of a string Array.
 
 Delegate Covariance:
+In the following example of covariance, a string returning function is being assigned to a delegate which is declared to return object type.
+static string GetString() { return ""; }
+static void Main()
+{
+    Func<object> delegateObject = GetString;
+   //String strObject = delegateObject();
+}
+
+Contravariant  Delegate:
+In the following example a delegate specifies a parameter type as string. Still we can assign a method that has object as parameter.
+
+static void SetObject(object objectParameter) { }
+static void SetString(string stringParameter) { }
+static void Main()
+{
+    Action<string> del2 = SetObject;
+    .....
+}
