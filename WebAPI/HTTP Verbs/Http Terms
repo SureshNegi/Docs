@@ -1,0 +1,11 @@
+Request Header:Contains information about the request(meta data about the request)
+eg :what type of response is required etc
+
+Request Body:Contains the data to send to server e.g time entry data o submmit in JSON format
+
+Response Body:Contains the data send back from the server e.g employee list
+
+Response Status Code:Code from send in response eg 404,500,200
+
+Example:
+
