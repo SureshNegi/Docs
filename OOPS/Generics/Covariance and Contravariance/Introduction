@@ -48,4 +48,18 @@ static void Main()
 
 Variance for generic type Parameters
 
-In .NET 4.0 Microsoft introduced implicit type conversion between interface instances that have different type arguments. This means, an interface instance that has method with more derived return types than originally specified ( Covariance) or that has methods with less derived parameter types (Contravariance).
+In .NET 4.0 Microsoft introduced implicit type conversion between interface instances that have different type arguments.
+This means, an interface instance that has method with more derived return types than originally specified ( Covariance) or that has methods with less derived parameter types (Contravariance).
+
+Only reference data type can be declared as variant, not the value types.
+or example, IEnumerable<int> cannot be implicitly converted to IEnumerable<object>, because integers are represented by a value type
+
+Below is possible:(Derived is class)
+public static void Test1(IEnumerable<object> list) {
+
+        }
+ List<Derived> l1 = new List<Derived>(){
+              new Derived() {
+              }
+            };
+            Test1(l1);
