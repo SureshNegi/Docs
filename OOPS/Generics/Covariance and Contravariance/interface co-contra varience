@@ -1,0 +1,9 @@
+Before .NET 4.0, the following code causes compilation error, but now you can use strings instead of objects, as shown in the example, 
+because the IEnumerable(Of T) interface is covariant.
+
+IEnumerable<String> strings = new List<String>();
+IEnumerable<Object> objects = strings;
+But below code will give error(item can be added in list, show in int type list other type can be added 
+if compiler allow this to pass in any other function accepting IEnumerable(Of T))
+List<int> a = new List<int>();            
+objects = a;
