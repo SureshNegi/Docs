@@ -1,0 +1,20 @@
+REST:
+Representational transfer protocol
+Bcs let us say we have API which returns student object in differents format(for .net JSON ,for Java XML etc)
+so WEB API return(transfer) a representation of the object in different format
+
+Principles of REST or guidlines which must be follwed if service is REST:
+Story :
+One my collegue come office without 
+-Uniform
+and stat talking -Stateless  things
+I cannot forgot his talks it is -Cacheble in my mind
+We work for Client as -Server-Client
+Still I did not tell my boss about it I want to be as -layered system
+We have to fullfill client demand -code on demand
+
+HTTP Verbs:
+GET POST PUT DELETE (CRUD)
+Options - retrieve available operations on the resource
+PATCH - partial update
+Head - return only the HTTP Header
