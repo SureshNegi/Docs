@@ -1,0 +1,25 @@
+Class ValuesController:APIController{
+static List<String> list=new List<string>(){
+"1",
+"2",
+"3"
+}
+public  IEnumerable<string> Get(){
+  return list;   //returning List<string> instead of IEnumerable<string> coverience
+}
+
+public  string Get(int index){
+  return list[index];
+}
+public  void post([FromBody] string val){
+   list.Add(val);   //return 204 no content 
+ }
+  
+public  void Put(int index,[FromBody] string val){
+   list[index]=val;
+}
+
+public  void Delete(int index){
+   list.RemoveAt(index);
+}
+}
