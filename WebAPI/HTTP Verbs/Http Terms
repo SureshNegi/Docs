@@ -8,4 +8,10 @@ Response Body:Contains the data send back from the server e.g employee list
 Response Status Code:Code from send in response eg 404,500,200
 
 Example:
+GET /SureshNegi/Notes HTTP/1.1
+Host: github.com
+Content-Type: application/json
+Cache-Control: no-cache
+Postman-Token: c73870db-8f87-aa84-79eb-66fc79b3d919
+
 
