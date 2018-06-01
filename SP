@@ -1,0 +1,111 @@
+USE [TFS_WI]
+GO
+/****** Object:  StoredProcedure [dbo].[SP_GetAppWiseExcecutionPlan]    Script Date: 01-Jun-18 8:33:07 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+--SP_GetAppWiseExcecutionPlan  '2018-04-01', '2018-05-31'  
+--SP_GetAppWiseExcecutionPlan '2018-02-01', '2018-06-17'  
+ALTER PROCEDURE [dbo].[SP_GetAppWiseExcecutionPlan]  
+ @StartDate datetime,  
+ @EndDate datetime  
+  
+AS  
+BEGIN 
+
+	 SELECT RepositoryId 
+			,AppName
+			,SUM(ISNULL(OriginalEstimate - ISNULL(StartDateRemoveTime+EndDateRemoveTime,0),0)) AS ActualOrignalEstimation
+			,CASE WHEN MIN(Startdate)<@Startdate THEN  FORMAT(@Startdate, 'yyyy-MM-dd') ELSE MIN(Startdate) END AS Startdate
+			,CASE WHEN MAX(EndDate)>@EndDate THEN  FORMAT(@EndDate, 'yyyy-MM-dd') ELSE MAX(EndDate) END AS EndDate
+			,ChartHeader
+			,ChartColor
+			,XAxisTitle
+	  into #temp1			
+	  FROM 
+	 (
+		 SELECT RepositoryId 
+			,AppName
+			,OriginalEstimate
+			,Startdate
+			,EndDate 
+			,ChartHeader
+			,ChartColor
+			,XAxisTitle
+			,PerDayEstimation
+			,case when PerDayEstimation=0 OR StartDateDaysDiff=0 then 0 else CONVERT(DECIMAL(18,3),ISNULL((PerDayEstimation*(CASE WHEN StartDateDaysDiff<0 THEN StartDateDaysDiff *-1 ELSE StartDateDaysDiff END)),0)) END AS StartDateRemoveTime
+			,case when PerDayEstimation=0 OR EndDateDaysDiff=0 then 0 else CONVERT(DECIMAL(18,3),ISNULL((PerDayEstimation*(CASE WHEN EndDateDaysDiff<0 THEN EndDateDaysDiff *-1 ELSE EndDateDaysDiff END)),0)) END AS EndDateRemoveTime
+		 FROM 
+		 (  				    
+			SELECT distinct T1.TaskId 
+				,T1.RepositoryId
+				,t2.Repository AS AppName
+				,OriginalEstimate
+				,cast(Startdate  as varchar(100)) Startdate
+				,cast(EndDate  as varchar(100)) EndDate
+				,'Application Wise Effort Plan' ChartHeader
+				,'#00ADCE' ChartColor
+				,'Timeframe (Week Ending)' XAxisTitle
+				,CASE WHEN OriginalEstimate=0 THEN 0 
+					ELSE CONVERT(decimal(18,4), ISNULL([dbo].[fn_getAveOrgEstPerTask](StartDate,EndDate, OriginalEstimate) ,0)) 
+					END AS PerDayEstimation	  
+				,CASE WHEN cast(StartDate  as varchar(100))>@StartDate THEN 0 
+					ELSE (DATEDIFF(DAY,cast(StartDate  as varchar(100)),cast(@StartDate  as varchar(100))) - (A.RemoveHolidaysDays))  			 
+					END AS StartDateDaysDiff
+				,CASE WHEN cast(EndDate  as varchar(100))<@EndDate THEN 0 
+					ELSE (-1*(DATEDIFF(DAY,cast(EndDate  as varchar(100)),cast(@EndDate  as varchar(100))) + (B.RemoveHolidaysDays)))   
+					END AS EndDateDaysDiff	
+				--,B.RemoveHolidaysDays					 
+			FROM tblworkitem t1 with(nolock) 
+			JOIN tblrepository t2 with(nolock) on t1.RepositoryId=t2.RepositoryId 
+			LEFT JOIN (			
+				SELECT TASKID,COUNT(T2.[DATE]) AS RemoveHolidaysDays FROM tblworkitem t1 with(nolock) JOIN tblholidays t2 with(nolock) on (t2.[Date] between T1.StartDate and @StartDate) 					
+					AND (
+							(StartDate between @StartDate and @EndDate) 
+						 or (EndDate between @StartDate and @EndDate) 
+						 or (@StartDate<EndDate and @StartDate>=StartDate)
+						)  
+					AND StartDate IS NOT NULL 
+					AND EndDate IS NOT NULL 
+				GROUP BY TASKID	 
+			) A ON A.TASKID=T1.TASKID
+			LEFT JOIN (			
+				SELECT TASKID,COUNT(T2.[DATE]) AS RemoveHolidaysDays FROM tblworkitem t1 with(nolock) JOIN tblholidays t2 with(nolock) on (t2.[Date] between @EndDate and T1.EndDate) 					
+					AND (
+							(StartDate between @StartDate and @EndDate) 
+						 or (EndDate between @StartDate and @EndDate) 
+						 or (@StartDate<EndDate and @StartDate>=StartDate)
+						)  
+					AND StartDate IS NOT NULL 
+					AND EndDate IS NOT NULL 
+				GROUP BY TASKID	 
+			) B ON B.TASKID=T1.TASKID
+			WHERE 
+			(
+				(StartDate between @StartDate and @EndDate) 
+				or (EndDate between @StartDate and @EndDate) 
+				or (@StartDate<EndDate and @StartDate>=StartDate)
+			)  
+			AND StartDate IS NOT NULL 
+			AND EndDate IS NOT NULL 
+				--[SP_GetAppWiseExcecutionPlanTest2] '2018-03-01', '2018-06-17' 
+		  ) A 
+		  
+	 ) B
+	 GROUP BY RepositoryId
+		,AppName
+		,ChartHeader
+		,ChartColor
+		,XAxisTitle
+	ORDER BY RepositoryId
+
+	SELECT t1.RepositoryId, t3.ApplicationName as [AppName],t1.ActualOrignalEstimation,
+			t1.Startdate,t1.EndDate,t1.ChartHeader,t1.ChartColor,t1.XAxisTitle
+		 FROM #temp1 t1
+	join tblApplicationRepositoryMapping t2
+	on t1.RepositoryId=t2.RepositoryId
+	join tblApplications t3 on t2.ApplicationId=t3.ApplicationId
+
+END   
