@@ -1,0 +1,12 @@
+.chart-xaxis-title{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width:100%;
+}
+
+.table-title.chart-xaxis-title{
+    /* padding:0 10px !important; */
+    width:calc(100% - 3px);
+    left:3px;
+}
