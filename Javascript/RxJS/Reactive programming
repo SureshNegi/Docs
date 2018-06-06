@@ -1,0 +1,13 @@
+https://en.wikipedia.org/wiki/Reactive_programming
+
+Reactive programming has been proposed as a way to simplify the creation of interactive user interfaces, (near) real time system animation
+For example, in a model–view–controller (MVC) architecture(say Angular), 
+reactive programming can facilitate changes in an underlying model that are reflected automatically in an associated view
+
+In computing, reactive programming is a declarative programming paradigm concerned with data streams and the propagation of change
+With this paradigm it is possible to express static (e.g. arrays) or dynamic (e.g. event emitters) data streams with ease, and also communicate that an inferred dependency within the associated execution model exists, 
+which facilitates the automatic propagation of the changed data flow.
+For example, in an imperative programming setting, a:=b+c would mean that a is being assigned the result of b+c in the instant
+the expression is evaluated, and later, the values of b and c can be changed with no effect on the value of a.
+On the other hand, in reactive programming, the value of a is automatically updated whenever the values of  b or  c change, 
+without the program having to re-execute the statement a:=b+c to determine the presently assigned value of a.
