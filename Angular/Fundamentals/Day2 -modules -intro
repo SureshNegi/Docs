@@ -1,0 +1,21 @@
+Every Angular app has a root module, conventionally named AppModule which provides the bootstrap mechanism that launches the application
+An app typically contains many functional modules.
+
+NgModules can import functionality from other NgModules, and allow their own functionality to be exported and used by other NgModules.
+E.g We can use AppRoutingModule in our main AppModule to use routing.
+
+import { RouterModule, Routes,PreloadAllModules } from '@angular/router';
+@NgModule({  
+  imports: [ 
+    //RouterModule.forRoot(routes) ,
+    RouterModule.forRoot(routes, { useHash: true, preloadingStrategy: PreloadAllModules }),
+  ],
+  exports: [ RouterModule ]
+})
+export class AppRoutingModule {}
+
+Why Different Modules(like namespace in .Net)
+Organizing your code into distinct functional modules helps in:
+-managing development of complex applications.
+-in designing for reusability
+-take advantage of lazy-loading(that is, loading modules on demand—in order to minimize the amount of code that needs to be loaded at startup.)
