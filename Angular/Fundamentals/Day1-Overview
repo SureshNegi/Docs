@@ -1,0 +1,41 @@
+Angular is a platform and framework for building client applications in HTML and TypeScript.
+Angular is itself written in TypeScript.
+
+Modules(NgModules):
+The basic building blocks of an Angular application are NgModulesan.Angular app is defined by a set of NgModules. 
+An app always has at least a root module that enables bootstrapping, and typically has many more feature modules.
+E.g:
+app.module.ts:
+@NgModule({
+declarations:[register components here],
+  imports: [featuer modules],
+  providers: [services],
+  bootstrap:[bootstrapComponent]
+  
+ Components :
+ Every app has at least a root component.
+ 
+ services:
+ Components use services, which provide specific functionality not directly related to views. Service providers can be injected into components as dependencies, making your code modular, 
+ reusable, and efficient.
+ 
+ Create Components/services:
+ Both components and services are simply classes, with decorators that mark their type and provide metadata that tells Angular 
+ how to use them.
+ E.g:
+ The metadata for a component class associates it with a template that defines a view. 
+ @Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
+})
+export class AppComponent implements OnInit {
+  title = 'app works!';  
+  constructor() {}
+  ngOnInit(){}
+}
+
+The metadata for a service class provides the information Angular needs to make it available
+to components through Dependency Injection (DI).
+@Injectable()
+export class actionPlanService {}
