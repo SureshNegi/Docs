@@ -7,3 +7,16 @@ export selected functionality for use by other NgModules.
 Every Angular app has at least one NgModule class, the root module, which is conventionally named AppModule and resides in 
 a file named app.module.ts.
 While a small application might have only one NgModule, most apps have many more feature modules. 
+
+Createing angular module(NgModule):
+An NgModule is defined as a class decorated with @NgModule
+The @NgModule decorator is a function that takes a single metadata object, whose properties describe the module.
+The most important properties are as follows.
+declarations—The components, directives, and pipes that belong to this NgModule.
+imports—Other modules whose exported classes are needed by component templates declared in this NgModule.
+exports—The subset of declarations that should be visible and usable in the component templates of other NgModules.(like chart component can be used in dashbard component)
+providers—Creators of services that this NgModule contributes to the global collection of services; 
+they become accessible in all parts of the app. (You can also specify providers at the component level, which is often preferred.)
+bootstrap—The main application view, called the root component, which hosts all other app views.
+(Only the root NgModule should set this bootstrap property.)
+
