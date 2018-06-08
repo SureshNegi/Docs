@@ -1,0 +1,3 @@
+A root NgModule always has a root component that is created during bootstrap.
+Any NgModule can include any number of additional components, which can be loaded through the router or created through the template. 
+The components that belong to an NgModule share a compilation context.
