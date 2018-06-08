@@ -1,0 +1,32 @@
+Example:Dashboard module using chart module:
+import ....
+var routes: Routes = [
+    { path: '', redirectTo: '/Dashboard', pathMatch: 'full' },
+    { path: 'Dashboard', component: AppChartsComponent },
+];
+@NgModule({
+    declarations: [
+        KeysPipe, ResourceOpenTasksChart, EffortLoadingChart, ResourceWorklogChart, ResourceReleaseAllocationChart, ChartTable, ResourceWeeklyHourChart, HomeChart5, ResourceWiseConsolidatedView, AppChartsComponent, HomeChart3, HomeChart4, HomeChart2, ColumnRangeChartType, BarChartType, LineChartType, AboutChartComponent
+    ],
+    imports: [
+        SharedModule,
+        CommonModule
+        //RouterModule.forRoot(routes)
+    ],
+    //providers: [chartDataService],
+    exports: [AppChartsComponent]
+
+})
+export class AppChartModule {
+    static forRoot(): ModuleWithProviders {
+        return {
+            ngModule: AppChartModule,
+            providers: [chartDataService]
+        }
+    }
+}
+in dashboard.module.ts:
+import {AppChartModule} from '../chart/app.chart.module';
+
+in main mudule:
+import {DashboardModule} from './dashboard/dashboard.module';
