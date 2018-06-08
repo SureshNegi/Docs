@@ -43,3 +43,7 @@ import { BrowserModule } from '@angular/platform-browser';
   bootstrap:    [ AppComponent ]
 })
 export class AppModule { }
+
+The export of AppComponent is just to show how to export; it isn't actually necessary in this example. A root NgModule has no reason 
+to export anything because other 
+modules don't need to import the root NgModule.
