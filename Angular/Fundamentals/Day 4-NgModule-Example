@@ -1,4 +1,5 @@
-Example:Dashboard module using chart module:
+Example:Having 3 modules in application(main module, dashboard module,chart module)
+Dashboard module using chart module:
 import ....
 var routes: Routes = [
     { path: '', redirectTo: '/Dashboard', pathMatch: 'full' },
@@ -30,3 +31,15 @@ import {AppChartModule} from '../chart/app.chart.module';
 
 in main mudule:
 import {DashboardModule} from './dashboard/dashboard.module';
+
+Example 2:Having only one module:
+import { NgModule }      from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+@NgModule({
+  imports:      [ BrowserModule ],
+  providers:    [ Logger ],
+  declarations: [ AppComponent ],
+  exports:      [ AppComponent ],
+  bootstrap:    [ AppComponent ]
+})
+export class AppModule { }
