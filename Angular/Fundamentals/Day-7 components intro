@@ -1,0 +1,7 @@
+You define a component's application logic—what it does to support the view—inside a class. 
+The class interacts with the view through an API of properties and methods.
+For example, the HeroListComponent has a heroes property(that returns an array of heroes that it acquires from a service.)
+HeroListComponent also has a selectHero() method that sets a selectedHero property when the user clicks to choose a hero from that list.
+
+Angular(framework like CLR in .Net) creates, updates, and destroys components as the user moves through the application.
+During the different stage of component different events are emmited called  lifecycle hooks
