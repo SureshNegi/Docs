@@ -1,0 +1,27 @@
+@Component decorator is used to define a component
+The @Component decorator identifies the class immediately below it as a component class, and specifies its metadata
+
+In the example code below, you can see that HeroListComponent is just a class.To make it a component we decorate it with the
+@Component decorator.
+
+Example:
+@Component({
+  selector:    'app-hero-list',
+  templateUrl: './hero-list.component.html',
+  providers:  [ HeroService ]
+})
+export class HeroListComponent implements OnInit {
+/* . . . */
+}
+
+Metadata:
+selector: A CSS selector that tells Angular to create and insert an instance of this component wherever it finds the corresponding tag 
+in template HTML. 
+For example, if an app's HTML contains <app-hero-list></app-hero-list>,then Angular inserts an instance of the HeroListComponent view 
+between those tags.
+templateUrl: This template defines the component's host view.
+providers: An array of dependency injection providers for services that the component requires. In the example, 
+this tells Angular that the component's constructor requires a HeroService instance in order to get the list of heroes to display
+
+A view hierarchy can include views from components in the same NgModule, but it also can (and often does)
+include views from components that are defined in different NgModules.
