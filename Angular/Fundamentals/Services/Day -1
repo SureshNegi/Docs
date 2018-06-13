@@ -1,0 +1,19 @@
+A component should not need to define things like :
+1)how to fetch data from the server
+2)validate user input
+3)log directly to the console etc
+
+Instead, it can delegate such tasks to services. 
+By defining above kind of processing task in class(an injectable service class), we make it available to any component.
+
+Is service must?
+Angular doesn't enforce these principles.
+Angular does help you follow these principles by making it easy to factor our application logic into services and 
+make those services available to components through dependency injection.
+
+Example:
+export class Logger {
+  log(msg: any)   { console.log(msg); }
+  error(msg: any) { console.error(msg); }
+  warn(msg: any)  { console.warn(msg); }
+}
