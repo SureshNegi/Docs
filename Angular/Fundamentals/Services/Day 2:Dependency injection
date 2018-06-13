@@ -1,0 +1,17 @@
+https://angular.io/guide/architecture-services
+
+Components consume services; that is, you can inject a service into a component, giving the component access to that service class.
+
+@Injectable decorator:
+to provide the metadata that allows Angular to inject it into a component as a dependency.
+
+When Angular creates a new instance of a component class, it determines which services or other dependencies that component needs by looking at the types of its constructor parameters. 
+For example, the constructor of HeroListComponent needs a HeroService:
+constructor(private service: HeroService) { }
+
+When Angular discovers that a component depends on a service, it first checks if the injector already has any existing instances 
+of that service. 
+If a requested service instance does not yet exist, the injector makes one using the registered provider,
+and adds it to the injector before returning the service to Angular.
+
+When all requested services have been resolved and returned, Angular can call the component's constructor with those services as arguments
