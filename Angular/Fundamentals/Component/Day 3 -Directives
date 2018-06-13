@@ -1,0 +1,20 @@
+ A directive is a class with a @Directive decorator. 
+ A component is technically a directive
+ Angular defines the @Component decorator, which extends the @Directive decorator with template-oriented features
+ 
+ Types of directives :
+ There are 2 kinds of directives besides components: structural and attribute directives. 
+ 
+ Structural directives:
+ alter layout by adding, removing, and replacing elements in DOM
+ Example:
+*ngFor is an iterative; it tells Angular to stamp out one <li> per hero in the heroes list.
+*ngIf is a conditional; it includes the HeroDetail component only if a selected hero exists.
+
+Attribute directives:
+Attribute directives alter the appearance or behavior of an existing element.
+
+Example:
+The ngModel directive:implements two-way data binding
+Example:
+<input [(ngModel)]="hero.name">
