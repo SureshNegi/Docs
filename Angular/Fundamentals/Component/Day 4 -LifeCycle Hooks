@@ -1,0 +1,37 @@
+https://angular.io/guide/lifecycle-hooks
+
+Angular creates component, renders component, 
+creates and renders its children, checks component when its data-bound properties change, and destroys component
+before removing it from the DOM.
+
+Angular offers lifecycle hooks that provide visibility into these key life moments and the ability to act when they occur.
+
+ngOnChanges() 
+Angular calls its ngOnChanges() method whenever it detects changes to input properties of the component (or directive).
+The ngOnChanges() method is your first opportunity to access(data-bound input properties). 
+Angular calls ngOnChanges() before ngOnInit() and many times after that. It only calls ngOnInit() once.
+
+ngOnInit:
+To perform complex initializations shortly after construction.
+To set up the component after Angular sets the input properties.
+
+
+
+DoCheck():
+Use the DoCheck hook to detect and act upon changes that Angular doesn't catch on its own.
+
+AfterView:
+
+OnDestroy():
+Put cleanup logic in ngOnDestroy(), the logic that must run before Angular destroys the directive.
+This is the time to notify another part of the application that the component is going away.
+This is the place to free resources that won't be garbage collected automatically.
+Unsubscribe from Observables and DOM events.
+Stop interval timers.
+Unregister all callbacks that this directive registered with global or application services. 
+
+You risk memory leaks if you neglect to do above .
+
+For more:
+https://digitalcontrol.me/blog/angular-4-lifecycle-hooks/
+
