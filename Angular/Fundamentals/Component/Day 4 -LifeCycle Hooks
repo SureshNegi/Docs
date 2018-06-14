@@ -1,4 +1,4 @@
-https://angular.io/guide/lifecycle-hooks
+https://codecraft.tv/courses/angular/components/lifecycle-hooks/
 
 Angular creates component, renders component, 
 creates and renders its children, checks component when its data-bound properties change, and destroys component
