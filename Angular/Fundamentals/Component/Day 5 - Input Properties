@@ -1,0 +1,18 @@
+//https://angular.io/guide/component-interaction
+We can create input properties for a component using Input Decorator
+export class HeroChildComponent {
+  @Input() hero: Hero;
+  @Input('master') masterName: string;
+}
+
+Property with setter and getter:
+export class NameChildComponent {
+  private _name = ''; 
+  @Input()
+  set name(name: string) {
+    this._name = (name && name.trim()) || '<no name set>';
+  } 
+  get name(): string { return this._name; }
+}
+
+ 
