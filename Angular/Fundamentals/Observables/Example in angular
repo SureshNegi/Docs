@@ -1,0 +1,22 @@
+Angular makes use of observables as an interface to handle a variety of common asynchronous operations.:
+1)The EventEmitter class extends Observable.
+export declare class EventEmitter<T> extends Subject<T> {
+    __isAsync: boolean;
+    /**
+     * Creates an instance of {@link EventEmitter}, which depending on `isAsync`,
+     * delivers events synchronously or asynchronously.
+     *
+     * @param isAsync By default, events are delivered synchronously (default value: `false`).
+     * Set to `true` for asynchronous event delivery.
+     */
+    constructor(isAsync?: boolean);
+    emit(value?: T): void;
+    subscribe(generatorOrNext?: any, error?: any, complete?: any): any;
+}
+
+export declare class Subject<T> extends Observable<T> implements ISubscription {
+....
+}
+
+2)The HTTP module uses observables to handle AJAX requests and responses
+3)The Router and Forms modules use observables to listen for and respond to user-input events.
