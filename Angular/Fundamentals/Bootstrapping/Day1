@@ -1,0 +1,37 @@
+Every application has at least one Angular module,by convention, it is usually called AppModule.
+
+The @NgModule decorator identifies AppModule as an NgModule class.
+@NgModule takes a metadata object that tells Angular how to compile and launch the application.
+
+declarations—this application's lone component.
+imports—import BrowserModule to have browser specific services such as DOM rendering, sanitization, and location.
+providers—the service providers.
+bootstrap—the root component that Angular creates and inserts into the index.html host web page.
+
+/* JavaScript imports */
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { HttpModule } from '@angular/http';
+import { AppComponent } from './app.component';
+/* the AppModule class with the @NgModule decorator */
+@NgModule({
+  declarations: [
+    AppComponent
+  ],
+  imports: [
+    BrowserModule,
+    FormsModule,
+    HttpModule
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
+
+The bootstrap array:
+The application launches by bootstrapping the root AppModule, which is also referred to as an entryComponent. Among other things, the bootstrapping process creates the component(s) 
+listed in the bootstrap array and inserts each one into the browser DOM.
+While you can put more than one component tree on a host web page, most applications have only 
+one component tree and bootstrap a single root component.
+This one root component is usually called AppComponent and is in the root module's bootstrap array.
