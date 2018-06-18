@@ -1,0 +1,5 @@
+Angular’s HttpClient returns observables from HTTP method calls. For instance, http.get(‘/api’) returns an observable. 
+This provides several advantages over promise-based HTTP APIs:
+HTTP requests are cancellable through the unsubscribe() method
+Requests can be configured to get progress event updates.
+Failed requests can be retried easily.
