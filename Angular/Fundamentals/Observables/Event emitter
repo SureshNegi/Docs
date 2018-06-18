@@ -1,0 +1,2 @@
+Example:
+<zippy (open)="onOpen($event)" (close)="onClose($event)"></zippy>
