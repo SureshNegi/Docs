@@ -1,0 +1,32 @@
+An NgModule is a class marked by the @NgModule decorator.
+@NgModule({
+  declarations: [
+  ],
+ 
+  entryComponents: [],
+  //entryComponents: [ AuditActionPlanComponent,CloneActionPlanComponent ],
+  imports: [  
+  ],
+  providers: [ AlertService, { provide: ErrorHandler, useClass: GlobalErrorHandler }],
+  bootstrap: [AppComponent]
+})
+export class MainAppModule { }
+
+@NgModule takes a metadata object that describes :
+how to compile a component's template and how to create an injector at runtime.
+It identifies the module's own components, directives, and pipes
+components/directive etc in module can be make public(can be used by other module), through the exports property
+eg shared.module.ts:
+@NgModule({
+    imports: [ChartModule,LoadingModule,CommonModule, FormsModule,  DropdownModule, BlockUIModule, CalendarModule],
+    declarations: [ LoaderComponent, TopHeaderComponent,
+    ],
+    exports: [ TopHeaderComponent, LoaderComponent,
+        TopHeaderComponent,ChartModule,DataTableModule,BlockUIModule,DialogModule,
+    ],
+    providers:[DatePipe]
+    //export the component so that is can be used by dashboard and empoloyee module
+})
+export class SharedModule { }
+
+Modules are a great way to organize an application and extend it with capabilities from external libraries(one module can import other modules,angular libraries etc).
