@@ -1,0 +1,8 @@
+NgModules consolidate components, directives, and pipes into cohesive blocks of functionality, each focused on a feature area, 
+application business domain, workflow,or common collection of utilities.
+
+Modules can be loaded eagerly when the application starts or lazy loaded asynchronously by the router.
+
+The root module is all you need in a simple application with a few components.
+As the app grows, you refactor the root module into feature modules that represent collections of related functionality. 
+You then import these modules into the root module.
