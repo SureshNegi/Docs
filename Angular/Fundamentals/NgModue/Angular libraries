@@ -1,0 +1,2 @@
+Angular libraries are NgModules such as FormsModule, HttpClientModule, and RouterModule. 
+third-party libraries as NgModule:Many third-party libraries are available as NgModules such as Material Design, Ionic, and AngularFire2.
