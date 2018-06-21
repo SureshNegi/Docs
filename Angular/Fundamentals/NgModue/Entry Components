@@ -1,0 +1,31 @@
+An entry component is any component that Angular loads imperatively, (which means you’re not referencing it in the template).
+There are two main kinds of entry components:
+The bootstrapped root component.
+A component you specify in a route definition.
+
+@NgModule({
+  declarations: [
+    AppComponent
+  ],
+  imports: [
+    BrowserModule,
+    FormsModule,
+    HttpModule,
+    AppRoutingModule
+  ],
+  providers: [],
+  bootstrap: [AppComponent] // bootstrapped entry component
+})
+A bootstrapped component is an entry component that Angular loads into the DOM during the bootstrap process (application launch).
+
+The second kind of entry component occurs in a route definition like this:
+const routes: Routes = [
+  {
+    path: '',
+    component: CustomerListComponent
+  }
+];
+
+All router components must be entry components.
+Because this would require you to add the component in two places (router and entryComponents) the Compiler is smart enough to 
+recognize that this is a router definition and automatically add the router component into entryComponents.
