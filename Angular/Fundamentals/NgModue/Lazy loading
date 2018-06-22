@@ -1,0 +1,5 @@
+ Lazy loading:
+This behavior necessarily changes when you use lazy loading. Lazy loading is when you load modules only when you need them; for example, 
+when routing. They aren’t loaded right away like with eagerly loaded modules. This means that any services listed in their provider arrays
+aren’t available because the root injector doesn’t 
+know about these modules.
