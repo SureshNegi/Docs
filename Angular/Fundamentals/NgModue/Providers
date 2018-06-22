@@ -1,0 +1,27 @@
+We create services a class with @Injectable decorator
+
+import { Injectable } from '@angular/core';
+@Injectable({
+  providedIn: 'root',
+})
+export class UserService {
+}
+
+TO use this serices in components we have to mention in provider:
+import { UserService } from './user.service';
+@NgModule({
+  providers: [UserService],
+})
+
+providedIn:to specify that a service should be provided in a particular @NgModule
+ For example, if you don't want UserService to be available to applications 
+ unless they import a UserModule you've created, you can specify that the service should be provided in the module:
+ 
+ In the basic CLI generated app, modules are eagerly loaded which means that they are all loaded when the app launches.
+ Angular uses an injector system to make things available between modules.
+ 
+ Limiting provider scope by lazy loading modules :
+ In the basic CLI generated app, modules are eagerly loaded which means that they are all loaded when the app launches.
+ Angular uses an injector system to make things available between modules. In an eagerly loaded app, the root application injector makes
+ all of the providers 
+ in all of the modules available throughout the app.
