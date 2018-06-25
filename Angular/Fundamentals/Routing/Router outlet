@@ -1,0 +1,6 @@
+Given this configuration, when the browser URL for this application becomes /heroes, the router matches that URL to the route path 
+/heroes and displays the HeroListComponent after a
+RouterOutlet that you've placed in the host view's HTML.
+
+<router-outlet></router-outlet>
+<!-- Routed views go here -->
