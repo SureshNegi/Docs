@@ -8,3 +8,6 @@ template: `
   </nav>
   <router-outlet></router-outlet>
 `
+
+The RouterLink directives on the anchor tags give the router control over those elements. The navigation paths are fixed, so you can assign a
+string to the routerLink (a "one-time" binding).
