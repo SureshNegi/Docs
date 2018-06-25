@@ -1,0 +1,53 @@
+The Angular Router is an optional service that presents a particular component view for a given URL.
+It is not part of the Angular core. It is in its own library package, @angular/router. Import what you need from it as you would from any other Angular package.
+import { RouterModule, Routes } from '@angular/router';
+
+Example:The appRoutes array of routes describes how to navigate. 
+Pass it to the RouterModule.forRoot method in the module imports to configure the router.
+const appRoutes: Routes = [
+  { path: 'crisis-center', component: CrisisListComponent },
+  { path: 'hero/:id',      component: HeroDetailComponent },
+  {
+    path: 'heroes',
+    component: HeroListComponent,
+    data: { title: 'Heroes List' }
+  },
+  { path: '',
+    redirectTo: '/heroes',
+    pathMatch: 'full'
+  },
+  { path: '**', component: PageNotFoundComponent }
+];
+
+@NgModule({
+  imports: [
+    RouterModule.forRoot(
+      appRoutes,
+      { enableTracing: true } // <-- debugging purposes only
+    )
+    // other imports here
+  ],
+  ...
+})
+export class AppModule { }
+
+Each Route maps a URL path to a component. There are no leading slashes in the path. The router parses and builds the final URL for you, 
+allowing you to use both relative and absolute paths when navigating between application views.
+The :id in the second route is a token for a route parameter. In a URL such as /hero/42, "42" is the value of the id parameter. 
+The corresponding HeroDetailComponent will use that value to find and present the hero whose id is 42. 
+The data property in the third route is a place to store arbitrary data associated with this specific route. The data property is 
+accessible within each activated route.
+Use it to store items such as page titles, breadcrumb text, and other read-only, static data
+
+The empty path in the fourth route represents the default path for the application, the place to go when the path in the URL is empty, as it typically is at the start. This default route redirects to the route for the 
+/heroes URL and, therefore, will display the HeroesListComponent.
+
+The ** path in the last route is a wildcard. The router will select this route if the requested URL doesn't match any paths 
+for routes defined earlier in the configuration.
+
+The order of the routes in the configuration matters and this is by design. The router uses a first-match wins strategy 
+when matching routes, so more specific 
+
+The wildcard route comes last because it matches every URL and should be selected only if no other routes are matched first.
+routes should be placed above less specific routes. 
+This is useful for displaying a "404 - Not Found" page or redirecting to another route.
