@@ -1,7 +1,13 @@
 SQL EXISTS Operator?
 The EXISTS operator is used to test for the existence of any record in a subquery.
 The EXISTS operator returns true if the subquery returns one or more records.
-
+-- IF block will be executed only if inner query retur something
+IF EXISTS (
+			SELECT	1                    
+			FROM tbl_mapp_manager_team                    
+			WHERE resourceId = 444
+		 )
+ BEGIN .......................END        
 General Syntax:
     SELECT column-names
       FROM table-name
@@ -19,3 +25,5 @@ above query can be written using IN:
 SELECT SupplierName
 FROM Suppliers
 WHERE SupplierId IN(SELECT SupplierId FROM Products WHERE  Price < 20)
+
+https://www.w3schools.com/sql/sql_exists.asp
