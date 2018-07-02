@@ -2,19 +2,20 @@ Delete duplicate records:
 https://stackoverflow.com/questions/18932/how-can-i-remove-duplicate-rows
 
 sol1)give each row rowid by partioning and then delete
-create table t1(id int)
-insert into t1 values(1);
-insert into t1 values(1);
-insert into t1 values(1);
-insert into t1 values(2);
-insert into t1 values(2);
+create table t1(id int,name varchar(10))
+insert into t1 values(1,'A');
+insert into t1 values(1,'A');
+insert into t1 values(3,'A');
+insert into t1 values(4,'A');
+insert into t1 values(4,'A');
+
 WITH CTE AS
 (
-SELECT *,ROW_NUMBER() OVER (PARTITION BY id ORDER BY id) AS RN
+SELECT *,ROW_NUMBER() OVER (PARTITION BY id,name ORDER BY id) AS RN
 FROM t1
 )
-DELETE FROM CTE WHERE RN<>1
-select * from t1;
+select * from CTE
+WHERE RN<>1
 
 sol2)if table has unique id field
  you GROUP BY the unique columns, and SELECT the MIN (or MAX) RowId as the row to keep. Then, just delete everything that didn't have a row id:
