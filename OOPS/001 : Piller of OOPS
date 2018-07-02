@@ -1,0 +1,27 @@
+1)Encapsulation
+2)Abstraction
+3)Inheritance
+4)Polymorphism
+
+1)Encapsulation:
+In oops we create class that is(encapsulate data memeber and methods in one unit.) that is called Encapsulation
+Encapsulation is all about binding the data variables and functions together in class
+
+Abstraction: Abstraction refers to showing only the essential features of the application and hiding the details. 
+In C++/Java, classes provide methods to the outside world to access & use the data variables, but the variables are hidden 
+from direct access. This can be done access specifiers.
+For example: phone call, we don't know the internal processing
+Abstraction = Encapsulation + Data Hiding
+
+Inheritance: Inheritance is a way to reuse code. The class which is inherited from,
+is called the base class, and the class which inherits the code from the base class is called a derived class. 
+derived class can use all the functions which are defined in the base class, making the code reusable.
+base class car
+child classes:maruti car, tata car
+
+Polymorphism: It is a feature, which lets us create functions with same name but different arguments, 
+which will perform differently. That is function with same name, functioning in different way. 
+Or, it also allows us to redefine a function to provide its new definition(run time poly).
+
+Example:
+In game when we give attack command all soldiers attack in their own way.Here method name is same but the behaviur is different
