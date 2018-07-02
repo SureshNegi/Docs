@@ -1,0 +1,17 @@
+In SQL Server there are a couple a ways you can delete rows from a table. 
+You can use the TRUNCATE and DELETE command.
+The TRUNCATE command is like a DELETE command without the WHERE clause.
+When you TRUNCATE a table less information is logged.  This means the TRUNCATE statement executes very fast; however,
+it does so at the expense of not logging each row deleted.
+This means, that you need to be very careful when using the command (actually be careful with DELETE as well!).
+
+Here are some reasons to use TRUNCATE:
+You want to “reset” a table to its empty state. All rows are removed, and identity key values reset to the initial defined values.
+You need to have a super quick way of clearing out table data. I can see this occurring when you need to repeatedly import test data or you have routines that use work tables or 
+scratch tables to store information.
+You want to remove rows from a table without activating the table’s after delete trigger.
+
+https://www.essentialsql.com/what-is-the-difference-between-truncate-and-delete-in-sql-server/
+
+Why is truncate a DDL statement?
+https://stackoverflow.com/questions/26059855/why-is-truncate-a-ddl-statement
