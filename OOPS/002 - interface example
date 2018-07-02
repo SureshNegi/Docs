@@ -1,0 +1,39 @@
+When we create a WCF service:
+
+There is an interface:
+[ServiceContract]
+    public interface IService1
+    {
+        [OperationContract]
+        string GetData(int value);
+        [OperationContract]
+        CompositeType GetDataUsingDataContract(CompositeType composite);
+        // TODO: Add your service operations here
+    }
+    
+A class implements this interface :
+public class Service1 : IService1
+    {
+        public string GetData(int value)
+        {
+            return string.Format("You entered: {0}", value);
+        }
+
+        public CompositeType GetDataUsingDataContract(CompositeType composite)
+        {
+            if (composite == null)
+            {
+                throw new ArgumentNullException("composite");
+            }
+            if (composite.BoolValue)
+            {
+                composite.StringValue += "Suffix";
+            }
+            return composite;
+        }
+    }
+    
+    When we consume this service in client:
+ <endpoint address="http://localhost:57728/UserService.svc" binding="basicHttpBinding"
+ bindingConfiguration="BasicHttpBinding_IUserService" contract="UserService.IService1"
+ name="BasicHttpBinding_IUserService" />
