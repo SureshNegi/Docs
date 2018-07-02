@@ -15,3 +15,6 @@ https://www.essentialsql.com/what-is-the-difference-between-truncate-and-delete-
 
 Why is truncate a DDL statement?
 https://stackoverflow.com/questions/26059855/why-is-truncate-a-ddl-statement
+
+Rollback transaction:
+http://www.sqlserverlogexplorer.com/how-to-rollback-a-transaction/
