@@ -27,7 +27,7 @@ The standard SQL commands to interact with relational databases ?
 The standard SQL commands to interact with relational databases are CREATE, SELECT, INSERT, UPDATE, DELETE and DROP.
 
 DDL - Data Definition Language?
-CREATE,ALTER,DROP
+CREATE,ALTER,DROP,Truncate
 
 DML - Data Manipulation Language
 SELECT,INSERT,UPDATE,DELTE
