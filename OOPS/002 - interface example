@@ -1,3 +1,6 @@
+We will implement interface methods in derived class of interface.
+ie an interface is actually not inherited but implemented.
+
 When we create a WCF service:
 
 There is an interface:
