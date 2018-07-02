@@ -1,5 +1,6 @@
 Why use interface
 http://www.dotnetspider.com/forum/13184-OOPS-Why-we-need-an-Interface.aspx
+https://www.c-sharpcorner.com/UploadFile/cda5ba/object-oriented-programming-with-real-world-scenario/?
 
 Example:
 Here is another example,(the Strategy pattern) lets you swap new algorithms and processes into your program 
@@ -24,3 +25,7 @@ tommorow I will leave for Goa, I will catch the train at this time, book the hot
 this is declaring interface
 
 when executing in real means implementing the interface
+
+We will implement interface methods in derived class of interface.
+ie an interface is actually not inherited but implemented.
+So the interface contain minimum line of coding and very easy to understandable by other developer and easy to explain to your client.
