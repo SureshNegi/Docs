@@ -37,3 +37,16 @@ public class Service1 : IService1
  <endpoint address="http://localhost:57728/UserService.svc" binding="basicHttpBinding"
  bindingConfiguration="BasicHttpBinding_IUserService" contract="UserService.IService1"
  name="BasicHttpBinding_IUserService" />
+ 
+ public class ArrayList : IList, ICollection, IEnumerable, ICloneable 
+ public class List<T> : IList<T>, ICollection<T>, IEnumerable<T>, IEnumerable, IList, ICollection, IReadOnlyList<T>, 
+ IReadOnlyCollection<T>
+ 
+ In above example both List and ArrayList are implementing IList,ICollections etc.
+ We create interface as an agrrement say if any one say I am car then it means it agree all agrrement in ICar interface.
+ Thus interface insures that impementation is imlemented as per the agreement.
+ Interface is good for introducing new types 
+ 
+
+ 
+ 
