@@ -1,3 +1,5 @@
+https://stackoverflow.com/questions/30992717/proxy-awareness-with-pip
+
 
 install python with custom option by selecting pip
 pip install --proxy=http://suresh-negi:angular_2018@inggn1-07pr01-int-1-0.ip.mrshmc.com:8888 camelcase
