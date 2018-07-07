@@ -1,3 +1,5 @@
+http://www.tutorialsteacher.com/webapi/web-api-controller
+
 When we create any WEB API project, We create different controller classess dedicted to different specific resources.
 
 Let us say we create new web api project and have ValuesController class.ValuesController class will be something like this:
@@ -5,6 +7,7 @@ Let us say we create new web api project and have ValuesController class.ValuesC
  ValuesController : APIController{
   ............................
   Different Get,Put,Post and Deltere methods
+  //All the public methods of the controller are called action methods.
  }
  
  Like in MVC controller class extend Controller class,In WEB API controller class extend APIController
