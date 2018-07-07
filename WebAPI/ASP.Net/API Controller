@@ -1,0 +1,12 @@
+When we create any WEB API project, We create different controller classess dedicted to different specific resources.
+
+Let us say we create new web api project and have ValuesController class.ValuesController class will be something like this:
+ 
+ ValuesController : APIController{
+  ............................
+  Different Get,Put,Post and Deltere methods
+ }
+ 
+ Like in MVC controller class extend Controller class,In WEB API controller class extend APIController
+ 
+ (This is the real example of code reusability)
