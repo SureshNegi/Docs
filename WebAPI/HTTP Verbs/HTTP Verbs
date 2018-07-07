@@ -1,0 +1,8 @@
+GET(Fetch)
+POST(Create)
+PUT
+DELETE
+
+PATCH(partial update)
+OPTIONS(get the available operaions on a resource)
+HEAD(returns only HTTP Header only)
