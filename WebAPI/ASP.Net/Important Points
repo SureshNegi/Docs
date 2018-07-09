@@ -1,0 +1,8 @@
+public string Get(int id)
+        {
+            return "value";
+        }
+        
+ http://localhost:60150/testapi/Values/?id=1 //parameter name should be same otherwise default Get() will becaled
+ or  
+ http://localhost:60150/testapi/Values/1
