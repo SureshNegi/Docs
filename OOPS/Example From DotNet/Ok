@@ -1,9 +1,9 @@
 --Use of interface - scalibility of class/programme --agreement b/w framework and programmer
 --use of generics
 
+http://www.tutorialsteacher.com/webapi/action-method-return-type-in-web-api -- create custom IHttpActionResult
 
-
-//webapi action method
+api action method
 public IHttpActionResult Get()
  {
             string[]  arr =  { "value1", "value2" };
