@@ -1,0 +1,29 @@
+--Use of interface - scalibility of class/programme --agreement b/w framework and programmer
+--use of generics
+
+
+
+//webapi action method
+public IHttpActionResult Get()
+ {
+            string[]  arr =  { "value1", "value2" };
+            return Ok(arr);
+           
+}
+
+//in ApiController base class
+protected internal virtual OkNegotiatedContentResult<T> Ok<T>(T content);
+and
+public class OkNegotiatedContentResult<T> : IHttpActionResult{ ..... }
+public class OkResult : IHttpActionResult{}
+
+
+IHttpActionResult was introduced in WEBAPI2.To implement this dot net add new method :
+protected internal virtual OkNegotiatedContentResult<T> Ok<T>(T content) in ApiController class - scalability;
+
+OkNegotiatedContentResult is implementing IHttpActionResult
+so in future if dot net need to add new class returning IHttpActionResult or programmer want to add his custom class returning IHttpActionResult
+then we have to create new class implementing this IHttpActionResult
+like
+
+MyOk :IHttpActionResult
