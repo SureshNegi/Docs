@@ -1,0 +1,61 @@
+Used to add extra logic before or after action methods execute.
+
+Used to add extra logic before or after action methods execute.
+
+Example:OutputCache is action type filter
+ [OutputCache(Duration = 10)]
+ [HandleError]
+ public IHttpActionResult Get()
+        {
+            string[]  arr =  { "value1", "value2" };
+            return Ok();
+           
+ }
+ 
+ public class OutputCacheAttribute : ActionFilterAttribute, IExceptionFilter{
+................. 
+}
+
+public abstract class ActionFilterAttribute : FilterAttribute, IActionFilter, IResultFilter{.....}
+
+The base ActionFilterAttribute class has the following methods that you can override:
+ public abstract class ActionFilterAttribute : FilterAttribute, IActionFilter, IResultFilter
+    {
+        //
+        // Summary:
+        //     Initializes a new instance of the System.Web.Mvc.ActionFilterAttribute class.
+        protected ActionFilterAttribute();
+
+        //
+        // Summary:
+        //     Called by the ASP.NET MVC framework after the action method executes.
+        //
+        // Parameters:
+        //   filterContext:
+        //     The filter context.
+        public virtual void OnActionExecuted(ActionExecutedContext filterContext);
+        //
+        // Summary:
+        //     Called by the ASP.NET MVC framework before the action method executes.
+        //
+        // Parameters:
+        //   filterContext:
+        //     The filter context.
+        public virtual void OnActionExecuting(ActionExecutingContext filterContext);
+        //
+        // Summary:
+        //     Called by the ASP.NET MVC framework after the action result executes.
+        //
+        // Parameters:
+        //   filterContext:
+        //     The filter context.
+        public virtual void OnResultExecuted(ResultExecutedContext filterContext);
+        //
+        // Summary:
+        //     Called by the ASP.NET MVC framework before the action result executes.
+        //
+        // Parameters:
+        //   filterContext:
+        //     The filter context.
+        public virtual void OnResultExecuting(ResultExecutingContext filterContext);
+    }
