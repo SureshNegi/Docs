@@ -17,6 +17,18 @@ FROM t1
 select * from CTE
 WHERE RN<>1
 
+SRA_Other issue:
+WITH CTE AS
+(
+SELECT appresid,appid,ROW_NUMBER() OVER (PARTITION BY [resource id],appId ORDER BY appId) AS RN
+FROM tbl_Mapp_Application_Resource 
+where appid in(SELECT DISTINCT AppId from Mapp_Team_To_App where TeamId=5 and active=1)
+
+)
+UPDATE  CTE
+SET APPID=0
+WHERE RN<>1
+
 sol2)if table has unique id field
  you GROUP BY the unique columns, and SELECT the MIN (or MAX) RowId as the row to keep. Then, just delete everything that didn't have a row id:
 DELETE FROM MyTable
