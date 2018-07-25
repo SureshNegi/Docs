@@ -1,0 +1,110 @@
+//https://forums.asp.net/t/1825717.aspx?Fill+Dataset+with+data+retrieved+from+Oracle
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using Oracle.DataAccess.Client;
+using Oracle.DataAccess.Types;
+using System.Data;
+using System.Configuration;
+
+namespace ETLSchedulerAPI.DAL
+{
+
+    public class DataAccessLayer
+    {
+       readonly string  oraDbConnString = "";
+       public DataAccessLayer() {
+            oraDbConnString = //ConfigurationManager.AppSettings["oraDbConnString"];
+            ConfigurationManager.ConnectionStrings["OracleConnStr"].ConnectionString;
+        }
+        //public static string GetClient() {
+        //    //ETL_SCHEDULER/vznUn7YiLHKdK!D9@BWPRG12
+        //    string oradb = "Data Source=BWPRG12;User Id=ETL_SCHEDULER;Password=vznUn7YiLHKdK!D9;";
+        //    OracleConnection conn = new OracleConnection(oradb);  // C#
+        //    conn.Open();
+        //    OracleCommand cmd = new OracleCommand();
+        //    cmd.Connection = conn;
+        //    string query = "select client_info_id, clientonecode, control_id, is_enabled from client_info";
+        //    cmd.CommandText = query;
+        //    cmd.CommandType = CommandType.Text;
+        //    OracleDataReader dr = cmd.ExecuteReader();           
+        //    dr.Read();           
+        //    conn.Dispose();
+        //    return "";
+        //}
+        //public static string GetClient()
+        //{
+        //    string oradb = "Data Source=BWPRG12;User Id=ETL_SCHEDULER;Password=vznUn7YiLHKdK!D9;";
+        //    OracleConnection conn = new OracleConnection(oradb);  // C#
+        //    conn.Open();
+        //    string query = "select client_info_id, clientonecode, control_id, is_enabled from client_info";           
+        //    OracleDataAdapter oraAdapter = new OracleDataAdapter(query, conn);
+        //    OracleCommandBuilder oraBuilder = new OracleCommandBuilder(oraAdapter);
+        //    DataSet dsPlayerTable = new DataSet("dsPlayerTable");
+        //    oraAdapter.Fill(dsPlayerTable, "PlayerTable");
+        //    conn.Dispose();
+        //    return "";
+        //}
+        //public string GetClient()
+        //{
+        //    using (OracleConnection cn = new OracleConnection(oraDbConnString))
+        //    {
+        //        cn.Open();
+        //        string query = "select client_info_id, clientonecode, control_id, is_enabled from client_info";
+        //        OracleCommand cmd = new OracleCommand(query, cn);
+        //        cmd.CommandType = CommandType.Text;//.StoredProcedure;
+        //        OracleDataAdapter da = new OracleDataAdapter(cmd);
+        //        System.Data.DataSet ds = new System.Data.DataSet();
+        //        da.Fill(ds);
+        //        try
+        //        {
+        //            //Process the data in ds here
+        //        }
+
+        //        catch (Exception ex)
+        //        {
+        //            return null;
+        //        }
+
+        //        finally
+        //        {
+        //            cmd.Dispose();
+        //            cn.Close();
+        //        }
+        //    }
+        //    return "";
+        //}
+        public string GetClient()
+        {           
+            using (OracleConnection cn = new OracleConnection(oraDbConnString))
+            {
+                cn.Open();
+                string query = "SP_GET_CLIENTINFO";
+                OracleCommand cmd = new OracleCommand(query, cn);
+                cmd.CommandType = CommandType.StoredProcedure;//.StoredProcedure;
+                cmd.Parameters.Add(new OracleParameter("p_clinetid", OracleDbType.Int64, ParameterDirection.Input)).Value = 100;// ParameterDirection.Input;
+                cmd.Parameters.Add(new OracleParameter("c1", OracleDbType.RefCursor)).Direction = ParameterDirection.Output;
+                OracleDataAdapter da = new OracleDataAdapter(cmd);
+                System.Data.DataSet ds = new System.Data.DataSet();
+                da.Fill(ds);
+                try
+                {
+                    //Process the data in ds here
+                }
+
+                catch (Exception ex)
+                {
+                    return null;
+                }
+
+                finally
+                {
+                    cmd.Dispose();
+                    cn.Close();
+                }
+            }
+            return "";
+        }
+    }
+}
