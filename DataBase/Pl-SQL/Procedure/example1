@@ -1,0 +1,15 @@
+CREATE OR REPLACE PROCEDURE SP_GET_CLIENTINFO(p_clinetid int,c1 OUT SYS_REFCURSOR)
+AS
+--v_client_info_id client_info.client_info_id%type;
+--v_clientonecode client_info.clientonecode%type;
+--c1 SYS_REFCURSOR;  
+begin
+open c1 for
+--select client_info_id, clientonecode
+  --into v_client_info_id,v_clientonecode
+--from client_info;
+SELECT 'test test' as Full_Name, p_clinetid as Age, 'alien' as Nationality, 'foo' as Category, 
+'Name' as Airline_Name, 'wobble' as Class_Type
+FROM dual;
+--DBMS_SQL.RETURN_RESULT(c1);
+end SP_GET_CLIENTINFO;
