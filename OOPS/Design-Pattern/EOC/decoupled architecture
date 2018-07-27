@@ -1,0 +1,15 @@
+https://www.quora.com/What-is-decoupled-architecture-and-how-is-it-implemented
+A decoupled architecture is where the different components/layers that make up the system interact
+with each other using well-defined interfaces rather than depending tightly on each other. 
+With such an architecture, the components/layers can be developed independently without having to wait for their dependencies to complete.
+This leads to pipelined development, resulting in more streamlined and faster development.
+ This also improves testability of the components. 
+ Typically, decoupling the UI from its dependent backend brings more benefits and is often ignored.
+ You can drive your web UI through well defined APIs that return JSON/XML/ATOM or whatever format convenient in your environment.
+ With such APIs defined, the UI developers can use mock data during development instead of waiting for the backend developers
+ to complete their tasks
+ Since the UI and backend developers produce their work in parallel, idle time and repeated integration can be minimized.
+ Since UI developers are typically ahead in the development cycle,Since UI developers are typically ahead in the development cycle,
+ this helps backend developers in finalizing the data formats with minimum iterations. 
+ Decoupling also helps in replacing/evolving each side independent of other
+ For example, if you migrate your backend services from Java to Scala for whatever reasons, it has little impact on your UI and vise versa.
