@@ -1,0 +1,22 @@
+https://msdn.microsoft.com/en-us/library/hh323705(v=vs.100).aspx
+
+Unity is Microsoft's Patterns and Practices solution for DI(to implement DI)
+Unity can also be combined with the great features for
+exception management and logging that are in the full version of the Microsoft Enterprise Library
+With Unity you can either use:
+1) configuration files to load dependencies, which is an approach that offers flexibility
+2) or you can use code to register dependencies.
+
+Configuration versus Code:
+Although configuration files do offer a flexible way to register dependencies, there is currently no tool 
+to manage those files, so it must be done by hand.
+
+In addition, in many organizations, this flexibility is often limited by IT policies.
+It can require just as much effort, QA testing, and paperwork to move a configuration change into production as it takes for a code change. 
+Consequently, it may be more efficient to use code to register dependencies than to use configuration files.
+
+Unity includes the Interception container extension, which allows you to inject:
+exception management, logging, or even your own custom code between the caller and the called. 
+If you consider Class1 and Class2 from the code examples in the Introduction, an example of when to inject additional logic 
+would be if Class1 needs to make a call to an operation on Class2. 
+You can use Interception to inject the additional logic without having to change any code in Class1 or in Class2.
