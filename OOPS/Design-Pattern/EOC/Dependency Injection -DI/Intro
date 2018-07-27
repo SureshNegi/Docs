@@ -1,0 +1,53 @@
+https://msdn.microsoft.com/en-us/library/hh323705(v=vs.100).aspx
+
+Problem statement:
+Tighltly coupled example:
+public class Class1
+{    public Class2 class2Obj { get; set; }}
+ 
+public class Class2
+{}
+
+Loosly coupled:
+public class Class1
+{    public IClass2 Class2 { get; set; } }
+ 
+public interface IClass2 
+{}
+ 
+public class Class2 : IClass2
+{}
+
+But this is not loosly coupled(Class1 is responsible for creating a new instance of Class2):
+public class Class1
+{
+    public Class1()
+    {
+        Class2 = new Class2();           
+    }
+    public IClass2 Class2 { get; set; }
+}
+ 
+public interface IClass2 
+{}
+ 
+public class Class2 : IClass2
+{}
+
+Solution:
+A solution to this problem is to use DI.A third class that resolves the dependencies eliminates the last bit of tight coupling.
+The following code uses DI to implement loose coupling.
+public class Class1
+{
+    public readonly IClass2 _class2;
+ 
+    public Class1():this(DependencyFactory.Resolve<IClass2>())
+    {
+ 
+    }
+ 
+    public Class1(IClass2 class2)
+    {
+        _class2 = class2;
+    }
+}
