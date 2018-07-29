@@ -1,1 +1,4 @@
 https://www.c-sharpcorner.com/UploadFile/dacca2/implement-ioc-using-unity-in-mvc-5/
+There are the following two implementations of Inversion of Control:
+Dependency Injection
+Service locator.
