@@ -1,0 +1,6 @@
+myController:Controller{...}
+
+public abstract class Controller : ControllerBase, IActionFilter, IAuthenticationFilter,..., IController
+
+Controller class is absract?
+So that we can not create the object of the Controller class
