@@ -5,4 +5,6 @@ encapsulation focuses upon the implementation that gives rise to this behavior..
 information hiding, which is the process of hiding all of the secrets of object that do not contribute to its essential characteristics
  -- we create class - encaptulation
  -- we create class, use defferent public private methods in classes and use different access modefiers -- process of acieving abstraction
+ 
+ In other words: abstraction = the object externally; encapsulation (achieved through information hiding) = the object internally,
 
