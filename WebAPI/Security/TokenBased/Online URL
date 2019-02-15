@@ -1,2 +1,5 @@
 /*server generate token and client consume it*/
 http://bitoftech.net/2014/10/27/json-web-token-asp-net-web-api-2-jwt-owin-authorization-server/
+
+/*using message handlers*/
+http://www.decatechlabs.com/secure-webapi-using-jwt
