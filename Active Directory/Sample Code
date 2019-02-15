@@ -1,0 +1,49 @@
+ using nodejs:
+ //https://github.com/gheeres/node-activedirectory
+ 
+ C#:
+ [HttpGet]
+        public IHttpActionResult SearchUser(string search)
+        {
+            PrincipalContext ctx = new PrincipalContext(ContextType.Domain);
+            IList<dynamic> users = new List<dynamic>();
+            // find the group in question
+            GroupPrincipal group = GroupPrincipal.FindByIdentity(ctx, "#Mercer GTI All");
+            APIResponse response = new APIResponse(APIStatus.Success);
+            // if found....
+            if (group != null)
+            {
+                var searchList = group.GetMembers();//.Where(i => (i.DisplayName != null && i.DisplayName.ToLower().IndexOf(search) >= 0)).ToList();
+                //var TestUser= searchList.Where(i => (i.em 1063381
+                // iterate over members
+                foreach (Principal p in searchList)
+                {
+                    
+                    Console.WriteLine("{0}: {1}", p.StructuralObjectClass, p.DisplayName);
+                    // do whatever you need to do to those members
+                    UserPrincipal theUser = p as UserPrincipal;
+                    
+                    if (theUser != null)
+                    {
+                        //if (theUser.EmployeeId == "1063381") {
+                        //    users.Add(new
+                        //    {
+                        //        Name = p.DisplayName,
+                        //        Email = theUser.EmailAddress,
+                        //        EmpId = theUser.EmployeeId
+                        //    });
+                        //}
+                        users.Add(new
+                        {
+                            Name = p.DisplayName,
+                            Email = theUser.EmailAddress,
+                            EmpId = theUser.EmployeeId
+                        });
+                    }
+                }
+                response.Data = users;
+            }
+            return Ok(response);
+
+
+        }
