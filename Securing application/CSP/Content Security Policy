@@ -1,2 +1,21 @@
 The colon is required, single quotes shouldn't be used(connect-src).
 https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/connect-src
+
+Example(myTime) web.config:
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+    <system.web>
+      <compilation debug="true" targetFramework="4.5" />
+      <httpRuntime targetFramework="4.5" />
+    </system.web>
+    <system.webServer>
+        <httpProtocol>
+            <customHeaders>
+                <add name="Content-Security-Policy" value="default-src 'self' 'unsafe-eval';script-src 'self' 'unsafe-inline' 'unsafe-eval';
+                     style-src 'self' 'unsafe-inline'; 
+                     connect-src 'self' http://dev.api.mytime.mercer.com:8000;" />
+            </customHeaders>
+        </httpProtocol>
+    </system.webServer>
+</configuration>
