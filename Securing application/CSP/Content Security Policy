@@ -1,0 +1,2 @@
+The colon is required, single quotes shouldn't be used(connect-src).
+https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/connect-src
