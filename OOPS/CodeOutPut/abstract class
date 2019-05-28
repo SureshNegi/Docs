@@ -1,0 +1,12 @@
+  public abstract class AbstractCls1
+        {
+           
+            public abstract int Id { get; set; }
+        }
+
+       /*if you do not use override then it will give error*/
+       /*if you you use new then it will give error*/
+        public class Child : AbstractCls1
+        {
+            public override int Id { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        }
