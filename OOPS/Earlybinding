@@ -1,0 +1,27 @@
+Earlybinding==compiletime binding=method overloading
+static void Main(string[] args)
+        {
+           
+            volume(1); //int
+            volume(1f); //float
+            volume(1.4); //double
+            volume("1.4"); //string
+
+        }
+        static int volume(int x)
+        {
+            return (x * x * x);
+        }
+        static int volume(double x)
+        {
+            return (1 * 1 * 1);
+        }
+        static int volume(float x)
+        {
+            return (3 * 3 * 3);
+        }
+
+        static int volume(string x)
+        {
+            return (3 * 3 * 3);
+        }
