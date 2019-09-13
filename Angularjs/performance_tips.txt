@@ -5,9 +5,11 @@ https://jsperf.com/
 
 
 Requirejs:
+https://weblogs.asp.net/dwahlin/dynamically-loading-controllers-and-views-with-angularjs-and-requirejs
 https://www.startersquad.com/blog/angularjs-requirejs/
 
 
 http://stackoverflow.com/questions/11453944/how-to-get-the-length-of-japanese-characters-in-javascript
 
 http://www.javascripter.net/faq/escape.htm
+
