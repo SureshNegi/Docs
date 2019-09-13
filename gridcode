@@ -1,0 +1,41 @@
+<div class="sn-header-container" ref="eHeaderContainer" role="rowgroup" style="width: 600px;">
+    <div class="sn-header-row" role="row" aria-rowindex="1" style="top: 0px; height: 32px; width: 600px;">
+        <div    class="sn-header-cell" [ngClass]="{'sn-header-cell-sortable':c.sortable,'sn-column-hover':c.isMouseHover}" [style.left.px]="c.left" [style.width.px]="c.width"
+            *ngFor="let c of columnDefs" (mouseout)="c && c.isMouseHover=false" (mouseover)="c && c.isMouseHover=true">
+            <div class="sn-cell-label-container" role="presentation">
+                <span ref="eMenu" class="sn-header-icon sn-header-cell-menu-button" aria-hidden="true"><span class="sn-icon sn-icon-menu" unselectable="on"></span></span>
+                <div (click)="onSort(c)" ref="eLabel" class="sn-header-cell-label">
+                    <span ref="eText" class="sn-header-cell-text">{{c.headerName}}</span> <span ref="eFilter" class="sn-header-icon sn-filter-icon sn-hidden"><span class="sn-icon sn-icon-filter"></span></span>
+                    <span ref="eSortAsc" [ngClass]="{'sn-hidden':c.sortDir!==1}" class="sn-header-icon sn-sort-ascending-icon"><span class="sn-icon sn-icon-asc"></span></span>
+                    <span ref="eSortDesc" [ngClass]="{'sn-hidden':c.sortDir!==2}" class="sn-header-icon sn-sort-descending-icon"><span class="sn-icon sn-icon-desc"></span></span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="sn-header-row" role="row" [style.top.px]="(headerHeight-3)" style="height: 20px; width: 600px;">
+        <div class="sn-header-cell" [ngClass]="{'sn-header-cell-sortable':c.sortable}" [style.left.px]="c.left" [style.width.px]="c.width"
+            *ngFor="let c of columnDefs">
+            <div class="sn-cell-label-containe sn-floating-filter-body">
+                <div class="sn-input-wrapper"><input (input)="onSearchChange($event.target.value,c)" class="sn-floating-filter-input"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+.sn-icon-menu:before {
+    content: "\E91D";
+}
+.sn-column-hover .sn-header-cell-menu-button
+{
+    opacity: 1 !important;
+}
+ .sn-header-cell-menu-button
+{
+    opacity: 0; transition: opacity 0.2s ease 0s, border 0.2s ease 0s;
+}
+:host ::ng-deep .sn-theme-balham *:focus, 
+:host ::ng-deep .sn-theme-balham * *:before,
+:host ::ng-deep .sn-theme-balham * *:after {
+    outline: none;
+    box-sizing: border-box;
+}
